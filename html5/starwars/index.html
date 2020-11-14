@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>星球大战--前端是代码界的导演</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        body  {
+            background: url(./images/bg.jpg);
+            background-color: #000000;
+        }
+        .starwars{
+            height: 17em;
+            width: 34em;
+           position: absolute;
+           top: 50%;
+           left: 50%;
+           /* background: red; */
+           transform:translate(-50%,-50%) ;
+           /* 视点800像素，参照物 */
+           perspective: 800px;
+           transform-style:preserve-3d;
+        
+    }
+    .star,.wars{
+        position: absolute;
+
+    }
+    .star{
+        top: -0.75em;
+        /*动作导演 动画出现10s */
+         animation: star 10s ease-out infinite;
+    }
+    .wars{
+       bottom: -0.5em;
+
+       animation: wars 10s ease-out infinite;
+    }
+    @keyframes wars {
+        0%{
+             /* 透明度 0*/
+             opacity: 0;
+            /* 变成1.5倍 */
+            transform: scale(1.5);
+        }
+        20%{
+            opacity: 1;
+
+        }
+        89%{
+            opacity: 1;
+            /* 变成1倍 */
+            transform: scale(1);
+
+        }
+        100%{
+            opacity:0 ;
+            /* 向z轴移动 */
+            transform: translateZ(-400em);
+        }
+    }
+    /* 设计动作 */
+    @keyframes star {
+        0%{
+            /* 透明度 0*/
+            opacity: 0;
+            /* 变成1.5倍 */
+            transform: scale(1.5);
+
+        }
+        20%{
+            opacity: 1;
+
+        }
+        90%{
+            opacity: 1;
+            /* 变成1倍 */
+            transform: scale(1);
+
+        }
+        100%{
+            opacity:0 ;
+            /* 向z轴移动 */
+            transform: translateZ(-400em);
+        }
+    }
+    </style>
+</head>
+<body>
+   <div class="starwars">
+      <img src="./images/star.svg" alt="" class="star">
+      <img src="./images/wars.svg" alt="" class="wars">
+    </div> 
+    
+</body>
+</html>
