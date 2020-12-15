@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // Promise 许诺
+        // 我以后会有钱的，会买房 买车
+        // 异步 I/O 操作  内存->硬盘 都放Promise里面
+        //定时器是异步的
+        // setTimeout(function(){
+        //     console.log(1);
+        // },1000);
+
+       const p1 =  new Promise((resolve,reject)=>{
+            //  适合放费时的操作
+            // fetch 发送请求和响应
+            // 去一个土味情话网站，给我们反馈一条情话，一来一回http本质？需要花时间 花时间的事情就放在promise里面
+            // 异步
+            // 封装了一个http 一去一来的请求 花时间的
+            // fetch("http://127.0.0.1:8080/user.json")
+            // fetch("http://chp.shadiao.app/api.php")
+            // .then(data=>data.json())
+            // .then(data=>{
+            //     // console.log(data)
+            //     // s实现这个诺言
+            //     resolve(data)
+
+            // p1.then((data)=>{
+            //     console.log(data);
+            // })
+            // })
+            // fetch(console.log(1)  ).then();
+            //  setTimeout(()=>{
+            //  console.log(1);
+            //  },1000)
+            console.log(3);
+            resolve(1);
+         });
+         p1.then((data)=>{
+             console.log(data);
+         })
+        console.log(2);
+    </script>
+</body>
+</html>
