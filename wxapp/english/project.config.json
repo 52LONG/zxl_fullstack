@@ -39,24 +39,27 @@
     "minifyWXSS": true
   },
   "compileType": "miniprogram",
-  "libVersion": "2.14.1",
-  "appid": "wx5cdbe4086d3470eb",
-  "projectname": "learn_english",
-  "cloudfunctionTemplateRoot": "",
-  "watchOptions": {
-    "ignore": []
-  },
+  "libVersion": "2.0.4",
+  "appid": "wxf739ba142744f053",
+  "projectname": "learnEnglish",
   "debugOptions": {
     "hidedInDevtools": []
   },
   "scripts": {},
+  "isGameTourist": false,
   "simulatorType": "wechat",
   "simulatorPluginLibVersion": {},
   "condition": {
-    "plugin": {
+    "search": {
+      "list": []
+    },
+    "conversation": {
       "list": []
     },
     "game": {
+      "list": []
+    },
+    "plugin": {
       "list": []
     },
     "gamePlugin": {

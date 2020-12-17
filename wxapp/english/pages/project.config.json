@@ -39,9 +39,9 @@
     "minifyWXSS": true
   },
   "compileType": "miniprogram",
-  "libVersion": "2.14.1",
+  "libVersion": "2.0.4",
   "appid": "wx5cdbe4086d3470eb",
-  "projectname": "learn_english2",
+  "projectname": "learnEnglish",
   "debugOptions": {
     "hidedInDevtools": []
   },

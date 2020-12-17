@@ -5,7 +5,35 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    imgUrls:[
+      '/image/b1.jpg',
+      '/image/b2.jpg',
+      '/image/b3.jpg'
+      
+    ],
+    duration:800,
+    interval:2000,
+    newsList:[{
+      url:'/image/s4.png',
+      name:'瓜子 100g',
+      price:'0.01'
+    },{
+      url:'/image/s5.png',
+      name:'芹菜 250g',
+      price:'0.02'
+  },{
+    url:'/image/s6.png',
+      name:'大米 250g',
+      price:'0.03'
+  },{
+    url:'/image/s5.png',
+      name:'芹菜 250g',
+      price:'0.02'
+  },{
+    url:'/image/s5.png',
+      name:'芹菜 250g',
+      price:'0.02'
+  }]
   },
 
   /**

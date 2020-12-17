@@ -6,3 +6,4 @@
     ：= let a= 1;
     _ 占位
     range 数组 Map 字符串
+    go run 
