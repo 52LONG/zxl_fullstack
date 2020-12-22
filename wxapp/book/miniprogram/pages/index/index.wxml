@@ -1,0 +1,4 @@
+
+<view wx:for="{{phone_list}}" wx:for-item="phone" wx:key="_id" >
+  <van-card thumb="{{phone.image}}" title="{{phone.title}}" desc="{{phone.color}}" price="{{phone.price}}" bindtap="viewItem" data-id="{{phone_id}}"></van-card>
+</view>
