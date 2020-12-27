@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <img src="https://img.36krcdn.com/20201227/v2_72db45cdf79747ab8611214166354dd6_img_jpg
+  " id="avatar">
+  <script>
+    // 为什么要有loading?
+    const strAvatar ='https://img.36krcdn.com/20201227/v2_674c162cce6d45d2a9328bcc8166c0c8_img_jpg';
+    const oAvatar = document.querySelector('#avatar')
+       // console.log(typeof oAvatar); 网络大一些，网络差一点的话
+    const oImg = new Image();  //没有在dom 中  在内存中 由浏览器分配
+    oImg.src= strAvatar; // 浏览器是访问网站的代理， http
+    //  url-> proxy-> http-> request-> ressponse 网络层
+    //浏览器里启动了一个网络进程，然后下载一张图片
+    oImg.onload = function(){
+      console.log("----------");
+      // http response over
+      //浏览器有缓存
+       oAvatar.src = strAvatar;
+    }
+    // oAvatar.src =  strAvatar; //该这么优化
+    // http://127.0.0.1:60991/
+  </script>
+</body>
+</html>
