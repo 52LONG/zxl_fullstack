@@ -1,14 +1,15 @@
 {
   "pages": [
+    "pages/goods/list",
     "pages/home/home",
     "pages/index/index",
     "pages/logs/logs",
-    "pages/goods/list"
+    "pages/goods/detail"
   ],
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "Weixin",
+    "navigationBarTitleText": "商品",
     "navigationBarTextStyle": "black"
   },
   "style": "v2",

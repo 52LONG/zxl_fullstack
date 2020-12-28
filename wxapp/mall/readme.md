@@ -20,4 +20,16 @@
     商品列表-
 - 总结一下搜索经验 把自己当成小白
     placeholder + padding-left +bindinput +bindConFirm + search 图标
+
+- 业务
+    1.搜索
+    2.tabbar（前端效果）条件筛选业务（后端查询参数？ Order（排序）= price ）
+    3.列表业务 wx:for 
+    data:{
+        goods:[]
+    }
+    apifm 
+    url: /goods?order=&page=${n}&size=20 &keyword=addidas    []  分n页,一页20条
+    4.购物车 
+                       
     
