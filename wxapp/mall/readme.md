@@ -31,5 +31,12 @@
     apifm 
     url: /goods?order=&page=${n}&size=20 &keyword=addidas    []  分n页,一页20条
     4.购物车 
+
+
+- 页面生命周期  onLoad -> onShow -> onReady 加载顺序
+    谁先发生,适合做什么?
+    onLoad 加载wxml wxss  js  最少的时间加载
+    OnShow wxml + wxss 需要进行渲染的 , js 还没有执行完  页面还是不能交互的
+
                        
     

@@ -16,9 +16,9 @@
 <van-empty wx:if="{{ !goods || goods.length == 0 }}" description="暂无商品" />
 <block wx:if="{{listType == 1}}">
   <view class="list1" wx:for="{{goods}}" wx:key="id">
-    <navigator url="/pages/goods-details/index?id={{item.id}}"><image class="img" mode="aspectFill" src="{{item.pic}}"></image></navigator>
+    <navigator url="/pages/goods/detail?id={{item.id}}"><image class="img" mode="aspectFill" src="{{item.pic}}"></image></navigator>
     <view class="goods-info">
-      <view class="title ellipsis"><navigator url="/pages/goods-details/index?id={{item.id}}">{{item.name}}</navigator></view>
+      <view class="title ellipsis"><navigator url="/pages/goods/detail?id={{item.id}}">{{item.name}}</navigator></view>
       <view class="price">¥ {{item.minPrice}}</view>
       <view class="buy-info">
         <view class="num">已售出{{item.numberSells}}件</view>
