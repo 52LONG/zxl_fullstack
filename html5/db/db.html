@@ -9,42 +9,54 @@
 
 <body>
     <script>
+        //这个方法接受两个参数，第一个参数是字符串，表示数据库的名字。如果指定的数据库不存在，就会新建数据库
+        //第二个参数是整数，表示数据库的版本。如果省略，打开已有数据库时，默认为当前版本；新建数据库时，默认为1
         const request = window.indexedDB.open('kft', 2);
+        //全局
         let db;
         request.onerror = function(event) {
             console.log('数据库打开报错');
         }
         request.onsuccess = function(event) {
-            //函数局部变量
-            db = request.result; //数据库名柄
-            console.log('数据库打开成功');
-            add();
-        }
+                //数据库局部变量
+                db = request.result; //通过request对象的result属性拿到数据库对象。
+                console.log('数据库打开成功');
+                add();
+            }
+            //如果指定的版本号，大于数据库的实际版本号，就会发生数据库升级事件upgradeneeded
         request.onupgradeneeded = function(event) {
-            //console.log('upgrade');
-            db = event.target.result;
+            db = event.target.result; //这时通过事件对象的target.result属性，拿到数据库实例。
+            //新建数据库与打开数据库是同一个操作。如果指定的数据库不存在，就会新建。
+            //不同之处在于，后续的操作主要在upgradeneeded事件的监听函数里面完成，因为这时版本从无到有，所以会触发这个事件。
             if (!db.objectStoreNames.contains('person')) {
+                //新建数据库以后，第一件事是新建对象仓库（即新建表）
+                //新增一张叫做person的表格，主键是id
                 objectStore = db.createObjectStore('person', {
                     keyPath: 'id'
                 });
+                //Object.createIndex()的三个参数分别为索引名称、索引所在的属性、配置对象（说明该属性是否包含重复的值）
                 objectStore.createIndex('name', 'name', {
                     unique: false
-                });
+                })
                 objectStore.createIndex('email', 'email', {
                     unique: false
-                });
+                })
             }
         }
 
         function add() {
+            //写入数据需要新建一个事务。新建时必须指定表格名称和操作模式（"只读"或"读写"）。
             var request = db.transaction(['person'], ['readwrite'])
+                //新建事务以后，通过IDBTransaction.objectStore(name)方法，拿到 ObjectStore 对象
                 .objectStore('person')
+                //再通过表格对象的add()方法，向表格写入一条记录。
                 .add({
                     id: 1,
-                    name: '李四',
+                    name: '张三',
                     age: 24,
-                    email: 'lisi@example.com'
+                    email: 'zhangsan@qq.com'
                 });
+            //写入操作是一个异步操作，通过监听连接对象的success事件和error事件，了解是否写入成功。
             request.onsuccess = function(event) {
                 console.log('数据库写入成功');
             }
@@ -54,17 +66,19 @@
         }
 
         function read() {
-            let transcation = db.transaction(['person']);
-            let objectStore = transaction.objectStore('person');
+            let transaction = db.transaction(['person']);
+            let onjectStore = transaction.objectStore('person');
             var request = objectStore.get(1);
             request.onsuccess = function(event) {
                 if (request.result) {
+                    //解构
                     const {
+                        id,
                         name,
+                        age,
                         email
                     } = request.result;
-                    //console.log(request.result);
-                    console.log(name, email)
+                    console.log(id, name, age, email)
                 }
             }
         }
