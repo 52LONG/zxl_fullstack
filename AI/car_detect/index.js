@@ -1,4 +1,4 @@
-console.log('AI 来了，帅！ ');
+// console.log('AI 来了，帅！ ');
 //node 引入模块关键字 imageClassify图像识别
 const ApiImageClassifyClient = require('baidu-aip-sdk').imageClassify;
 //内置模块 fs模块 fileSystem
