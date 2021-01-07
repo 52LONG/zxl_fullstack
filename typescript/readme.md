@@ -8,6 +8,7 @@
 - typescript 安装
     npm i -g typescript  安装
     tsc --version  查看版本
+    tsc *.ts 或 tsc -w *.ts 编译
 - html 不在是html ，字符串模板 ` `
 - css 不在是css stylus/sass/less
 - js 不在是js   ts

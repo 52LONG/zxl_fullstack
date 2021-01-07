@@ -6,6 +6,7 @@
   css 有太多规则
   stylus 是css的超集 ，可以编译成css
   -省去了{：;}
+ 装插件 code里面 language stylus 
  npm i -g stylus  安装css编译
  stylus --version 查看版本和运行
  stylus cell.styl 
