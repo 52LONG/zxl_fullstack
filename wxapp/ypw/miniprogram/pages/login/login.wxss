@@ -1,0 +1,9 @@
+.bg-img {
+  background-image:url('https://7a68-zhengxiaolong-2gncfs9w9dcdb8d0-1304585123.tcb.qcloud.la/EvhHKI.png?sign=51af380538b0cb88878d83098d1b36a0&t=1610107409')
+}
+.mt200{
+  margin-top: 200rpx;
+}
+.mt200 image{
+  width: 20%;
+}
