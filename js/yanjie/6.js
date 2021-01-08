@@ -19,5 +19,5 @@ const [a,b]=[1,2];
 console.log(a,b);
 
 
-const {} = {"a":1,"b":2};//?
-console.log();
+const {ac,bc} = {ac:1,bc:2};//?
+console.log(ac,bc);
