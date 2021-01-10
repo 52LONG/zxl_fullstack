@@ -67,7 +67,7 @@
     const target = event.target;
     //拖拽 dataTransfer 属性   上传了
     // console.log(target.id);
-    event.dataTransfer.setData('Text',target.id);
+    event.dataTransfer.setData('Txt',target.id);
     // console.log(target);
     // js 事件有冒泡机制
     // console.log('父元素上');
@@ -94,19 +94,51 @@
     event.preventDefault();
     console.log('dragleave')
     // 实现拖拽带目标位置
-    let drag_id = event.dataTransfer.getData('Text');
+    let drag_id = event.dataTransfer.getData('Txt');
     // console.log(returnObj);
     target.appendChild(document.getElementById(drag_id))
     
     console.log('拖元素离开原位置，来到目标地址');
   })
- left.addEventListener('drop', (event) => {
+ 
+
+
+  target.addEventListener('dragstart', (event) => {
+    // console.log(event);
+    const target = event.target;
+    //拖拽 dataTransfer 属性   上传了
+    // console.log(target.id);
+    event.dataTransfer.setData('Txt',target.id);
+    // console.log(target);
+    // js 事件有冒泡机制
+    // console.log('父元素上');
+  })
+  target.addEventListener('drag', (event) => {
+    console.log('drag');
+  })
+  target.addEventListener('dragend', (event) => {
+    console.log('dragend');
+  })
+ left.addEventListener('dragenter', (event) => {
+    event.preventDefault();
+    console.log('dragenter')
+  })
+left.addEventListener('dragover', (event) => {
+    event.preventDefault();
+    console.log('dragover')
+  })
+ left.addEventListener('dragleave', (event) => {
     event.preventDefault();
     console.log('dragleave')
+  })
+
+  left.addEventListener('drop', (event) => {
+    event.preventDefault();
+    console.log('drop')
     // 实现拖拽带目标位置
-    let drag_id = event.dataTransfer.getData('Text');
-    // console.log(returnObj);
-    left.appendChild(document.getElementById(drag_id))
+    let trag_id = event.dataTransfer.getData('Txt');
+    // console.log(retur  nObj);
+    left.appendChild(document.getElementById(trag_id))
     console.log('拖元素离开原位置，来到目标地址');
   })
   </script>
