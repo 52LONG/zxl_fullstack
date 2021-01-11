@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./grid.css">
+    <title>CSS 最新的布局方案Grid Flex 的兄弟</title>
+    <style>
+        .container{
+            display: grid;/*启动网格布局，九宫格*/
+            justify-content: center;
+            align-content: center;/* flex align-items*/   
+            height: 100vh;
+            grid-template-columns: 100px 100px 100px;/*三列 每一列宽度100px 也可以用百分比*/  
+            grid-template-rows:100px 100px 100px;/*三行 每一行高度100px*/
+        }
+        .box{
+            background-color: green;
+        }
+        /* 方法二 需改进 */
+        /* .box:nth-child(odd){
+            background-color: red;
+        }
+        .box:nth-child(even){
+            background-color: green;
+        }
+         */
+         /* 方法三 */
+         /* .box:nth-child(1){background-color:rgb(197, 39, 39);}
+         .box:nth-child(2){background-color:rgb(33, 214, 33);}
+         .box:nth-child(3){background-color:rgb(219, 219, 28);}
+         .box:nth-child(4){background-color:rgb(32, 32, 172);}
+         .box:nth-child(5){background-color:rgb(109, 30, 161);}
+         .box:nth-child(6){background-color:rgb(95, 6, 55);}
+         .box:nth-child(7){background-color:rgb(11, 175, 167);}
+         .box:nth-child(8){background-color:rgb(170, 107, 110);}
+         .box:nth-child(9){background-color:rgb(212, 16, 16);} */
+    </style>
+</head>
+<body>
+    <!-- 二维布局   可以直接提供row column-->
+<div class="container">
+    <div class="box">1</div>
+    <div class="box">2</div>
+    <div class="box">3</div>
+    <div class="box">4</div>
+    <div class="box">5</div>
+    <div class="box">6</div>
+    <div class="box">7</div>
+    <div class="box">8</div>
+    <div class="box">9</div>
+</div>
+<script>
+    // 方案一
+    // const boxes = document.querySelectorAll('.box');
+    // let i = 1;
+    // for(let box of boxes){
+    //     // 在js 里面操作一切的css ，是王者
+    //     // html doucument.crerteElment
+    //     // css ele.style
+    //     //驼峰命名
+    //     i++;
+    //     box.style.backgroundColor = ` rgba(${i*20},${i*10},${i*5})`;
+    // }
+</script>
+</body>
+</html>
