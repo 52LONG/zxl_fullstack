@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- ,maximum-scale=1, user-scalable=no -->
+    <title>Document</title>
+</head>
+<body>
+    <p>
+        img 1000px 500
+        375 750 ?
+        等比例缩放
+        设备device 像素是指物理像素，
+        viewport 视窗是移动端的 pc端的没有
+        在pc时代 页面是比较大的，基于img等比例缩放的理解
+        一个大的pc页，要显示在较小的手机里，也是可以的，缩放一下就好了，看不清怎么办？使用移动端才有的手势pich(两个手指头)放大来看
+        为什么加 user-scalable=no   maximum-scale=1,现在已全面进入移动时代，pc站都有相应的手机网站 ，所以没有上面的请求
+        www.taobao.com -> redirect https://main.m.taobao.com?sprefer-
+        PC|Mobile|小程序|app 
+        www.taobao.com 手机端 -> 请求服务器http协议 -> 设备是手机返回移动官网 ->main.m.taobao.com 
+        服务器http 返回302状态码 302表示临时跳转 url：main.m.taobao.com   
+    </p>
+     
+</body>
+</html>
