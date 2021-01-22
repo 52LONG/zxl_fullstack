@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM操作测试</title>
+    <script>
+        //http -> file 
+        // req res 200 html text/html 解析html
+        //1. 尽快把静态页面显示出来
+        //js阻塞 因为DOM树没有建立
+        document.addEventListener('DOMContentLoaded', () => {
+    // dom + css 结合完成了
+    // console.log('DomContentLoaded')
+    let oContainer =  document.getElementById('container');
+        console.log(oContainer);//null
+  }, false);
+        
+    </script>
+</head>
+<body>
+    <div id="container"> </div>
+    
+    <script>
+//         // why? 怎么优化？
+//         // 查找元素，可以提出来
+//         document.addEventListener('DOMContentLoaded', () => {
+//     // dom + css 结合完成了
+//     console.log('DomContentLoaded')
+    
+//   }, false);
+//         //DOM树 ready
+//         window.addEventListener('load',()=>{
+//             //各种资源加载完成了 js img src ...
+//             console.log('loaded');
+//         },false);
+        let oContainer =  document.getElementById('container');
+        let content = '';
+        for(var count = 0; count < 10000; count++ ){
+            content +=  '<span>我是一个小测试</span>';
+
+        }   
+          oContainer
+                .innerHTML += content;
+    </script>
+</body>
+</html>
