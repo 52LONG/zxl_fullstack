@@ -9,8 +9,6 @@
  npm i babel-loader -D
  npm i @babel/core @babel/preset-env @babel/preset-react -D
  修改之后都要 webpack一下 重新编译
- npm i -g create-react-app
- create-react-app comment-app
  3. react
  
  - webpack 处理入口文件为js文件
