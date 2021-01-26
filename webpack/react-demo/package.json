@@ -1,0 +1,20 @@
+{
+  "name": "react-demo",
+  "version": "1.0.0",
+  "description": "前端三个最重要的知识点\r  1. es6\r  2. webpack\r  npm i -g webpack\r  npm i -g webpack-cli 周边生态\r  3. react",
+  "main": "index.js",
+  "scripts": {},
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.12.10",
+    "@babel/preset-env": "^7.12.11",
+    "@babel/preset-react": "^7.12.10",
+    "babel-loader": "^8.2.2"
+  }
+}
