@@ -1,0 +1,73 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/userConsole/userConsole",
+    "pages/storageConsole/storageConsole",
+    "pages/databaseGuide/databaseGuide",
+    "pages/addFunction/addFunction",
+    "pages/deployFunctions/deployFunctions",
+    "pages/chooseLib/chooseLib",
+    "pages/openapi/openapi",
+    "pages/openapi/serverapi/serverapi",
+    "pages/openapi/callback/callback",
+    "pages/openapi/cloudid/cloudid",
+    "pages/im/im",
+    "pages/im/room/room",
+    "pages/category/category",
+    "pages/cart/cart",
+    "pages/user/user",
+    "pages/classification/grid0/grid0",
+    "pages/classification/grid1/grid1",
+    "pages/classification/grid2/grid2",
+    "pages/classification/grid3/grid3",
+    "pages/classification/grid4/grid4",
+    "pages/classification/grid5/grid5",
+    "pages/classification/grid6/grid6",
+    "pages/classification/grid7/grid7",
+    "pages/classification/grid8/grid8",
+    "pages/classification/grid9/grid9",
+    "pages/classification/activity1/activity1",
+    "pages/classification/activity2/activity2",
+    "pages/classification/activity3/activity3"
+  ],
+  "window": {
+    "backgroundColor": "#FF6700",
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#FF6700",
+    "navigationBarTextStyle": "white"
+    
+  },
+  "tabBar": {
+    "color": "#a9b7b7",
+    "selectedColor": "#FF6700",
+    "borderStyle": "white",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "iconPath": "./image/shouye.png",
+        "selectedIconPath": "./image/shouye-active.png",
+        "text": "首页"
+      },
+      {
+        "pagePath": "pages/category/category",
+        "iconPath": "./image/leimupinleifenleileibie.png",
+        "selectedIconPath": "./image/leimupinleifenleileibie-active.png",
+        "text": "分类"
+      },
+      {
+        "pagePath": "pages/cart/cart",
+        "iconPath": "./image/gouwuche.png",
+        "selectedIconPath": "./image/gouwuche-active.png",
+        "text": "购物车"
+      },
+      {
+        "pagePath": "pages/user/user",
+        "iconPath": "./image/my.png",
+        "selectedIconPath": "./image/my-active.png",
+        "text": "我的"
+      }
+    ]
+  },
+  "sitemapLocation": "sitemap.json",
+  "style": "v2"
+}

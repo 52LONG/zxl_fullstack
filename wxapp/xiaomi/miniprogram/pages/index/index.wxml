@@ -1,0 +1,164 @@
+
+<view>
+  <!-- 自定义头部 -->
+  <view class='nav bg-orange' style='height:{{navH}}px;'>
+    <view class='nav-title'>
+      <image src="https://gss3.bdstatic.com/84oSdTum2Q5BphGlnYG/timg?wapp&quality=80&size=b150_150&subsize=20480&cut_x=0&cut_w=0&cut_y=0&cut_h=0&sec=1369815402&srctrace&di=de30d6133e3cd88548e3a3efe3c6a428&wh_rate=null&src=http%3A%2F%2Ftiebapic.baidu.com%2Fforum%2Fwh%3D120%2C120%2Fsign%3D14e7c187bc64034f0f98ca079df35500%2Fbd3eb13533fa828bf90292b9ea1f4134970a5a42.jpg"></image>
+      <view class="INinputheader">
+        <icon class="INsearchicon" type="search" size="13"/>
+        <input class="weui-input" placeholder="搜索商品"/>
+      </view>
+    </view>
+  </view>
+  <scroll-view class='bg-gray overflow' style='height:calc(100vh - {{navH}}px)' scroll-y >
+    <view class='hidden'>
+      <!-- 正文 -->
+      <swiper indicator-active-color="#fff" autoplay="true" circular="true" duration="{{duration}}" interval="{{interval}}" indicator-dots="true">
+    <block wx:for="{{imgUrls}}" wx:key="index">
+      <swiper-item>
+        <image class="slide-image" src="{{item}}"/>
+      </swiper-item>
+    </block>
+  </swiper>
+  <van-row gutter="5">
+  <van-col span="8"><image src="https://7a68-zhengxiaolong-2gncfs9w9dcdb8d0-1304585123.tcb.qcloud.la/image/p1.png?sign=3f76cd1b8d6f605b0739dc549d7f02bc&t=1611640915" class="col-image"/><text class="col-text">官方商城</text></van-col>
+  <van-col span="8"><image src="https://7a68-zhengxiaolong-2gncfs9w9dcdb8d0-1304585123.tcb.qcloud.la/image/p2.png?sign=50b9d71b5f69ce662766400fc390e9b2&t=1611640954" class="col-image"/><text  class="col-text">正品保障</text></van-col>
+  <van-col span="8"><image src="https://7a68-zhengxiaolong-2gncfs9w9dcdb8d0-1304585123.tcb.qcloud.la/image/p3.png?sign=b72d95ba1bd29dfe57aeb98a00a245c0&t=1611640968" class="col-image"/><text  class="col-text">满99包邮</text> </van-col>
+</van-row>
+<van-grid gutter="{{ 10 }}" column-num="5" icon-size="{{35}}">
+  <van-grid-item link-type="reLaunch" url="../classification/grid0/grid0"  icon="https://7a68-zhengxiaolong-2gncfs9w9dcdb8d0-1304585123.tcb.qcloud.la/image/icon1.png?sign=24599520dbd32ba0b53ce0e1c3dd6598&t=1611640159" text="小米上新"> </van-grid-item>
+  <van-grid-item link-type="reLaunch" url="../classification/grid1/grid1" icon="https://7a68-zhengxiaolong-2gncfs9w9dcdb8d0-1304585123.tcb.qcloud.la/image/icon2.png?sign=0d4b9eac322d2c2c9640846e30c9a21d&t=1611639439" text="手机" ></van-grid-item>
+  <van-grid-item link-type="reLaunch" url="../classification/grid2/grid2" icon="https://7a68-zhengxiaolong-2gncfs9w9dcdb8d0-1304585123.tcb.qcloud.la/image/icon3.png?sign=51da2ae5f52dd685f93b44626059010e&t=1611639063" text="小米11" > </van-grid-item>
+  <van-grid-item link-type="reLaunch" url="../classification/grid3/grid3" icon="https://7a68-zhengxiaolong-2gncfs9w9dcdb8d0-1304585123.tcb.qcloud.la/image/icon4.png?sign=f0b6b1a0051528297ff071226e31c67b&t=1611639125" text="10X 5G" > </van-grid-item>
+  <van-grid-item link-type="reLaunch" url="../classification/grid4/grid4" icon="https://7a68-zhengxiaolong-2gncfs9w9dcdb8d0-1304585123.tcb.qcloud.la/image/icon5.png?sign=a446763300392fab8f69dc56c4931124&t=1611639139" text="家电" > </van-grid-item>
+  <van-grid-item link-type="reLaunch" url="../classification/grid5/grid5" icon="https://7a68-zhengxiaolong-2gncfs9w9dcdb8d0-1304585123.tcb.qcloud.la/image/icon6.png?sign=5106855bcbaea9f706d832000338883a&t=1611639614" text="小米秒杀" > </van-grid-item>
+  <van-grid-item link-type="reLaunch" url="../classification/grid6/grid6"icon="https://7a68-zhengxiaolong-2gncfs9w9dcdb8d0-1304585123.tcb.qcloud.la/image/icon7.jpg?sign=2af1b5a23c7e24af73e28ba609f7a47c&t=1611639557" text="小米众筹" > </van-grid-item>
+  <van-grid-item link-type="reLaunch" url="../classification/grid7/grid7" icon="https://7a68-zhengxiaolong-2gncfs9w9dcdb8d0-1304585123.tcb.qcloud.la/image/icon8.png?sign=87dd5e945000e0957f73ff63004146e8&t=1611639237" text="电视" ></van-grid-item>
+  <van-grid-item link-type="reLaunch" url="../classification/grid8/grid8" icon="https://7a68-zhengxiaolong-2gncfs9w9dcdb8d0-1304585123.tcb.qcloud.la/image/icon9.png?sign=a487b0158930d24c6dd0214eedc0172b&t=1611639295" text="笔记本" > </van-grid-item>
+  <van-grid-item link-type="reLaunch" url="../classification/grid9/grid9" icon="https://7a68-zhengxiaolong-2gncfs9w9dcdb8d0-1304585123.tcb.qcloud.la/image/icon10.jpg?sign=3815a39a575af8f45ccd007e5edceff1&t=1611639254" text="智能" ></van-grid-item>
+</van-grid>
+<van-grid column-num="1" border="{{ false }}">
+  <van-grid-item use-slot  link-type="reLaunch" url="../classification/activity1/activity1" >
+    <image
+      style="width:100% ; height: 240rpx;"
+      src="https://7a68-zhengxiaolong-2gncfs9w9dcdb8d0-1304585123.tcb.qcloud.la/bg1.png?sign=4624a6cc4baeee3c7f7d5acdf7422fb3&t=1611719832"
+    />
+  </van-grid-item>
+</van-grid>
+<van-grid column-num="2" border="{{ false }}">
+  <van-grid-item use-slot  link-type="reLaunch" url="../classification/activity2/activity2" >
+    <image
+      style="width:100% ; height: 200rpx;"
+      src="https://7a68-zhengxiaolong-2gncfs9w9dcdb8d0-1304585123.tcb.qcloud.la/bg2.png?sign=d3193c77d07a1390be32e7874d214eee&t=1611719967"
+    />
+  </van-grid-item>
+  <van-grid-item use-slot  link-type="reLaunch" url="../classification/activity3/activity3" >
+    <image
+      style="width:100% ; height: 200rpx;"
+      src="https://7a68-zhengxiaolong-2gncfs9w9dcdb8d0-1304585123.tcb.qcloud.la/bg3.png?sign=6bdaf55f6cfc316504c7ec1e3db305a0&t=1611719992"/>
+  </van-grid-item>
+</van-grid>
+<view class="popular-products">
+  <block > 
+ <van-cell
+  is-link
+  title="爆款排行"
+  value="更多爆款"
+  link-type="reLaunch"
+  url="/pages/dashboard/index"
+  title-style="font-size:38rpx;font-family:微软雅黑;font-weight:bolder;"
+/>
+  </block>
+   <van-card
+  num="1"
+  tag="1"
+  price="9.90"
+  origin-price="9.99"
+  desc="4倍书写长度、日本MIKUNI油墨、0.5弹簧子弹头"
+  title="小米巨能写中性笔"
+  thumb-link=""
+  link-type="reLaunch"
+  laay-load="true"
+  thumb="https://7a68-zhengxiaolong-2gncfs9w9dcdb8d0-1304585123.tcb.qcloud.la/hot1.png?sign=44b3723ea12c8b9c7863326b6fd99c94&t=1611734379"
+/>
+<van-card
+  num="1"
+  tag="2"
+  price="99.00"
+  desc="精致小巧，内置智能芯片、兼容多数常用sheb、多重智能防护机制"
+  title="小米氮化镓Ga充电器 Type-c 55W"
+  thumb-link=""
+  link-type="reLaunch"
+  laay-load="true"
+  thumb="https://7a68-zhengxiaolong-2gncfs9w9dcdb8d0-1304585123.tcb.qcloud.la/image/hot21.webp?sign=fad6439f30144651ba37a2d66510fa9c&t=1611735303"
+/>
+<van-card
+  num="1"
+  tag="3"
+  price="49.00"
+  origin-price="46.90"
+  desc="笔记自然清晰\n、高灵敏压感技术、无蓝光液晶屏，安全无尘不伤眼"
+  title="小米米家液晶小黑板"
+  thumb-link=""
+  link-type="reLaunch"
+  laay-load="true"
+  thumb="https://7a68-zhengxiaolong-2gncfs9w9dcdb8d0-1304585123.tcb.qcloud.la/image/hot3.jpg?sign=eeefe78e9598fd1124f2623b1fbc9a81&t=1611735684"
+/>
+</view>
+<view class="popular-products">
+  <block > 
+ <van-cell
+  is-link
+  title="新品好物"
+  value="更多新品"
+  link-type="reLaunch"
+  url="/pages/dashboard/index"
+  title-style="font-size:38rpx;font-family:微软雅黑;font-weight:bolder;"
+/>
+  </block>
+   <van-card
+  num="1"
+  tag="新"
+  tags="免息"
+  price="4599"
+  origin-price="5299"
+  desc="舒适清凉、自清洁、全屋互联"
+  title="巨省电 | 小米新3级立式空调（3匹/变频）"
+  thumb-link=""
+  link-type="reLaunch"
+  laay-load="true"
+  thumb="https://7a68-zhengxiaolong-2gncfs9w9dcdb8d0-1304585123.tcb.qcloud.la/image/newCommodity21.png?sign=641aba09e61f81f188e0cf7f32e30cc6&t=1611737069"
+/>
+
+<van-card
+  num="1"
+  tag="新"
+  price="3999.00 起"
+  desc="CPU 高通骁龙888|三摄像头 10800万像素 | 超大屏 6.81寸"
+  title="小米11"
+  thumb-link=""
+  link-type="reLaunch"
+  laay-load="true"
+  thumb="https://7a68-zhengxiaolong-2gncfs9w9dcdb8d0-1304585123.tcb.qcloud.la/image/newCommodity31.webp?sign=1863ebd37a8f0e05e607fe3d5450d0b7&t=16117385583"
+>
+<view slot="tags">
+    <van-tag type="primary">免息</van-tag>
+    <van-tag type="danger">加价购</van-tag>
+  </view>
+</van-card>
+<van-card
+  num="1"
+  tag="新"
+  price="299.00"
+  desc="煮饭快，炖肉软|小巧机身，满足1-3人需求|智能食谱一键烹饪，精致硬菜神器"
+  title="米家智能电压力锅2.5L"
+  thumb-link=""
+  link-type="reLaunch"
+  laay-load="true"
+  thumb="https://7a68-zhengxiaolong-2gncfs9w9dcdb8d0-1304585123.tcb.qcloud.la/image/newCommodity31.png?sign=29ff0c8a503e67ba008a9589dd2eac79&t=1611753447"
+/>
+</view>
+    </view>
+  </scroll-view>
+</view>
+
