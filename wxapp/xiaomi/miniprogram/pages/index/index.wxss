@@ -1,6 +1,14 @@
-.slide-image{
+.swiperBanner{
   width: 100%;
-  height: 100%;
+  height:280rpx !important;
+}
+.swiperBanner image{
+  width: 100%;
+  height: 280rpx !important;
+}
+.swiper{
+  width: 100%;
+  height: 280rpx !important;
 }
 .col-image{
   height: 18px;

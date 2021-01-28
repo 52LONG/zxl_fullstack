@@ -1,4 +1,6 @@
 {
+  "navigationBarTitleText": "小米新春盲盒",
+  "navigationBarBackgroundColor": "#FF6700",
   "usingComponents": {
     "van-row": "@vant/weapp/row/index",
     "van-col": "@vant/weapp/col/index",
@@ -10,5 +12,6 @@
     "van-tag": "@vant/weapp/tag/index"
   },
     "navigationStyle": "custom"
+
   
 }

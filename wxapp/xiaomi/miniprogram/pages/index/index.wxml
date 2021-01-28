@@ -13,13 +13,15 @@
   <scroll-view class='bg-gray overflow' style='height:calc(100vh - {{navH}}px)' scroll-y >
     <view class='hidden'>
       <!-- 正文 -->
-      <swiper indicator-active-color="#fff" autoplay="true" circular="true" duration="{{duration}}" interval="{{interval}}" indicator-dots="true">
-    <block wx:for="{{imgUrls}}" wx:key="index">
-      <swiper-item>
-        <image class="slide-image" src="{{item}}"/>
+      <view class="swiperBanner">
+      <swiper indicator-active-color="#fff" autoplay="true" circular="true" duration="{{duration}}" interval="{{interval}}" indicator-dots="false">
+      <swiper-item wx:for="{{imgUrls}}" wx:key="index" >
+        <navigator url="{{item.link}}">  
+        <image src="{{item.url}}" mode="aspectFill"/>
+      </navigator> 
       </swiper-item>
-    </block>
   </swiper>
+</view>
   <van-row gutter="5">
   <van-col span="8"><image src="https://7a68-zhengxiaolong-2gncfs9w9dcdb8d0-1304585123.tcb.qcloud.la/image/p1.png?sign=3f76cd1b8d6f605b0739dc549d7f02bc&t=1611640915" class="col-image"/><text class="col-text">官方商城</text></van-col>
   <van-col span="8"><image src="https://7a68-zhengxiaolong-2gncfs9w9dcdb8d0-1304585123.tcb.qcloud.la/image/p2.png?sign=50b9d71b5f69ce662766400fc390e9b2&t=1611640954" class="col-image"/><text  class="col-text">正品保障</text></van-col>
@@ -65,7 +67,7 @@
   title="爆款排行"
   value="更多爆款"
   link-type="reLaunch"
-  url="/pages/dashboard/index"
+  url="../classification/popular-products/popular-products"
   title-style="font-size:38rpx;font-family:微软雅黑;font-weight:bolder;"
 />
   </block>
@@ -76,7 +78,7 @@
   origin-price="9.99"
   desc="4倍书写长度、日本MIKUNI油墨、0.5弹簧子弹头"
   title="小米巨能写中性笔"
-  thumb-link=""
+  thumb-link="../classification/popular-products1/popular-products1"
   link-type="reLaunch"
   laay-load="true"
   thumb="https://7a68-zhengxiaolong-2gncfs9w9dcdb8d0-1304585123.tcb.qcloud.la/hot1.png?sign=44b3723ea12c8b9c7863326b6fd99c94&t=1611734379"
@@ -87,7 +89,7 @@
   price="99.00"
   desc="精致小巧，内置智能芯片、兼容多数常用sheb、多重智能防护机制"
   title="小米氮化镓Ga充电器 Type-c 55W"
-  thumb-link=""
+  thumb-link="../classification/popular-products2/popular-products2"
   link-type="reLaunch"
   laay-load="true"
   thumb="https://7a68-zhengxiaolong-2gncfs9w9dcdb8d0-1304585123.tcb.qcloud.la/image/hot21.webp?sign=fad6439f30144651ba37a2d66510fa9c&t=1611735303"
@@ -99,7 +101,7 @@
   origin-price="46.90"
   desc="笔记自然清晰\n、高灵敏压感技术、无蓝光液晶屏，安全无尘不伤眼"
   title="小米米家液晶小黑板"
-  thumb-link=""
+  thumb-link="../classification/popular-products3/popular-products3"
   link-type="reLaunch"
   laay-load="true"
   thumb="https://7a68-zhengxiaolong-2gncfs9w9dcdb8d0-1304585123.tcb.qcloud.la/image/hot3.jpg?sign=eeefe78e9598fd1124f2623b1fbc9a81&t=1611735684"
@@ -112,7 +114,7 @@
   title="新品好物"
   value="更多新品"
   link-type="reLaunch"
-  url="/pages/dashboard/index"
+  url="../classification/new-products/new-products"
   title-style="font-size:38rpx;font-family:微软雅黑;font-weight:bolder;"
 />
   </block>
@@ -124,7 +126,7 @@
   origin-price="5299"
   desc="舒适清凉、自清洁、全屋互联"
   title="巨省电 | 小米新3级立式空调（3匹/变频）"
-  thumb-link=""
+  thumb-link="../classification/new-products1/new-products1"
   link-type="reLaunch"
   laay-load="true"
   thumb="https://7a68-zhengxiaolong-2gncfs9w9dcdb8d0-1304585123.tcb.qcloud.la/image/newCommodity21.png?sign=641aba09e61f81f188e0cf7f32e30cc6&t=1611737069"
@@ -136,7 +138,7 @@
   price="3999.00 起"
   desc="CPU 高通骁龙888|三摄像头 10800万像素 | 超大屏 6.81寸"
   title="小米11"
-  thumb-link=""
+  thumb-link="../classification/new-products2/new-products2"
   link-type="reLaunch"
   laay-load="true"
   thumb="https://7a68-zhengxiaolong-2gncfs9w9dcdb8d0-1304585123.tcb.qcloud.la/image/newCommodity31.webp?sign=1863ebd37a8f0e05e607fe3d5450d0b7&t=16117385583"
@@ -152,7 +154,7 @@
   price="299.00"
   desc="煮饭快，炖肉软|小巧机身，满足1-3人需求|智能食谱一键烹饪，精致硬菜神器"
   title="米家智能电压力锅2.5L"
-  thumb-link=""
+  thumb-link="../classification/new-products3/new-products3"
   link-type="reLaunch"
   laay-load="true"
   thumb="https://7a68-zhengxiaolong-2gncfs9w9dcdb8d0-1304585123.tcb.qcloud.la/image/newCommodity31.png?sign=29ff0c8a503e67ba008a9589dd2eac79&t=1611753447"

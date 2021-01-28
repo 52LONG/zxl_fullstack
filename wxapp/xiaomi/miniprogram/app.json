@@ -1,6 +1,7 @@
 {
-  "pages": [
+  "pages": [   
     "pages/index/index",
+    "pages/activity/activty5/activty5",
     "pages/userConsole/userConsole",
     "pages/storageConsole/storageConsole",
     "pages/databaseGuide/databaseGuide",
@@ -16,6 +17,11 @@
     "pages/category/category",
     "pages/cart/cart",
     "pages/user/user",
+    "pages/activity/activty1/activty1",
+    "pages/activity/activty2/activty2",
+    "pages/activity/activty3/activty3",
+    "pages/activity/activty4/activty4",
+
     "pages/classification/grid0/grid0",
     "pages/classification/grid1/grid1",
     "pages/classification/grid2/grid2",
@@ -28,13 +34,22 @@
     "pages/classification/grid9/grid9",
     "pages/classification/activity1/activity1",
     "pages/classification/activity2/activity2",
-    "pages/classification/activity3/activity3"
+    "pages/classification/activity3/activity3",
+    "pages/classification/popular-products/popular-products",
+    "pages/classification/popular-products1/popular-products1",
+    "pages/classification/popular-products2/popular-products2",
+    "pages/classification/popular-products3/popular-products3",
+    "pages/classification/new-products/new-products",
+    "pages/classification/new-products1/new-products1",
+    "pages/classification/new-products2/new-products2",
+    "pages/classification/new-products3/new-products3"
   ],
   "window": {
     "backgroundColor": "#FF6700",
     "backgroundTextStyle": "light",
-    "navigationBarBackgroundColor": "#FF6700",
-    "navigationBarTextStyle": "white"
+    "navigationBarBackgroundColor":"#ffffff",
+    "navigationBarTextStyle": "black"
+
     
   },
   "tabBar": {
