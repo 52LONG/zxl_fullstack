@@ -1,5 +1,5 @@
+// 1 7 6 8 2 4 3 5 9 11 10 12
 console.log('1');
-
 setTimeout(function() {
     console.log('2');
     process.nextTick(function() {
