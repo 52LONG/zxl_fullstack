@@ -1,9 +1,11 @@
 <view class="container">
-  <view >
   <navigator url="">
-     <image style='width:{{bgWidth}}px;height:{{bgHeight}}px' src="https://7a68-zhengxiaolong-2gncfs9w9dcdb8d0-1304585123.tcb.qcloud.la/image/activity5-zsmh.png?sign=a0571059b6f22976f6c155996eb885d1&t=1611804886"></image>
+     <image class="showBg"style='width:{{bgWidth}}px;height:{{bgHeight}}px' src="https://7a68-zhengxiaolong-2gncfs9w9dcdb8d0-1304585123.tcb.qcloud.la/image/activity5-zsmh.png?sign=a0571059b6f22976f6c155996eb885d1&t=1611804886"></image>
   </navigator>
- </view>
+  <view class="showText">
+   <text>小米新春盲盒</text>
+   <text>欢欢喜喜过大年</text>
+  </view>
  <view>
    <image style='width:{{bgWidth}}px;height:{{bgH}}px' src="https://7a68-zhengxiaolong-2gncfs9w9dcdb8d0-1304585123.tcb.qcloud.la/image/activity5-zsmh1.png?sign=72c1a04d99db36e0142adde8f0e00e15&t=1611809892"></image>
  </view>

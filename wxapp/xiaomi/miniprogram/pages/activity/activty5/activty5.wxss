@@ -1,1 +1,33 @@
 /* pages/activity/activty5/activty5.wxss */
+/* .container{
+
+} */
+.showBg{
+  position: absolute;
+}
+.showText{
+  position: absolute;
+  z-index: 99;  
+  margin-top: 10%;
+  display: block;
+  /* word-wrap: break-word;
+  word-break: break-all;
+  white-space: pre-line; */
+}
+.showText text{
+  word-break: keep-all;
+  word-wrap: break-word;
+}
+.showText text:nth-child(1){
+ font-family: sans-serif;
+  font-size: 70rpx;
+  color:#ffffff;
+  margin-left: 150rpx;
+ 
+
+}
+.showText text:nth-child(2){
+  font-family: sans-serif;
+   font-size: 40rpx;
+   color:#ffffff;
+ }

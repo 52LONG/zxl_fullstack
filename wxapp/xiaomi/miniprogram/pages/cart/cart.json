@@ -1,3 +1,10 @@
 {
-  "usingComponents": {}
+  "usingComponents": {
+    "nav-bar": "/components/navbar/navbar"
+  },
+  "navigationBarBackgroundColor": "#f8f8f8",
+  "navigationBarTextStyle": "black",
+  "navigationBarTitleText": "购物车",
+  "backgroundColor": "#eeeeee",
+  "backgroundTextStyle": "light"
 }

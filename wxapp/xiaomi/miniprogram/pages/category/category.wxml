@@ -1,2 +1,475 @@
 <!--miniprogram/pages/category/category.wxml-->
-<text>miniprogram/pages/category/category.wxml</text>
+<view class="category">
+  <view class="category_top">
+    <p class="category_top__title">分类</p>
+  </view>
+  <view class='productNav'>
+  <!-- 左侧 -->
+    <view class='left'>
+      <view class="{{active==0?'selected':'normal'}}" id="0" bindtap='switchNav'>手机</view>
+      <view class="{{active==1?'selected':'normal'}}" id="1" bindtap='switchNav'>电视</view>
+      <view class="{{active==2?'selected':'normal'}}" id="2" bindtap='switchNav'>笔记本</view>
+      <view class="{{active==3?'selected':'normal'}}" id="3" bindtap='switchNav'>家电</view>
+      <view class="{{active==4?'selected':'normal'}}" id="4" bindtap='switchNav'>耳机音箱</view>
+      <view class="{{active==5?'selected':'normal'}}" id="5" bindtap='switchNav'>穿戴出行</view>
+    </view>
+    <!-- 右侧 -->
+    <view class='right'>
+      <view class='type'>
+        <!-- current:当前所在滑块的 index -->
+        <!-- vertical:滑动方向是否为纵向 -->
+        <swiper current='{{currentTab}}' vertical='{{true}}'>
+          <!-- catchtouchmove 阻止弹窗后滚动穿透 -->
+          <swiper-item id="0" catchtouchmove="false">
+            <view class="right_body">
+              <view class="right_category">
+                  <view class="right_box">
+                    <p class="right-box__title">—— 小米数字系列 ——</p>
+                  </view>
+                  <view class="category_body">
+                    <view class="category_item" bindtap="tapToDetail">
+                      <image class="img_cate1"
+                       src="//cdn.cnbj1.fds.api.mi-img.com/mi-mall/a51c1afa4db8e47e62fad1f6fa4a8970.png?thumb=1&w=40&h=40&f=webp&q=90" mode="aspectFit|aspectFill|widthFix" lazy-load="false" binderror="" bindload="">
+                      </image>
+                      <p class="img_cate_p">小米11</p>
+                    </view>
+                    <view class="category_item" bindtap="tapToDetail">
+                      <image class="img_cate1" src="//cdn.cnbj1.fds.api.mi-img.com/mi-mall/5ca871528d3420622f21f25be7aba58c.png?thumb=1&w=40&h=40&f=webp&q=90" mode="aspectFit|aspectFill|widthFix" lazy-load="false" binderror="" bindload="">
+                      </image>
+                      <p class="img_cate_p">小米10尊享</p>
+                    </view>
+                    <view class="category_item" bindtap="tapToDetail">
+                      <image class="img_cate1" src="//cdn.cnbj1.fds.api.mi-img.com/mi-mall/cc563c76a7383d8030d1c23f31c60cb9.png?thumb=1&w=40&h=40&f=webp&q=90" mode="aspectFit|aspectFill|widthFix" lazy-load="false" binderror="" bindload="">
+                      </image>
+                      <p class="img_cate_p">小米10青春</p>
+                    </view>
+                    <view class="category_item" bindtap="tapToDetail">
+                      <image class="img_cate1" src="//cdn.cnbj1.fds.api.mi-img.com/mi-mall/4a7a4f24061860901f724b6ba6d75fd9.png?thumb=1&w=40&h=40&f=webp&q=90" mode="aspectFit|aspectFill|widthFix" lazy-load="false" binderror="" bindload="">
+                      </image>
+                      <p class="img_cate_p">小米10</p>
+                    </view>
+                  </view>
+              </view>
+              
+              <view class="right_category">
+                  <view class="right_box">
+                    <p class="right-box__title">—— 红米手机 ——</p>
+                  </view>
+                  <view class="category_body">
+                    
+                    <view class="category_item" bindtap="tapToDetail">
+                      <image class="img_cate1" src="//cdn.cnbj1.fds.api.mi-img.com/mi-mall/4a7a4f24061860901f724b6ba6d75fd9.png?thumb=1&w=40&h=40&f=webp&q=90" mode="aspectFit|aspectFill|widthFix" lazy-load="false" binderror="" bindload="">
+                      </image>
+                      <p class="img_cate_p">红米K30Pro</p>
+                    </view>
+                    <view class="category_item" bindtap="tapToDetail">
+                      <image class="img_cate1" src="//cdn.cnbj1.fds.api.mi-img.com/mi-mall/69a0df49cff71107977bbe3b48af15fa.png?thumb=1&w=40&h=40&f=webp&q=90" mode="aspectFit|aspectFill|widthFix" lazy-load="false" binderror="" bindload="">
+                      </image>
+                      <p class="img_cate_p">红米K30S</p>
+                    </view>
+                    <view class="category_item" bindtap="tapToDetail">
+                      <image class="img_cate1" src="//cdn.cnbj1.fds.api.mi-img.com/mi-mall/7a98170e97ca5df8f5ad2470a8a2d01e.jpg?thumb=1&w=40&h=40&f=webp&q=90" mode="aspectFit|aspectFill|widthFix" lazy-load="false" binderror="" bindload="">
+                      </image>
+                      <p class="img_cate_p">红米K30</p>
+                    </view>
+                    <view class="category_item" bindtap="tapToDetail">
+                      <image class="img_cate1" src="//cdn.cnbj1.fds.api.mi-img.com/mi-mall/0803dc7125ffa3447b04b1ae60f57a2b.jpg?thumb=1&w=40&h=40&f=webp&q=90" mode="aspectFit|aspectFill|widthFix" lazy-load="false" binderror="" bindload="">
+                      </image>
+                      <p class="img_cate_p">红米K30U</p>
+                    </view>
+                    <view class="category_item" bindtap="tapToDetail">
+                      <image class="img_cate1" src="//cdn.cnbj1.fds.api.mi-img.com/mi-mall/22419dee5ddfa9f4a91782231d07e189.png?thumb=1&w=40&h=40&f=webp&q=90" mode="aspectFit|aspectFill|widthFix" lazy-load="false" binderror="" bindload="">
+                      </image>
+                      <p class="img_cate_p">红米10XPro</p>
+                    </view>
+                    <view class="category_item" bindtap="tapToDetail">
+                      <image class="img_cate1" src="//cdn.cnbj1.fds.api.mi-img.com/mi-mall/f774ef8332f2204a7c8fbf1b92f29e8a.png?thumb=1&w=40&h=40&f=webp&q=90" mode="aspectFit|aspectFill|widthFix" lazy-load="false" binderror="" bindload="">
+                      </image>
+                      <p class="img_cate_p">红米10X</p>
+                    </view>
+                  </view>
+              </view>
+              
+              
+            </view>
+          </swiper-item>
+          <swiper-item id="1" catchtouchmove="false">
+            <view class="right_body">
+              <view class="right_category">
+                  <view class="right_box">
+                    <p class="right-box__title">—— 小米电视系列 ——</p>
+                  </view>
+                  <view class="category_body">
+                    <view class="category_item" bindtap="tapToDetail">
+                      <image class="img_cate1"
+                       src="//cdn.cnbj1.fds.api.mi-img.com/mi-mall/37576cef378ef2805c20b9ab2a9d6d3d.png?thumb=1&w=40&h=40&f=webp&q=90" mode="aspectFit|aspectFill|widthFix" lazy-load="false" binderror="" bindload="">
+                      </image>
+                      <p class="img_cate_p">小米透明电视</p>
+                    </view>
+                    <view class="category_item" bindtap="tapToDetail">
+                      <image class="img_cate1" src="//cdn.cnbj1.fds.api.mi-img.com/mi-mall/942d4f28d406f3946f0ce551c125c641.png?thumb=1&w=40&h=40&f=webp&q=90" mode="aspectFit|aspectFill|widthFix" lazy-load="false" binderror="" bindload="">
+                      </image>
+                      <p class="img_cate_p">小米电视5Pro</p>
+                    </view>
+                    <view class="category_item" bindtap="tapToDetail">
+                      <image class="img_cate1" src="//cdn.cnbj1.fds.api.mi-img.com/mi-mall/d8264eb9b900ead63eea69f6fc1e413a.png?thumb=1&w=40&h=40&f=webp&q=90" mode="aspectFit|aspectFill|widthFix" lazy-load="false" binderror="" bindload="">
+                      </image>
+                      <p class="img_cate_p">小米电视5</p>
+                    </view>
+                    <view class="category_item" bindtap="tapToDetail">
+                      <image class="img_cate1" src="//cdn.cnbj1.fds.api.mi-img.com/mi-mall/da1680fb62238cb5b01998d80fc34e25.png?thumb=1&w=40&h=40&f=webp&q=90" mode="aspectFit|aspectFill|widthFix" lazy-load="false" binderror="" bindload="">
+                      </image>
+                      <p class="img_cate_p">量子点电视</p>
+                    </view>
+                    <view class="category_item" bindtap="tapToDetail">
+                      <image class="img_cate1" src="//cdn.cnbj1.fds.api.mi-img.com/mi-mall/b8f12c8d20878e88b66047ef32566e48.png?thumb=1&w=40&h=40&f=webp&q=90" mode="aspectFit|aspectFill|widthFix" lazy-load="false" binderror="" bindload="">
+                      </image>
+                      <p class="img_cate_p">小米电视大师</p>
+                    </view>
+                    <view class="category_item" bindtap="tapToDetail">
+                      <image class="img_cate1" src="//cdn.cnbj1.fds.api.mi-img.com/mi-mall/319700f48d268f522664e1fc876b0044.png?thumb=1&w=40&h=40&f=webp&q=90" mode="aspectFit|aspectFill|widthFix" lazy-load="false" binderror="" bindload="">
+                      </image>
+                      <p class="img_cate_p">全面屏电视</p>
+                    </view>
+                  </view>
+              </view>
+              
+              <view class="right_category">
+                  <view class="right_box">
+                    <p class="right-box__title">—— 红米电视系列 ——</p>
+                  </view>
+                  <view class="category_body">
+                    
+                    <view class="category_item" bindtap="tapToDetail">
+                      <image class="img_cate1" src="//cdn.cnbj1.fds.api.mi-img.com/mi-mall/93b55d27cd6e2100c25611eb828396ae.png?thumb=1&w=40&h=40&f=webp&q=90" mode="aspectFit|aspectFill|widthFix" lazy-load="false" binderror="" bindload="">
+                      </image>
+                      <p class="img_cate_p">红米 A系列</p>
+                    </view>
+                    <view class="category_item" bindtap="tapToDetail">
+                      <image class="img_cate1" src="//cdn.cnbj1.fds.api.mi-img.com/mi-mall/070b329c18c1ab167df2a42564a67813.png?thumb=1&w=40&h=40&f=webp&q=90" mode="aspectFit|aspectFill|widthFix" lazy-load="false" binderror="" bindload="">
+                      </image>
+                      <p class="img_cate_p">红米 X系列</p>
+                    </view>
+                    <view class="category_item" bindtap="tapToDetail">
+                      <image class="img_cate1" src="//cdn.cnbj1.fds.api.mi-img.com/mi-mall/d219d8b9c4a74eda4ae6c0222d194cd2.png?thumb=1&w=40&h=40&f=webp&q=90" mode="aspectFit|aspectFill|widthFix" lazy-load="false" binderror="" bindload="">
+                      </image>
+                      <p class="img_cate_p">金属全面屏</p>
+                    </view>
+                  </view>
+              </view>
+              
+              
+            </view>
+          </swiper-item>
+          <swiper-item id="2" catchtouchmove="false">
+             <view class="right_body">
+              <view class="right_category">
+                  <view class="right_box">
+                    <p class="right-box__title">—— 小米笔记本系列 ——</p>
+                  </view>
+                  <view class="category_body">
+                    <view class="category_item" bindtap="tapToDetail">
+                      <image class="img_cate1"
+                       src="//cdn.cnbj1.fds.api.mi-img.com/mi-mall/4f45cdc4f94f1f1651095dedb154c2e4.png?thumb=1&w=40&h=40&f=webp&q=90" mode="aspectFit|aspectFill|widthFix" lazy-load="false" binderror="" bindload="">
+                      </image>
+                      <p class="img_cate_p">小米笔记本Pro</p>
+                    </view>
+                    <view class="category_item" bindtap="tapToDetail">
+                      <image class="img_cate1" src="//cdn.cnbj0.fds.api.mi-img.com/b2c-mimall-media/1f95bb7c9206951e3d870cb5581b8329.png?thumb=1&w=40&h=40" mode="aspectFit|aspectFill|widthFix" lazy-load="false" binderror="" bindload="">
+                      </image>
+                      <p class="img_cate_p">小米Air 15.6</p>
+                    </view>
+                    <view class="category_item" bindtap="tapToDetail">
+                      <image class="img_cate1" src="//cdn.cnbj0.fds.api.mi-img.com/b2c-mimall-media/eaab0db21859e0e58cae1fb807907905.jpg?thumb=1&w=40&h=40" mode="aspectFit|aspectFill|widthFix" lazy-load="false" binderror="" bindload="">
+                      </image>
+                      <p class="img_cate_p">小米Air 12.5</p>
+                    </view>
+                    <view class="category_item" bindtap="tapToDetail">
+                      <image class="img_cate1" src="//cdn.cnbj0.fds.api.mi-img.com/b2c-mimall-media/a66c24ee8ae2efea3ae92ec455a27352.jpg?thumb=1&w=40&h=40" mode="aspectFit|aspectFill|widthFix" lazy-load="false" binderror="" bindload="">
+                      </image>
+                      <p class="img_cate_p">小米游戏本</p>
+                    </view>
+                  </view>
+              </view>
+              
+              <view class="right_category">
+                  <view class="right_box">
+                    <p class="right-box__title">—— 红米笔记本系列 ——</p>
+                  </view>
+                  <view class="category_body">
+                    
+                    <view class="category_item" bindtap="tapToDetail">
+                      <image class="img_cate1" src="//cdn.cnbj1.fds.api.mi-img.com/mi-mall/694e4b422f319e2c8cdd8fb1760f911c.png?thumb=1&w=40&h=40&f=webp&q=90" mode="aspectFit|aspectFill|widthFix" lazy-load="false" binderror="" bindload="">
+                      </image>
+                      <p class="img_cate_p">红米Book G</p>
+                    </view>
+                    <view class="category_item" bindtap="tapToDetail">
+                      <image class="img_cate1" src="//cdn.cnbj1.fds.api.mi-img.com/mi-mall/ea840f3f79798c9a29d9921b9edf50ac.png?thumb=1&w=40&h=40&f=webp&q=90" mode="aspectFit|aspectFill|widthFix" lazy-load="false" binderror="" bindload="">
+                      </image>
+                      <p class="img_cate_p">红米Air13</p>
+                    </view>
+                    <view class="category_item" bindtap="tapToDetail">
+                      <image class="img_cate1" src="//cdn.cnbj1.fds.api.mi-img.com/mi-mall/dae66d0f978b04b539aef092aee50f2f.png?thumb=1&w=40&h=40&f=webp&q=90" mode="aspectFit|aspectFill|widthFix" lazy-load="false" binderror="" bindload="">
+                      </image>
+                      <p class="img_cate_p">红米Book16</p>
+                    </view>
+                    <view class="category_item" bindtap="tapToDetail">
+                      <image class="img_cate1" src="//cdn.cnbj1.fds.api.mi-img.com/mi-mall/e00ef74cd7162b290f0395c09d220719.png?thumb=1&w=40&h=40&f=webp&q=90" mode="aspectFit|aspectFill|widthFix" lazy-load="false" binderror="" bindload="">
+                      </image>
+                      <p class="img_cate_p">红米Book14</p>
+                    </view>
+                    <view class="category_item" bindtap="tapToDetail">
+                      <image class="img_cate1" src="//cdn.cnbj1.fds.api.mi-img.com/mi-mall/aee86bcd8bf491eb78ae234d2e188a66.jpg?thumb=1&w=40&h=40&f=webp&q=90" mode="aspectFit|aspectFill|widthFix" lazy-load="false" binderror="" bindload="">
+                      </image>
+                      <p class="img_cate_p">红米Book13</p>
+                    </view>
+                  </view>
+              </view>
+              
+              
+            </view>
+          </swiper-item>
+          <swiper-item id="3" catchtouchmove="false">
+             <view class="right_body">
+              <view class="right_category">
+                  <view class="right_box">
+                    <p class="right-box__title">—— 空调/洗衣机系列 ——</p>
+                  </view>
+                  <view class="category_body">
+                    
+                    <view class="category_item" bindtap="tapToDetail">
+                      <image class="img_cate1" src="//cdn.cnbj0.fds.api.mi-img.com/b2c-mimall-media/96de94415b860f3de95b2d6294f0d0fd.png?thumb=1&w=40&h=40" mode="aspectFit|aspectFill|widthFix" lazy-load="false" binderror="" bindload="">
+                      </image>
+                      <p class="img_cate_p">立式空调</p>
+                    </view>
+                    <view class="category_item" bindtap="tapToDetail">
+                      <image class="img_cate1" src="//cdn.cnbj0.fds.api.mi-img.com/b2c-mimall-media/630b9e523bb2e1387ce6c7be1edaca18.png?thumb=1&w=40&h=40" mode="aspectFit|aspectFill|widthFix" lazy-load="false" binderror="" bindload="">
+                      </image>
+                      <p class="img_cate_p">壁挂空调</p>
+                    </view>
+                    <view class="category_item" bindtap="tapToDetail">
+                      <image class="img_cate1"
+                       src="//cdn.cnbj0.fds.api.mi-img.com/b2c-mimall-media/18723c3561252ce76c9a1b1eebc4c01c.png?thumb=1&w=40&h=40" mode="aspectFit|aspectFill|widthFix" lazy-load="false" binderror="" bindload="">
+                      </image>
+                      <p class="img_cate_p">滚筒洗衣机</p>
+                    </view>
+                    <view class="category_item" bindtap="tapToDetail">
+                      <image class="img_cate1" src="//cdn.cnbj0.fds.api.mi-img.com/b2c-mimall-media/d3bace6e62cecb7901e306b05502535f.jpg?thumb=1&w=40&h=40" mode="aspectFit|aspectFill|widthFix" lazy-load="false" binderror="" bindload="">
+                      </image>
+                      <p class="img_cate_p">波轮洗衣机</p>
+                    </view>
+                    <view class="category_item" bindtap="tapToDetail">
+                      <image class="img_cate1" src="//cdn.cnbj0.fds.api.mi-img.com/b2c-mimall-media/e997ed31cd5199ec0a24eeb48a37b1e7.jpg?thumb=1&w=40&h=40" mode="aspectFit|aspectFill|widthFix" lazy-load="false" binderror="" bindload="">
+                      </image>
+                      <p class="img_cate_p">空气净化器</p>
+                    </view>
+                    <view class="category_item" bindtap="tapToDetail">
+                      <image class="img_cate1" src="//cdn.cnbj0.fds.api.mi-img.com/b2c-mimall-media/390e15818dd103b2f96f4ac742d47379.jpg?thumb=1&w=40&h=40" mode="aspectFit|aspectFill|widthFix" lazy-load="false" binderror="" bindload="">
+                      </image>
+                      <p class="img_cate_p">电饭煲</p>
+                    </view>
+                  </view>
+              </view>
+                <view class="right_category">
+                  <view class="right_box">
+                    <p class="right-box__title">—— 其他家电 ——</p>
+                  </view>
+                  <view class="category_body">
+                    
+                    <view class="category_item" bindtap="tapToDetail">
+                      <image class="img_cate1" src="//cdn.cnbj1.fds.api.mi-img.com/mi-mall/abeb200aaaee68d4635c6235d3ffb3f3.jpg?thumb=1&w=40&h=40&f=webp&q=90" mode="aspectFit|aspectFill|widthFix" lazy-load="false" binderror="" bindload="">
+                      </image>
+                      <p class="img_cate_p">冰箱</p>
+                    </view>
+                    <view class="category_item" bindtap="tapToDetail">
+                      <image class="img_cate1" src="//cdn.cnbj0.fds.api.mi-img.com/b2c-mimall-media/12f4b26ced3716d07bfcc6beba751188.jpg?thumb=1&w=40&h=40" mode="aspectFit|aspectFill|widthFix" lazy-load="false" binderror="" bindload="">
+                      </image>
+                      <p class="img_cate_p">净水器</p>
+                    </view>
+                    <view class="category_item" bindtap="tapToDetail">
+                      <image class="img_cate1" src="//cdn.cnbj1.fds.api.mi-img.com/mi-mall/f7dcbb8c268574041ce0b4b98e591cf1.jpg?thumb=1&w=40&h=40&f=webp&q=90" mode="aspectFit|aspectFill|widthFix" lazy-load="false" binderror="" bindload="">
+                      </image>
+                      <p class="img_cate_p">微波炉</p>
+                    </view>
+                    <view class="category_item" bindtap="tapToDetail">
+                      <image class="img_cate1" src="//cdn.cnbj1.fds.api.mi-img.com/mi-mall/f7f39b7ac49227fc59c3f2b2105d25d6.jpg?thumb=1&w=40&h=40&f=webp&q=90" mode="aspectFit|aspectFill|widthFix" lazy-load="false" binderror="" bindload="">
+                      </image>
+                      <p class="img_cate_p">电烤箱</p>
+                    </view>
+                    <view class="category_item" bindtap="tapToDetail">
+                      <image class="img_cate1" src="//cdn.cnbj0.fds.api.mi-img.com/b2c-mimall-media/603beb09930e32addd1b362bf43c7ac2.jpg?thumb=1&w=40&h=40" mode="aspectFit|aspectFill|widthFix" lazy-load="false" binderror="" bindload="">
+                      </image>
+                      <p class="img_cate_p">扫地机器人</p>
+                    </view>
+                    <view class="category_item" bindtap="tapToDetail">
+                      <image class="img_cate1" src="//cdn.cnbj0.fds.api.mi-img.com/b2c-mimall-media/26deda5474eb7eb7e5b34547c58b9893.jpg?thumb=1&w=40&h=40" mode="aspectFit|aspectFill|widthFix" lazy-load="false" binderror="" bindload="">
+                      </image>
+                      <p class="img_cate_p">吸尘器</p>
+                    </view>
+                  </view>
+              </view>
+              
+              
+            </view>
+          </swiper-item>
+          <swiper-item id="4" catchtouchmove="false">
+             <view class="right_body">
+              <view class="right_category">
+                  <view class="right_box">
+                    <p class="right-box__title">—— 耳机 ——</p>
+                  </view>
+                  <view class="category_body">
+                    
+                    <view class="category_item" bindtap="tapToDetail">
+                      <image class="img_cate1" src="//cdn.cnbj0.fds.api.mi-img.com/b2c-mimall-media/8b3d235f4a5a5bf5c9d8d066d2166e6c.jpg?thumb=1&w=40&h=40" mode="aspectFit|aspectFill|widthFix" lazy-load="false" binderror="" bindload="">
+                      </image>
+                      <p class="img_cate_p">线控耳机</p>
+                    </view>
+                    <view class="category_item" bindtap="tapToDetail">
+                      <image class="img_cate1" src="//cdn.cnbj1.fds.api.mi-img.com/mi-mall/0329a34385235c41ec1807cf1cd86b75.png?thumb=1&w=40&h=40&f=webp&q=90" mode="aspectFit|aspectFill|widthFix" lazy-load="false" binderror="" bindload="">
+                      </image>
+                      <p class="img_cate_p">蓝牙耳机</p>
+                    </view>
+                    <view class="category_item" bindtap="tapToDetail">
+                      <image class="img_cate1"
+                       src="//cdn.cnbj0.fds.api.mi-img.com/b2c-mimall-media/28a77451da1dbd0d3e42d529777997c3.jpg?thumb=1&w=40&h=40" mode="aspectFit|aspectFill|widthFix" lazy-load="false" binderror="" bindload="">
+                      </image>
+                      <p class="img_cate_p">头戴耳机</p>
+                    </view>
+                    <view class="category_item" bindtap="tapToDetail">
+                      <image class="img_cate1" src="//cdn.cnbj0.fds.api.mi-img.com/b2c-mimall-media/4885bda69e45b870a5bcf5bbaea1548b.jpg?thumb=1&w=40&h=40" mode="aspectFit|aspectFill|widthFix" lazy-load="false" binderror="" bindload="">
+                      </image>
+                      <p class="img_cate_p">品牌耳机</p>
+                    </view>
+                    <view class="category_item" bindtap="tapToDetail">
+                      <image class="img_cate1" src="//cdn.cnbj0.fds.api.mi-img.com/b2c-mimall-media/a290d924c1bbd1e3ce64e96f497d4059.jpg?thumb=1&w=40&h=40" mode="aspectFit|aspectFill|widthFix" lazy-load="false" binderror="" bindload="">
+                      </image>
+                      <p class="img_cate_p">K歌耳机</p>
+                    </view>
+                  </view>
+              </view>
+              <view class="right_category">
+                  <view class="right_box">
+                    <p class="right-box__title">—— 音箱 ——</p>
+                  </view>
+                  <view class="category_body">
+                    
+                    <view class="category_item" bindtap="tapToDetail">
+                      <image class="img_cate1" src="//cdn.cnbj1.fds.api.mi-img.com/mi-mall/71d2ba249ae5d3f2d4517ddf9c0f881a.png?thumb=1&w=40&h=40&f=webp&q=90" mode="aspectFit|aspectFill|widthFix" lazy-load="false" binderror="" bindload="">
+                      </image>
+                      <p class="img_cate_p">小爱音箱Art</p>
+                    </view>
+                    <view class="category_item" bindtap="tapToDetail">
+                      <image class="img_cate1" src="//cdn.cnbj1.fds.api.mi-img.com/mi-mall/146ad5dbbe9721c031aa168d4bf580ec.png?thumb=1&w=40&h=40&f=webp&q=90" mode="aspectFit|aspectFill|widthFix" lazy-load="false" binderror="" bindload="">
+                      </image>
+                      <p class="img_cate_p">小爱音箱Pro8</p>
+                    </view>
+                    <view class="category_item" bindtap="tapToDetail">
+                      <image class="img_cate1" src="//cdn.cnbj1.fds.api.mi-img.com/mi-mall/7628d4253b1c1fccb5606095d0c5bbe3.png?thumb=1&w=40&h=40&f=webp&q=90" mode="aspectFit|aspectFill|widthFix" lazy-load="false" binderror="" bindload="">
+                      </image>
+                      <p class="img_cate_p">小爱触屏音箱8</p>
+                    </view>
+                    <view class="category_item" bindtap="tapToDetail">
+                      <image class="img_cate1" src="//cdn.cnbj1.fds.api.mi-img.com/mi-mall/360215a1e32317abb912d48c3e80dd20.png?thumb=1&w=40&h=40&f=webp&q=90" mode="aspectFit|aspectFill|widthFix" lazy-load="false" binderror="" bindload="">
+                      </image>
+                      <p class="img_cate_p">小爱音箱Pro</p>
+                    </view>
+                    <view class="category_item" bindtap="tapToDetail">
+                      <image class="img_cate1" src="//cdn.cnbj1.fds.api.mi-img.com/mi-mall/374ce749560e0e74a792b6222048a472.png?thumb=1&w=40&h=40&f=webp&q=90" mode="aspectFit|aspectFill|widthFix" lazy-load="false" binderror="" bindload="">
+                      </image>
+                      <p class="img_cate_p">小米小爱音箱</p>
+                    </view>
+                    <view class="category_item" bindtap="tapToDetail">
+                      <image class="img_cate1" src="//cdn.cnbj0.fds.api.mi-img.com/b2c-mimall-media/3d5963e212402fa5ebd2e71dd10c426c.jpg?thumb=1&w=40&h=40" mode="aspectFit|aspectFill|widthFix" lazy-load="false" binderror="" bindload="">
+                      </image>
+                      <p class="img_cate_p">小爱音箱Play</p>
+                    </view>
+                  </view>
+              </view>
+              
+              
+            </view>
+          </swiper-item>
+          <swiper-item id="5" catchtouchmove="false">
+             <view class="right_body">
+              <view class="right_category">
+                  <view class="right_box">
+                    <p class="right-box__title">—— 穿戴 ——</p>
+                  </view>
+                  <view class="category_body">
+                    
+                    <view class="category_item" bindtap="tapToDetail">
+                      <image class="img_cate1" src="//cdn.cnbj1.fds.api.mi-img.com/mi-mall/69bd883c1fc06ce41ff0fa1423b77e4e.png?thumb=1&w=40&h=40&f=webp&q=90" mode="aspectFit|aspectFill|widthFix" lazy-load="false" binderror="" bindload="">
+                      </image>
+                      <p class="img_cate_p">红米手表</p>
+                    </view>
+                    <view class="category_item" bindtap="tapToDetail">
+                      <image class="img_cate1" src="//cdn.cnbj1.fds.api.mi-img.com/mi-mall/8e8c85f251ed8b5cd54651c4be13bc68.png?thumb=1&w=40&h=40&f=webp&q=90" mode="aspectFit|aspectFill|widthFix" lazy-load="false" binderror="" bindload="">
+                      </image>
+                      <p class="img_cate_p">小米手环5</p>
+                    </view>
+                    <view class="category_item" bindtap="tapToDetail">
+                      <image class="img_cate1"
+                       src="//cdn.cnbj1.fds.api.mi-img.com/mi-mall/18f75b53afbe8ce2e858cb5622d60613.png?thumb=1&w=40&h=40&f=webp&q=90" mode="aspectFit|aspectFill|widthFix" lazy-load="false" binderror="" bindload="">
+                      </image>
+                      <p class="img_cate_p">手环5nfc</p>
+                    </view>
+                    <view class="category_item" bindtap="tapToDetail">
+                      <image class="img_cate1" src="//cdn.cnbj1.fds.api.mi-img.com/mi-mall/3cc76c2ce836255c1b2e3e1cf477cfef.png?thumb=1&w=40&h=40&f=webp&q=90" mode="aspectFit|aspectFill|widthFix" lazy-load="false" binderror="" bindload="">
+                      </image>
+                      <p class="img_cate_p">小米手表</p>
+                    </view>
+                    <view class="category_item" bindtap="tapToDetail">
+                      <image class="img_cate1" src="//cdn.cnbj0.fds.api.mi-img.com/b2c-mimall-media/fece041c17bdebaab5f3a9313c7c0f8c.jpg?thumb=1&w=40&h=40" mode="aspectFit|aspectFill|widthFix" lazy-load="false" binderror="" bindload="">
+                      </image>
+                      <p class="img_cate_p">VR</p>
+                    </view>
+                  </view>
+              </view>
+              <view class="right_category">
+                  <view class="right_box">
+                    <p class="right-box__title">—— 出行 ——</p>
+                  </view>
+                  <view class="category_body">
+                    
+                    <view class="category_item" bindtap="tapToDetail">
+                      <image class="img_cate1" src="//cdn.cnbj0.fds.api.mi-img.com/b2c-mimall-media/50180b158690a40f9cbc684c7646d297.jpg?thumb=1&w=40&h=40" mode="aspectFit|aspectFill|widthFix" lazy-load="false" binderror="" bindload="">
+                      </image>
+                      <p class="img_cate_p">平衡车</p>
+                    </view>
+                    <view class="category_item" bindtap="tapToDetail">
+                      <image class="img_cate1" src="//cdn.cnbj1.fds.api.mi-img.com/mi-mall/749c779fd3789ba94033da8aaa547dcd.png?thumb=1&w=40&h=40&f=webp&q=90" mode="aspectFit|aspectFill|widthFix" lazy-load="false" binderror="" bindload="">
+                      </image>
+                      <p class="img_cate_p">自行车</p>
+                    </view>
+                    <view class="category_item" bindtap="tapToDetail">
+                      <image class="img_cate1" src="//cdn.cnbj0.fds.api.mi-img.com/b2c-mimall-media/4e9da27ebbeeb38078910c97173c4671.jpg?thumb=1&w=40&h=40" mode="aspectFit|aspectFill|widthFix" lazy-load="false" binderror="" bindload="">
+                      </image>
+                      <p class="img_cate_p">滑板车</p>
+                    </view>
+                    <view class="category_item" bindtap="tapToDetail">
+                      <image class="img_cate1" src="//cdn.cnbj1.fds.api.mi-img.com/mi-mall/787c807176455f9ae40146af11e98b1e.jpg?thumb=1&w=40&h=40&f=webp&q=90" mode="aspectFit|aspectFill|widthFix" lazy-load="false" binderror="" bindload="">
+                      </image>
+                      <p class="img_cate_p">车载充电器</p>
+                    </view>
+                    <view class="category_item" bindtap="tapToDetail">
+                      <image class="img_cate1" src="//cdn.cnbj0.fds.api.mi-img.com/b2c-mimall-media/8ac5b263aac2ffa1894fb7b215c3ce87.jpg?thumb=1&w=40&h=40" mode="aspectFit|aspectFill|widthFix" lazy-load="false" binderror="" bindload="">
+                      </image>
+                      <p class="img_cate_p">平衡车配件</p>
+                    </view>
+                    <view class="category_item" bindtap="tapToDetail">
+                      <image class="img_cate1" src="//cdn.cnbj0.fds.api.mi-img.com/b2c-mimall-media/e2748064a9ac9969e53851479d55f1a9.jpg?thumb=1&w=40&h=40" mode="aspectFit|aspectFill|widthFix" lazy-load="false" binderror="" bindload="">
+                      </image>
+                      <p class="img_cate_p">智能记录仪</p>
+                    </view>
+                  </view>
+              </view>
+              
+              
+            </view>
+          </swiper-item>
+        </swiper> 
+      </view>
+    </view>
+</view>
+</view>

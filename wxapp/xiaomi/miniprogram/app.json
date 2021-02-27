@@ -1,7 +1,9 @@
 {
-  "pages": [   
-    "pages/index/index",
-    "pages/activity/activty5/activty5",
+  "pages": [ 
+      "pages/index/index",  
+    "pages/popular-products1/popular-products1",
+   
+    "pages/category/category",
     "pages/userConsole/userConsole",
     "pages/storageConsole/storageConsole",
     "pages/databaseGuide/databaseGuide",
@@ -14,43 +16,41 @@
     "pages/openapi/cloudid/cloudid",
     "pages/im/im",
     "pages/im/room/room",
-    "pages/category/category",
     "pages/cart/cart",
+
     "pages/user/user",
     "pages/activity/activty1/activty1",
     "pages/activity/activty2/activty2",
     "pages/activity/activty3/activty3",
     "pages/activity/activty4/activty4",
-
-    "pages/classification/grid0/grid0",
-    "pages/classification/grid1/grid1",
-    "pages/classification/grid2/grid2",
-    "pages/classification/grid3/grid3",
-    "pages/classification/grid4/grid4",
-    "pages/classification/grid5/grid5",
-    "pages/classification/grid6/grid6",
-    "pages/classification/grid7/grid7",
-    "pages/classification/grid8/grid8",
-    "pages/classification/grid9/grid9",
-    "pages/classification/activity1/activity1",
-    "pages/classification/activity2/activity2",
-    "pages/classification/activity3/activity3",
-    "pages/classification/popular-products/popular-products",
-    "pages/classification/popular-products1/popular-products1",
-    "pages/classification/popular-products2/popular-products2",
-    "pages/classification/popular-products3/popular-products3",
-    "pages/classification/new-products/new-products",
-    "pages/classification/new-products1/new-products1",
-    "pages/classification/new-products2/new-products2",
-    "pages/classification/new-products3/new-products3"
+    "pages/activity/activty5/activty5",
+    "pages/grid0/grid0",
+    "pages/grid1/grid1",
+    "pages/grid2/grid2",
+    "pages/grid3/grid3",
+    "pages/grid4/grid4",
+    "pages/grid5/grid5",
+    "pages/grid6/grid6",
+    "pages/grid7/grid7",
+    "pages/grid8/grid8",
+    "pages/grid9/grid9",
+    "pages/activity1/activity1",
+    "pages/activity2/activity2",
+    "pages/activity3/activity3",
+    "pages/popular-products/popular-products",
+    "pages/popular-products2/popular-products2",
+    "pages/popular-products3/popular-products3",
+    "pages/new-products/new-products",
+    "pages/new-products1/new-products1",
+    "pages/new-products2/new-products2",
+    "pages/new-products3/new-products3",
+    "components/navbar/navbar"
   ],
   "window": {
     "backgroundColor": "#FF6700",
     "backgroundTextStyle": "light",
-    "navigationBarBackgroundColor":"#ffffff",
+    "navigationBarBackgroundColor": "#ffffff",
     "navigationBarTextStyle": "black"
-
-    
   },
   "tabBar": {
     "color": "#a9b7b7",
@@ -83,6 +83,6 @@
       }
     ]
   },
-  "sitemapLocation": "sitemap.json",
-  "style": "v2"
+  "sitemapLocation": "sitemap.json"
+
 }

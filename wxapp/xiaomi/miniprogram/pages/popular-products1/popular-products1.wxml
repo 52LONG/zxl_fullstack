@@ -1,0 +1,17 @@
+<view class="container">
+  <swiper indicator-active-color="#fff" autoplay="true" circular="true" duration="{{duration}}" interval="{{interval}}" indicator-dots="true" >
+    <block wx:for="{{imgUrls}}" wx:key="index">
+      <swiper-item>
+        <image class="slide-image" src="{{item}}"/>
+      </swiper-item>
+    </block>
+  </swiper>
+
+
+<van-goods-action>
+  <van-goods-action-icon icon="wap-home-o" text="首页" dot />
+  <van-goods-action-icon icon="cart-o" text="购物车" info="5" />
+  <van-goods-action-button text="加入购物车" type="warning" />
+  <van-goods-action-button text="立即购买" />
+</van-goods-action>
+</view>
