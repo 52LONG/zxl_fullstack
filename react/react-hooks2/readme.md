@@ -61,3 +61,33 @@ webpack-cli  4.0 版本 与webpack 5兼容问题
     1. 创建了name状态
     2. setName 修改状态的值
     3. 初始值
+
+- react-router @types/
+/about
+<Switch>
+    path="/" exact
+    path="/about" 
+    path="/abput/:id"
+
+    exact 完全一样
+
+- 大型项目的边写风格
+    components 提供 index.tsx
+    文档一样 把这个目录的所有组件向外输出
+
+- webpack 的优化
+    1. entry 可以有多个入口
+        引入的文件都可以打包到最后的output中
+    2. bootstrap 引入是通过webpack 引入的
+        index.html app.tsx不用引入
+    3. vendor [router,react, react-routerdom]
+        lib 不用反复编译 lib 而业务每次都要打包
+- react-router 嵌套路由
+    分级 两级到三级
+    / -> Header
+        /About 专辑列表 Switch 只匹配一个
+        /About/:id 某人专辑 
+
+        {props.children} 显示子路由
+
+- 应用的API 应该统一放在API目录下

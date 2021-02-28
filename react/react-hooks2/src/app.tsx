@@ -18,11 +18,11 @@ import {HelloComponent} from './hello';
 
 //StatelessComponent 
 
-export const APP = () => {
-    //React hooks name 状态的名字 setName 修改状态用setName
-   const [name,setName] = React.userState('defaultUserName')//state
-    //react hooks
-    // 函数式组件可以借助一些魔法函数来实现状态
+// export const APP = () => {
+//     //React hooks name 状态的名字 setName 修改状态用setName
+//    const [name,setName] = React.userState('defaultUserName')//state
+//     //react hooks
+//     // 函数式组件可以借助一些魔法函数来实现状态
 
-    return <HelloComponent userName={name}/>
-}
+//     return <HelloComponent userName={name}/>
+// }
