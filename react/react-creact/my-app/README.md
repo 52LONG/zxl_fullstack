@@ -20,4 +20,9 @@ npm install -save xxx：-save的意思是将模块安装到项目目录下，并
 npm install -save-dev xxx：-save-dev的意思是将模块安装到项目目录下，并在package文件的devDependencies节点写入依赖。
 
 
-https://mock.mengxuegu.com/project/604e17d0f340b05bceda41c8  伪数据网站
+https://mock.mengxuegu.com/project/604e17d0f340b05bceda41c8  伪数据网站 
+
+
+动画库 react-transition-group
+npm install react-transition-group --save
+

@@ -2,6 +2,8 @@ import React,{Component,Fragment} from 'react' //imrc 快速生成代码
 import axios from 'axios'
 import './style.css'
 import XiaojiejieItem from './XiaojiejieItem';
+import Boss from './Boss'
+import {CSSTransition,TransitionGroup} from 'react-transition-group'
 class Xiaojiejie extends Component{//cc 快速生成代码
     //在某一时刻,可以自动执行的函数
     constructor(props){//构造函数
@@ -61,6 +63,7 @@ class Xiaojiejie extends Component{//cc 快速生成代码
                 {/*  jsx 正确的注释方法 */}
                 {/* <li>头部按摩</li>
                 <li>精油推背</li> */} 
+                <TransitionGroup>
                 {
                     this.state.list.map((item,index)=>{
                         return (
@@ -70,17 +73,27 @@ class Xiaojiejie extends Component{//cc 快速生成代码
                         */
                         /* 父组件向子组件传值*/
                         /*单向数据流 传递给子组件  子组件不能修改其值  只能使用 子组件要改变只能传递方法过去 子组件通过方法来改变值*/
+                        <CSSTransition 
+                            timeout={2000}
+                            classNames='boss-text'
+                            unmountOnExit
+                            appear={true}
+                            key={index+item}
+                            >
                         <XiaojiejieItem 
-                        key={index+item} 
-                        // avname="卡萨丁"
-                        content= {item} 
-                        index={index} 
-                        list ={this.state.list} 
-                        deleteItem={this.deleteItem}/>
-                        ) 
+                            key={index+item} 
+                            // avname="卡萨丁"
+                            content= {item} 
+                            index={index} 
+                            list ={this.state.list} 
+                            deleteItem={this.deleteItem}/>
+                        </CSSTransition>
+                            ) 
                     })
                 }
+                </TransitionGroup>
             </ul>
+            <Boss/>
             </Fragment>
         // </div>
         )
