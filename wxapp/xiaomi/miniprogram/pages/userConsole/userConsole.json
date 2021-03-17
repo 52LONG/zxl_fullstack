@@ -1,4 +1,6 @@
 {
-  "navigationBarTitleText": "用户管理指引",
+  "navigationBarTitleText": "我的订单",
+  "navigationBarTextStyle": "black",
+  "navigationBarBackgroundColor": "#FFFFFF",
   "usingComponents": {}
 }

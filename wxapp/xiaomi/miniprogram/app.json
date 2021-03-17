@@ -1,8 +1,6 @@
 {
   "pages": [ 
-      "pages/index/index",  
-    "pages/popular-products1/popular-products1",
-   
+    "pages/index/index",  
     "pages/category/category",
     "pages/userConsole/userConsole",
     "pages/storageConsole/storageConsole",
@@ -17,7 +15,7 @@
     "pages/im/im",
     "pages/im/room/room",
     "pages/cart/cart",
-
+    "pages/popular-products1/popular-products1",
     "pages/user/user",
     "pages/activity/activty1/activty1",
     "pages/activity/activty2/activty2",

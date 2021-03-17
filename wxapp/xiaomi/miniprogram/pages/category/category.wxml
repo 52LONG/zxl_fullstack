@@ -172,7 +172,7 @@
                       <image class="img_cate1"
                        src="//cdn.cnbj1.fds.api.mi-img.com/mi-mall/4f45cdc4f94f1f1651095dedb154c2e4.png?thumb=1&w=40&h=40&f=webp&q=90" mode="aspectFit|aspectFill|widthFix" lazy-load="false" binderror="" bindload="">
                       </image>
-                      <p class="img_cate_p">小米笔记本Pro</p>
+                      <p class="img_cate_p">小米Pro</p>
                     </view>
                     <view class="category_item" bindtap="tapToDetail">
                       <image class="img_cate1" src="//cdn.cnbj0.fds.api.mi-img.com/b2c-mimall-media/1f95bb7c9206951e3d870cb5581b8329.png?thumb=1&w=40&h=40" mode="aspectFit|aspectFill|widthFix" lazy-load="false" binderror="" bindload="">

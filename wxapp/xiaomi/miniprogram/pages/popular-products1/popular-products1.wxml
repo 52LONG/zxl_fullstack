@@ -1,7 +1,7 @@
 <view class="container">
-  <swiper indicator-active-color="#fff" autoplay="true" circular="true" duration="{{duration}}" interval="{{interval}}" indicator-dots="true" >
+  <swiper class="slide" indicator-active-color="#fff" autoplay="true" circular="true" duration="{{duration}}" interval="{{interval}}" indicator-dots="true" >
     <block wx:for="{{imgUrls}}" wx:key="index">
-      <swiper-item>
+      <swiper-item >
         <image class="slide-image" src="{{item}}"/>
       </swiper-item>
     </block>

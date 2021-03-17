@@ -28,19 +28,19 @@
   <van-col span="8"><image src="https://7a68-zhengxiaolong-2gncfs9w9dcdb8d0-1304585123.tcb.qcloud.la/image/p3.png?sign=b72d95ba1bd29dfe57aeb98a00a245c0&t=1611640968" class="col-image"/><text  class="col-text">满99包邮</text> </van-col>
 </van-row>
 <van-grid gutter="{{ 10 }}" column-num="5" icon-size="{{35}}">
-  <van-grid-item link-type="reLaunch" url="../classification/grid0/grid0"  icon="https://7a68-zhengxiaolong-2gncfs9w9dcdb8d0-1304585123.tcb.qcloud.la/image/icon1.png?sign=24599520dbd32ba0b53ce0e1c3dd6598&t=1611640159" text="小米上新"> </van-grid-item>
-  <van-grid-item link-type="reLaunch" url="../classification/grid1/grid1" icon="https://7a68-zhengxiaolong-2gncfs9w9dcdb8d0-1304585123.tcb.qcloud.la/image/icon2.png?sign=0d4b9eac322d2c2c9640846e30c9a21d&t=1611639439" text="手机" ></van-grid-item>
-  <van-grid-item link-type="reLaunch" url="../classification/grid2/grid2" icon="https://7a68-zhengxiaolong-2gncfs9w9dcdb8d0-1304585123.tcb.qcloud.la/image/icon3.png?sign=51da2ae5f52dd685f93b44626059010e&t=1611639063" text="小米11" > </van-grid-item>
-  <van-grid-item link-type="reLaunch" url="../classification/grid3/grid3" icon="https://7a68-zhengxiaolong-2gncfs9w9dcdb8d0-1304585123.tcb.qcloud.la/image/icon4.png?sign=f0b6b1a0051528297ff071226e31c67b&t=1611639125" text="10X 5G" > </van-grid-item>
-  <van-grid-item link-type="reLaunch" url="../classification/grid4/grid4" icon="https://7a68-zhengxiaolong-2gncfs9w9dcdb8d0-1304585123.tcb.qcloud.la/image/icon5.png?sign=a446763300392fab8f69dc56c4931124&t=1611639139" text="家电" > </van-grid-item>
-  <van-grid-item link-type="reLaunch" url="../classification/grid5/grid5" icon="https://7a68-zhengxiaolong-2gncfs9w9dcdb8d0-1304585123.tcb.qcloud.la/image/icon6.png?sign=5106855bcbaea9f706d832000338883a&t=1611639614" text="小米秒杀" > </van-grid-item>
-  <van-grid-item link-type="reLaunch" url="../classification/grid6/grid6"icon="https://7a68-zhengxiaolong-2gncfs9w9dcdb8d0-1304585123.tcb.qcloud.la/image/icon7.jpg?sign=2af1b5a23c7e24af73e28ba609f7a47c&t=1611639557" text="小米众筹" > </van-grid-item>
-  <van-grid-item link-type="reLaunch" url="../classification/grid7/grid7" icon="https://7a68-zhengxiaolong-2gncfs9w9dcdb8d0-1304585123.tcb.qcloud.la/image/icon8.png?sign=87dd5e945000e0957f73ff63004146e8&t=1611639237" text="电视" ></van-grid-item>
-  <van-grid-item link-type="reLaunch" url="../classification/grid8/grid8" icon="https://7a68-zhengxiaolong-2gncfs9w9dcdb8d0-1304585123.tcb.qcloud.la/image/icon9.png?sign=a487b0158930d24c6dd0214eedc0172b&t=1611639295" text="笔记本" > </van-grid-item>
-  <van-grid-item link-type="reLaunch" url="../classification/grid9/grid9" icon="https://7a68-zhengxiaolong-2gncfs9w9dcdb8d0-1304585123.tcb.qcloud.la/image/icon10.jpg?sign=3815a39a575af8f45ccd007e5edceff1&t=1611639254" text="智能" ></van-grid-item>
+  <van-grid-item link-type="reLaunch" url="../grid0/grid0"  icon="https://7a68-zhengxiaolong-2gncfs9w9dcdb8d0-1304585123.tcb.qcloud.la/image/icon1.png?sign=24599520dbd32ba0b53ce0e1c3dd6598&t=1611640159" text="小米上新"> </van-grid-item>
+  <van-grid-item link-type="reLaunch" url="../grid1/grid1" icon="https://7a68-zhengxiaolong-2gncfs9w9dcdb8d0-1304585123.tcb.qcloud.la/image/icon2.png?sign=0d4b9eac322d2c2c9640846e30c9a21d&t=1611639439" text="手机" ></van-grid-item>
+  <van-grid-item link-type="reLaunch" url="../grid2/grid2" icon="https://7a68-zhengxiaolong-2gncfs9w9dcdb8d0-1304585123.tcb.qcloud.la/image/icon3.png?sign=51da2ae5f52dd685f93b44626059010e&t=1611639063" text="小米11" > </van-grid-item>
+  <van-grid-item link-type="reLaunch" url="../grid3/grid3" icon="https://7a68-zhengxiaolong-2gncfs9w9dcdb8d0-1304585123.tcb.qcloud.la/image/icon4.png?sign=f0b6b1a0051528297ff071226e31c67b&t=1611639125" text="10X 5G" > </van-grid-item>
+  <van-grid-item link-type="reLaunch" url="../grid4/grid4" icon="https://7a68-zhengxiaolong-2gncfs9w9dcdb8d0-1304585123.tcb.qcloud.la/image/icon5.png?sign=a446763300392fab8f69dc56c4931124&t=1611639139" text="家电" > </van-grid-item>
+  <van-grid-item link-type="reLaunch" url="../grid5/grid5" icon="https://7a68-zhengxiaolong-2gncfs9w9dcdb8d0-1304585123.tcb.qcloud.la/image/icon6.png?sign=5106855bcbaea9f706d832000338883a&t=1611639614" text="小米秒杀" > </van-grid-item>
+  <van-grid-item link-type="reLaunch" url="../grid6/grid6"icon="https://7a68-zhengxiaolong-2gncfs9w9dcdb8d0-1304585123.tcb.qcloud.la/image/icon7.jpg?sign=2af1b5a23c7e24af73e28ba609f7a47c&t=1611639557" text="小米众筹" > </van-grid-item>
+  <van-grid-item link-type="reLaunch" url="../grid7/grid7" icon="https://7a68-zhengxiaolong-2gncfs9w9dcdb8d0-1304585123.tcb.qcloud.la/image/icon8.png?sign=87dd5e945000e0957f73ff63004146e8&t=1611639237" text="电视" ></van-grid-item>
+  <van-grid-item link-type="reLaunch" url="../grid8/grid8" icon="https://7a68-zhengxiaolong-2gncfs9w9dcdb8d0-1304585123.tcb.qcloud.la/image/icon9.png?sign=a487b0158930d24c6dd0214eedc0172b&t=1611639295" text="笔记本" > </van-grid-item>
+  <van-grid-item link-type="reLaunch" url="../grid9/grid9" icon="https://7a68-zhengxiaolong-2gncfs9w9dcdb8d0-1304585123.tcb.qcloud.la/image/icon10.jpg?sign=3815a39a575af8f45ccd007e5edceff1&t=1611639254" text="智能" ></van-grid-item>
 </van-grid>
 <van-grid column-num="1" border="{{ false }}">
-  <van-grid-item use-slot  link-type="reLaunch" url="../classification/activity1/activity1" >
+  <van-grid-item use-slot  link-type="reLaunch" url="../activity1/activity1" >
     <image
       style="width:100% ; height: 240rpx;"
       src="https://7a68-zhengxiaolong-2gncfs9w9dcdb8d0-1304585123.tcb.qcloud.la/bg1.png?sign=4624a6cc4baeee3c7f7d5acdf7422fb3&t=1611719832"
@@ -48,13 +48,13 @@
   </van-grid-item>
 </van-grid>
 <van-grid column-num="2" border="{{ false }}">
-  <van-grid-item use-slot  link-type="reLaunch" url="../classification/activity2/activity2" >
+  <van-grid-item use-slot  link-type="reLaunch" url="../activity2/activity2" >
     <image
       style="width:100% ; height: 200rpx;"
       src="https://7a68-zhengxiaolong-2gncfs9w9dcdb8d0-1304585123.tcb.qcloud.la/bg2.png?sign=d3193c77d07a1390be32e7874d214eee&t=1611719967"
     />
   </van-grid-item>
-  <van-grid-item use-slot  link-type="reLaunch" url="../classification/activity3/activity3" >
+  <van-grid-item use-slot  link-type="reLaunch" url="../activity3/activity3" >
     <image
       style="width:100% ; height: 200rpx;"
       src="https://7a68-zhengxiaolong-2gncfs9w9dcdb8d0-1304585123.tcb.qcloud.la/bg3.png?sign=6bdaf55f6cfc316504c7ec1e3db305a0&t=1611719992"/>
@@ -67,7 +67,7 @@
   title="爆款排行"
   value="更多爆款"
   link-type="reLaunch"
-  url="../classification/popular-products/popular-products"
+  url="../popular-products/popular-products"
   title-style="font-size:38rpx;font-family:微软雅黑;font-weight:bolder;"
 />
   </block>
@@ -78,7 +78,7 @@
   origin-price="9.99"
   desc="4倍书写长度、日本MIKUNI油墨、0.5弹簧子弹头"
   title="小米巨能写中性笔"
-  thumb-link="../classification/popular-products1/popular-products1"
+  thumb-link="../popular-products1/popular-products1"
   link-type="reLaunch"
   laay-load="true"
   thumb="https://7a68-zhengxiaolong-2gncfs9w9dcdb8d0-1304585123.tcb.qcloud.la/hot1.png?sign=44b3723ea12c8b9c7863326b6fd99c94&t=1611734379"
@@ -89,7 +89,7 @@
   price="99.00"
   desc="精致小巧，内置智能芯片、兼容多数常用sheb、多重智能防护机制"
   title="小米氮化镓Ga充电器 Type-c 55W"
-  thumb-link="../classification/popular-products2/popular-products2"
+  thumb-link="../popular-products2/popular-products2"
   link-type="reLaunch"
   laay-load="true"
   thumb="https://7a68-zhengxiaolong-2gncfs9w9dcdb8d0-1304585123.tcb.qcloud.la/image/hot21.webp?sign=fad6439f30144651ba37a2d66510fa9c&t=1611735303"
@@ -101,7 +101,7 @@
   origin-price="46.90"
   desc="笔记自然清晰\n、高灵敏压感技术、无蓝光液晶屏，安全无尘不伤眼"
   title="小米米家液晶小黑板"
-  thumb-link="../classification/popular-products3/popular-products3"
+  thumb-link="../popular-products3/popular-products3"
   link-type="reLaunch"
   laay-load="true"
   thumb="https://7a68-zhengxiaolong-2gncfs9w9dcdb8d0-1304585123.tcb.qcloud.la/image/hot3.jpg?sign=eeefe78e9598fd1124f2623b1fbc9a81&t=1611735684"
@@ -114,7 +114,7 @@
   title="新品好物"
   value="更多新品"
   link-type="reLaunch"
-  url="../classification/new-products/new-products"
+  url="../new-products/new-products"
   title-style="font-size:38rpx;font-family:微软雅黑;font-weight:bolder;"
 />
   </block>
@@ -126,7 +126,7 @@
   origin-price="5299"
   desc="舒适清凉、自清洁、全屋互联"
   title="巨省电 | 小米新3级立式空调（3匹/变频）"
-  thumb-link="../classification/new-products1/new-products1"
+  thumb-link="../new-products1/new-products1"
   link-type="reLaunch"
   laay-load="true"
   thumb="https://7a68-zhengxiaolong-2gncfs9w9dcdb8d0-1304585123.tcb.qcloud.la/image/newCommodity21.png?sign=641aba09e61f81f188e0cf7f32e30cc6&t=1611737069"
@@ -138,7 +138,7 @@
   price="3999.00 起"
   desc="CPU 高通骁龙888|三摄像头 10800万像素 | 超大屏 6.81寸"
   title="小米11"
-  thumb-link="../classification/new-products2/new-products2"
+  thumb-link="../new-products2/new-products2"
   link-type="reLaunch"
   laay-load="true"
   thumb="https://7a68-zhengxiaolong-2gncfs9w9dcdb8d0-1304585123.tcb.qcloud.la/image/newCommodity31.webp?sign=1863ebd37a8f0e05e607fe3d5450d0b7&t=16117385583"
@@ -154,7 +154,7 @@
   price="299.00"
   desc="煮饭快，炖肉软|小巧机身，满足1-3人需求|智能食谱一键烹饪，精致硬菜神器"
   title="米家智能电压力锅2.5L"
-  thumb-link="../classification/new-products3/new-products3"
+  thumb-link="../new-products3/new-products3"
   link-type="reLaunch"
   laay-load="true"
   thumb="https://7a68-zhengxiaolong-2gncfs9w9dcdb8d0-1304585123.tcb.qcloud.la/image/newCommodity31.png?sign=29ff0c8a503e67ba008a9589dd2eac79&t=1611753447"
