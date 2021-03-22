@@ -1,7 +1,7 @@
 let Mock = require('mockjs')
 const Random = Mock.Random
 
-Mock.mock('/movies','get',{
+Mock.mock('/infos','get',{
     // data:[{
     //     'key':1,
     //     'title':'aa',

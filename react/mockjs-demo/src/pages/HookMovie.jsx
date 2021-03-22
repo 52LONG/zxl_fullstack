@@ -20,9 +20,9 @@ const HookMovie=()=>{
         // mockjs 提供假数据 还可以给我们提供一个访问的url
         setTimeout(()=>{
             axios
-                .get('/movies')
-                .then(res=>{
-                // console.log(res);
+            .get('/movies')
+            .then(res=>{
+                console.log(res);
                 setMovies(res.data.movies)
                 setLoading(false)
             })
@@ -32,11 +32,7 @@ const HookMovie=()=>{
     },[])
     return(
         <div>HookMovie
-            {loading?<div>Loading...</div>:<div>
-                {movies.map((movie,index)=>(
-                <Movie key={movie.imdbID} movie={movie}/>
-                ))}
-            {movies.length}</div>}
+            {loading?<div>Loading...</div>:<div>{movies.map((movie,index)=>(<Movie key={movie.imdbID} movie={movie}/>))}{movies.length}</div>}
         </div>
     )
 }
