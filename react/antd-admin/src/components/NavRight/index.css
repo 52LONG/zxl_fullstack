@@ -1,0 +1,10 @@
+.tag_left{
+    font-size: 20px;
+    font-weight: normal;
+}
+.tag_right{
+   padding-left: 20px;
+}
+.tag_list{
+    width: 500px;
+}
