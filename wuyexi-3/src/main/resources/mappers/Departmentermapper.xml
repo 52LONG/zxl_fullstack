@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="dao.DepartmenterDao">
+
+    <resultMap id="result" type="model.Departmenter">
+        <id property="id" column="id"></id>
+        <result property="name" column="name"></result>
+        <result property="password" column="password"></result>
+        <result property="emid" column="emid"></result>
+        <result property="emdepartment" column="emdepartment"></result>
+    </resultMap>
+
+    <sql id="tablename">
+        departmenter
+    </sql>
+
+    <sql id="tablecolunm">
+        id,name,password,emid,emdepartment
+    </sql>
+
+    <sql id="prams">
+       #{id},#{name},#{password}
+
+    </sql>
+
+    <select id="login" resultType="model.Departmenter" parameterType="java.lang.String">
+        SELECT id,name,emid,emdepartment FROM <include refid="tablename"></include> WHERE id=#{param1} AND password=#{param2}
+    </select>
+
+
+</mapper>

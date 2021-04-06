@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="dao.RepairListDao">
+  <resultMap id="BaseResultMap" type="model.RepairList">
+    <result column="id" jdbcType="VARCHAR" property="id" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="emid" jdbcType="VARCHAR" property="emid" />
+    <result column="emdepartment" jdbcType="VARCHAR" property="emdepartment" />
+    <result column="itemcode" jdbcType="VARCHAR" property="itemcode" />
+    <result column="itemname" jdbcType="VARCHAR" property="itemname" />
+    <result column="question" jdbcType="VARCHAR" property="question" />
+    <result column="status" jdbcType="INTEGER" property="status" />
+    <result column="time" jdbcType="TIMESTAMP" property="time" />
+  </resultMap>
+
+  <insert id="insert" parameterType="model.RepairList">
+    insert into repair_list (id, name, emid,
+      emdepartment, itemcode, itemname, 
+      question, status,time)
+    values (#{id,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, #{emid,jdbcType=VARCHAR}, 
+      #{emdepartment,jdbcType=VARCHAR}, #{itemcode,jdbcType=VARCHAR}, #{itemname,jdbcType=VARCHAR}, 
+      #{question,jdbcType=VARCHAR}, #{status,jdbcType=INTEGER},#{time,jdbcType=TIMESTAMP})
+  </insert>
+
+  <insert id="insertSelective" parameterType="model.RepairList">
+    insert into repair_list
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="name != null">
+        name,
+      </if>
+      <if test="emid != null">
+        emid,
+      </if>
+      <if test="emdepartment != null">
+        emdepartment,
+      </if>
+      <if test="itemcode != null">
+        itemcode,
+      </if>
+      <if test="itemname != null">
+        itemname,
+      </if>
+      <if test="question != null">
+        question,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+      <if test="time != null">
+        time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="emid != null">
+        #{emid,jdbcType=VARCHAR},
+      </if>
+      <if test="emdepartment != null">
+        #{emdepartment,jdbcType=VARCHAR},
+      </if>
+      <if test="itemcode != null">
+        #{itemcode,jdbcType=VARCHAR},
+      </if>
+      <if test="itemname != null">
+        #{itemname,jdbcType=VARCHAR},
+      </if>
+      <if test="question != null">
+        #{question,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="time != null">
+        #{time,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+
+  <update id="update" parameterType="java.lang.String">
+    UPDATE repair_list SET
+    status=1
+    WHERE id=#{id} AND status=0
+  </update>
+</mapper>

@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="dao.BuildingDao">
+
+    <resultMap id="result" type="model.Building">
+        <id property="buildingCode" column="building_code"></id>
+        <id property="buildingName" column="building_name"></id>
+        <result property="buildingAddress" column="building_address"></result>
+        <result property="regionCode" column="region_code"></result>
+        <result property="itemCode" column="item_code"></result>
+        <result property="propertymcCode" column="propertymc_code"></result>
+        <result property="lawOwner" column="law_owner"></result>
+        <result property="owner" column="owner"></result>
+        <result property="totalFloor" column="total_floor"></result>
+        <result property="addressArea" column="address_area"></result>
+        <result property="assetCardno" column="asset_cardno"></result>
+        <result property="buildingStructure" column="building_structure"></result>
+        <result property="buyFrom" column="buy_from"></result>
+        <result property="buyOrRentTime" column="buy_or_rent_time"></result>
+        <result property="completedTime" column="completed_time"></result>
+        <result property="beginUseTime" column="begin_use_time"></result>
+        <result property="endUseTime" column="end_use_time"></result>
+        <result property="leftUsetime" column="left_usetime"></result>
+        <result property="cost" column="cost"></result>
+        <result property="landno" column="landno"></result>
+        <result property="landPurpose" column="land_purpose"></result>
+        <result property="rightno" column="rightno"></result>
+        <result property="rightPurpose" column="right_purpose"></result>
+        <result property="useArea" column="use_area"></result>
+        <result property="purchaseWay" column="purchase_way"></result>
+        <result property="totalArea" column="total_area"></result>
+        <result property="note" column="note"></result>
+    </resultMap>
+
+
+    <sql id="tablename">
+        building
+    </sql>
+
+    <sql id="tablecolunm">
+       building_code,building_name,building_address,region_code,item_code,propertymc_code,law_owner,owner,
+       total_floor,address_area,asset_cardno,building_structure,buy_from,buy_or_rent_time,completed_time,
+       begin_use_time,end_use_time,left_usetime,cost,landno,land_purpose,rightno,right_purpose,use_area,
+       purchase_way,total_area,note
+    </sql>
+
+    <sql id="prams">
+        #{buildingCode},#{buildingName},#{buildingAddress},#{regionCode},#{itemCode},#{propertymcCode},#{lawOwner},#{owner},
+       #{totalFloor},#{addressArea},#{assetCardno},#{buildingStructure},#{buyFrom},#{buyOrRentTime},#{completedTime},
+       #{beginUseTime},#{endUseTime},#{leftUsetime},#{cost},#{landno},#{landPurpose},#{rightno},#{rightPurpose},#{useArea},
+       #{purchaseWay},#{totalArea},#{note}
+    </sql>
+
+    <insert id="InsertOne" parameterType="model.Building">
+        INSERT INTO <include refid="tablename"></include>
+        (
+            <include refid="tablecolunm"></include>
+        )
+        VALUES
+        (
+            <include refid="prams"></include>
+        )
+    </insert>
+
+    <update id="UpdateOne" parameterType="model.Building">
+        UPDATE <include refid="tablename"></include> SET
+        building_name=#{buildingName},building_address=#{buildingAddress},region_code=#{regionCode},item_code=#{itemCode},propertymc_code=#{propertymcCode},
+        law_owner=#{lawOwner},owner=#{owner},total_floor=#{totalFloor},address_area=#{addressArea},asset_cardno=#{assetCardno},
+        building_structure=#{buildingStructure},buy_from=#{buyFrom},buy_or_rent_time=#{buyOrRentTime},completed_time=#{completedTime},
+        begin_use_time=#{beginUseTime},end_use_time=#{endUseTime},left_usetime=#{leftUsetime},cost=#{cost},landno=#{landno},
+        land_purpose=#{landPurpose},rightno=#{rightno},right_purpose=#{rightPurpose},use_area=#{useArea},
+        purchase_way=#{purchaseWay},total_area=#{totalArea},note=#{note}
+        WHERE building_code=#{buildingCode}
+    </update>
+
+    <delete id="DeleteOne" parameterType="java.lang.String">
+        DELETE FROM <include refid="tablename"></include> WHERE building_code=#{building}
+    </delete>
+
+    <select id="SelectOne" resultType="model.Building" parameterType="java.lang.String" resultMap="result">
+        SELECT * FROM <include refid="tablename"></include> WHERE building_code=#{building}
+    </select>
+
+    <select id="SelectAll" resultType="model.Building" resultMap="result">
+        SELECT * FROM <include refid="tablename"></include>
+    </select>
+
+    <select id="SelectByItemcode" resultType="model.Building" resultMap="result">
+        SELECT * FROM <include refid="tablename"></include> WHERE item_code=#{itemcode}
+    </select>
+
+    <select id="SelectByItemRegion" resultType="model.Building" resultMap="result">
+        SELECT * FROM <include refid="tablename"></include> WHERE item_code=#{ic} AND region_code=#{rc}
+    </select>
+
+</mapper>

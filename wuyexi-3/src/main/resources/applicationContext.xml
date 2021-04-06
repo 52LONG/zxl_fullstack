@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:http="http://www.springframework.org/schema/c"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+       https://www.springframework.org/schema/context/spring-context.xsd
+       http://www.springframework.org/schema/tx
+       https://www.springframework.org/schema/tx/spring-tx.xsd
+       http://www.springframework.org/schema/aop
+       https://www.springframework.org/schema/aop/spring-aop.xsd
+">
+
+    <!--advice 的 bean-->
+    <context:component-scan base-package="advice"/>
+    <aop:aspectj-autoproxy proxy-target-class="true"/>
+
+    <bean class="advice.ArchvistAdvice" id="archvistAdvice"></bean>
+
+    <bean class="advice.DepartmenterAdvice" id="departmenterAdvice"></bean>
+
+    <bean class="advice.UserAdvice" id="userAdvice"></bean>
+
+    <bean class="advice.PropertymanagerAdvice" id="propertymanagerAdvice"></bean>
+
+    <aop:config>
+        <aop:pointcut id="mypoint" expression="(execution(* services.*(..)))"/>
+        <aop:aspect ref="archvistAdvice"></aop:aspect>
+    </aop:config>
+    <aop:config>
+        <aop:pointcut id="mypoint" expression="(execution(* services.*(..)))"/>
+        <aop:aspect ref="departmenterAdvice"></aop:aspect>
+    </aop:config>
+    <aop:config>
+        <aop:pointcut id="mypoint" expression="(execution(* services.*(..)))"/>
+        <aop:aspect ref="userAdvice"></aop:aspect>
+    </aop:config>
+    <aop:config>
+        <aop:pointcut id="mypoint" expression="(execution(* services.*(..)))"/>
+        <aop:aspect ref="propertymanagerAdvice"></aop:aspect>
+    </aop:config>
+
+    
+    <!-- model 的 bean -->
+    <bean class="model.RepairList" name="repairList"></bean>
+
+    <bean class="model.Dormitory" name="dormitory"></bean>
+
+    <bean class="model.PropertymanagerFile" name="propertymanagerFile"></bean>
+
+    <bean class="model.UserFile" name="userFile"></bean>
+
+    <bean class="model.SuiteAccess" id="suiteAccess"></bean>
+
+    <bean class="model.Suite" id="suite"></bean>
+
+    <bean class="model.SuiteUsage" id="suiteUsage"></bean>
+
+    <bean class="model.DepartmenterFile" id="departmenterFile"></bean>
+
+    <bean class="model.BuildingAccess" id="buildingAccess"></bean>
+
+    <bean class="model.BuildingUsage" id="buildingUsage"></bean>
+
+    <bean class="model.Building" id="building"></bean>
+
+    <bean class="model.Item" id="item"></bean>
+
+    <bean class="model.ItemUsepartment"></bean>
+
+    <bean class="model.ItemUsage"></bean>
+
+    <bean class="model.Department" id="department"></bean>
+
+    <bean id="archvistFile" class="model.ArchvistFile"></bean>
+
+    <bean id="departmenter" class="model.Departmenter"></bean>
+
+    <bean id="propertymanager" class="model.Propertymanager"></bean>
+
+    <bean id="archvist" class="model.Archvist"></bean>
+
+    <bean id="supplier" class="model.Supplier"></bean>
+
+    <bean id="employee" class="model.Employee"></bean>
+
+    <bean id="purpose" class="model.Purpose"></bean>
+
+    <bean class="model.Region" id="region"></bean>
+
+    <bean class="model.Propertymc" id="propertymc"></bean>
+
+
+
+    <!-- services 的 bean -->
+    <bean id="userservices" class="services.UserService"></bean>
+
+    <bean id="archvistservice" class="services.ArchvistService"></bean>
+
+    <bean id="departmenterservice" class="services.DepartmenterService"></bean>
+
+    <bean id="propertymanagerservice" class="services.PropertymanagerService"></bean>
+
+    <bean class="services.ArchvistFileService" id="archvistFileService"></bean>
+
+    <bean class="services.DepartmentFileService" id="departmentFileService"></bean>
+
+    <!-- 数据库连接 以及 mybatis 配置 -->
+    <bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource">
+        <property name="username" value="root"></property>
+        <!-- 如果想要使用 properties文件的话，这里应该改成driverClassName -->
+        <property name="driverClassName" value="com.mysql.cj.jdbc.Driver"></property>
+        <property name="password" value="2655"></property>
+        <property name="url" value="jdbc:mysql://localhost:3306/wuyexitong? serverTimezone=Asia/Shanghai&amp;useSSL=false&amp;useServerPrepStmts=true&amp;cachePrepSt mts=true&amp;allowPublicKeyRetrieval=true"> </property>
+    </bean>
+
+    <bean id="sqlsesssionfactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <property name="dataSource" ref="dataSource"></property>
+        <!--自动扫描mapper.xml文件-->
+        <property name="mapperLocations" value="classpath:mappers/*.xml"></property>
+    </bean>
+
+    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+        <property name="basePackage" value="dao"></property>
+        <property name="sqlSessionFactoryBeanName" value="sqlsesssionfactory"></property>
+    </bean>
+
+    <bean class="org.springframework.jdbc.datasource.DataSourceTransactionManager" id="dataSourceTransactionManager">
+        <property name="dataSource" ref="dataSource"></property>
+    </bean>
+
+    <tx:annotation-driven transaction-manager="dataSourceTransactionManager"></tx:annotation-driven>
+
+
+</beans>

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="dao.PropertymcDao">
+
+    <resultMap id="result" type="model.Propertymc">
+        <id property="propertyMcCode" column="property_mc_code"></id>
+        <result property="propertyMcName" column="property_mc_name"></result>
+    </resultMap>
+
+  <sql id="tablename">
+        propertymc
+    </sql>
+
+  <sql id="tablecolunm">
+       property_mc_code,property_mc_name
+   </sql>
+
+    <sql id="prams">
+       #{propertyMcCode},#{propertyMcName}
+    </sql>
+
+    <insert id="InsertOne" parameterType="model.Propertymc">
+        INSERT INTO <include refid="tablename"></include>
+        (
+            <include refid="tablecolunm"></include>
+        )
+        VALUES
+        (
+            <include refid="prams"></include>
+        )
+    </insert>
+
+    <update id="UpdateOne" parameterType="java.lang.String">
+        UPDATE <include refid="tablename"></include> SET
+        <if test="propertymcname!=null">
+            property_mc_name=#{propertymcname}
+        </if>
+        WHERE property_mc_code=#{propertymccode}
+    </update>
+
+    <delete id="DeleteOne" parameterType="java.lang.String">
+        DELETE FROM <include refid="tablename"></include> WHERE property_mc_code=#{propertymc} OR property_mc_name=#{propertymc}
+    </delete>
+
+    <select id="SelectOne" resultType="model.Propertymc" parameterType="java.lang.String" resultMap="result">
+        SELECT * FROM <include refid="tablename"></include> WHERE property_mc_code=#{propertymc} OR property_mc_name=#{propertymc}
+    </select>
+
+    <select id="SelectAll" resultType="model.Propertymc" resultMap="result">
+        SELECT * FROM <include refid="tablename"></include>
+    </select>
+
+
+</mapper>

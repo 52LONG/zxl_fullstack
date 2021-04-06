@@ -1,0 +1,407 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="dao.DormitoryDao">
+  <resultMap id="BaseResultMap" type="model.Dormitory">
+    <id column="dormitory_code" jdbcType="VARCHAR" property="dormitoryCode" />
+    <result column="dormitory_time" jdbcType="TIMESTAMP" property="dormitoryTime" />
+    <result column="emname" jdbcType="VARCHAR" property="emname" />
+    <result column="emid" jdbcType="VARCHAR" property="emid" />
+    <result column="gender" jdbcType="VARCHAR" property="gender" />
+    <result column="emdepartment" jdbcType="VARCHAR" property="emdepartment" />
+    <result column="dormitory_status" jdbcType="INTEGER" property="dormitoryStatus" />
+    <result column="phone" jdbcType="VARCHAR" property="phone" />
+    <result column="workphone" jdbcType="VARCHAR" property="workphone" />
+    <result column="education_background" jdbcType="VARCHAR" property="educationBackground" />
+    <result column="incumbency" jdbcType="INTEGER" property="incumbency" />
+    <result column="id_card" jdbcType="VARCHAR" property="idCard" />
+    <result column="bank_card" jdbcType="VARCHAR" property="bankCard" />
+    <result column="address" jdbcType="VARCHAR" property="address" />
+    <result column="old_address" jdbcType="VARCHAR" property="oldAddress" />
+    <result column="marriage" jdbcType="INTEGER" property="marriage" />
+    <result column="change_bunk" jdbcType="INTEGER" property="changeBunk" />
+    <result column="zzsz" jdbcType="INTEGER" property="zzsz" />
+    <result column="szhk" jdbcType="INTEGER" property="szhk" />
+    <result column="zzz" jdbcType="INTEGER" property="zzz" />
+    <result column="jsx" jdbcType="INTEGER" property="jsx" />
+    <result column="reason" jdbcType="VARCHAR" property="reason" />
+    <result column="note" jdbcType="VARCHAR" property="note" />
+    <result column="item_code" jdbcType="VARCHAR" property="itemCode" />
+    <result column="building_code" jdbcType="VARCHAR" property="buildingCode" />
+    <result column="floor" jdbcType="VARCHAR" property="floor" />
+    <result column="suite_code" jdbcType="VARCHAR" property="suiteCode" />
+    <result column="room_code" jdbcType="VARCHAR" property="roomCode" />
+    <result column="bunk_code" jdbcType="VARCHAR" property="bunkCode" />
+    <result column="bunk_name" jdbcType="VARCHAR" property="bunkName" />
+  </resultMap>
+
+  <sql id="Base_Column_List">
+    dormitory_code, dormitory_time, emname, emid, gender, emdepartment, dormitory_status, 
+    phone, workphone, education_background, incumbency, id_card, bank_card, address, 
+    old_address, marriage, change_bunk, zzsz, szhk, zzz, jsx, reason, note, item_code,
+    building_code, floor, suite_code, room_code, bunk_code, bunk_name
+  </sql>
+
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from dormitory
+    where dormitory_code = #{dormitoryCode,jdbcType=VARCHAR}
+  </select>
+
+
+  <select id="selectByUserId" resultType="model.Dormitory" resultMap="BaseResultMap">
+    select * from dormitory where emid=#{userid}
+  </select>
+
+
+
+    <select id="selectall" resultType="model.Dormitory" resultMap="BaseResultMap">
+       select * from dormitory
+    </select>
+
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from dormitory
+    where dormitory_code = #{dormitoryCode,jdbcType=VARCHAR}
+  </delete>
+
+  <insert id="insert"  parameterType="model.Dormitory">
+    insert into dormitory (dormitory_code,dormitory_time, emname, emid,
+      gender, emdepartment, dormitory_status, 
+      phone, workphone, education_background, 
+      incumbency, id_card, bank_card, 
+      address, old_address, marriage, 
+      change_bunk, zzsz, szhk, 
+      zzz, jsx, reason, note, 
+      item_code, building_code, floor,
+      suite_code, room_code, bunk_code, 
+      bunk_name)
+    values (#{dormitoryCode,jdbcType=VARCHAR},#{dormitoryTime,jdbcType=TIMESTAMP}, #{emname,jdbcType=VARCHAR}, #{emid,jdbcType=VARCHAR},
+      #{gender,jdbcType=VARCHAR}, #{emdepartment,jdbcType=VARCHAR}, #{dormitoryStatus,jdbcType=INTEGER},
+      #{phone,jdbcType=VARCHAR}, #{workphone,jdbcType=VARCHAR}, #{educationBackground,jdbcType=VARCHAR}, 
+      #{incumbency,jdbcType=INTEGER}, #{idCard,jdbcType=VARCHAR}, #{bankCard,jdbcType=VARCHAR},
+      #{address,jdbcType=VARCHAR}, #{oldAddress,jdbcType=VARCHAR}, #{marriage,jdbcType=INTEGER}, 
+      #{changeBunk,jdbcType=INTEGER}, #{zzsz,jdbcType=INTEGER}, #{szhk,jdbcType=INTEGER}, 
+      #{zzz,jdbcType=INTEGER}, #{jsx,jdbcType=INTEGER}, #{reason,jdbcType=VARCHAR}, #{note,jdbcType=VARCHAR}, 
+      #{itemCode,jdbcType=VARCHAR}, #{buildingCode,jdbcType=VARCHAR}, #{floor,jdbcType=VARCHAR}, 
+      #{suiteCode,jdbcType=VARCHAR}, #{roomCode,jdbcType=VARCHAR}, #{bunkCode,jdbcType=VARCHAR}, 
+      #{bunkName,jdbcType=VARCHAR})
+  </insert>
+
+  <insert id="insertSelective"  parameterType="model.Dormitory">
+    insert into dormitory
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="dormitoryCode != null">
+        dormitory_code,
+      </if>
+      <if test="dormitoryTime != null">
+        dormitory_time,
+      </if>
+      <if test="emname != null">
+        emname,
+      </if>
+      <if test="emid != null">
+        emid,
+      </if>
+      <if test="gender != null">
+        gender,
+      </if>
+      <if test="emdepartment != null">
+        emdepartment,
+      </if>
+      <if test="dormitoryStatus != null">
+        dormitory_status,
+      </if>
+      <if test="phone != null">
+        phone,
+      </if>
+      <if test="workphone != null">
+        workphone,
+      </if>
+      <if test="educationBackground != null">
+        education_background,
+      </if>
+      <if test="incumbency != null">
+        incumbency,
+      </if>
+      <if test="idCard != null">
+        id_card,
+      </if>
+      <if test="bankCard != null">
+        bank_card,
+      </if>
+      <if test="address != null">
+        address,
+      </if>
+      <if test="oldAddress != null">
+        old_address,
+      </if>
+      <if test="marriage != null">
+        marriage,
+      </if>
+      <if test="changeBunk != null">
+        change_bunk,
+      </if>
+      <if test="zzsz != null">
+        zzsz,
+      </if>
+      <if test="szhk != null">
+        szhk,
+      </if>
+      <if test="zzz != null">
+        zzz,
+      </if>
+      <if test="jsx != null">
+        jsx,
+      </if>
+      <if test="reason != null">
+        reason,
+      </if>
+      <if test="note != null">
+        note,
+      </if>
+      <if test="itemCode != null">
+        item_code,
+      </if>
+      <if test="buildingCode != null">
+        building_code,
+      </if>
+      <if test="floor != null">
+        floor,
+      </if>
+      <if test="suiteCode != null">
+        suite_code,
+      </if>
+      <if test="roomCode != null">
+        room_code,
+      </if>
+      <if test="bunkCode != null">
+        bunk_code,
+      </if>
+      <if test="bunkName != null">
+        bunk_name,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="dormitoryCode != null">
+        #{dormitoryCode,jdbcType=VARCHAR},
+      </if>
+      <if test="dormitoryTime != null">
+        #{dormitoryTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="emname != null">
+        #{emname,jdbcType=VARCHAR},
+      </if>
+      <if test="emid != null">
+        #{emid,jdbcType=VARCHAR},
+      </if>
+      <if test="gender != null">
+        #{gender,jdbcType=VARCHAR},
+      </if>
+      <if test="emdepartment != null">
+        #{emdepartment,jdbcType=VARCHAR},
+      </if>
+      <if test="dormitoryStatus != null">
+        #{dormitoryStatus,jdbcType=INTEGER},
+      </if>
+      <if test="phone != null">
+        #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="workphone != null">
+        #{workphone,jdbcType=VARCHAR},
+      </if>
+      <if test="educationBackground != null">
+        #{educationBackground,jdbcType=VARCHAR},
+      </if>
+      <if test="incumbency != null">
+        #{incumbency,jdbcType=DATE},
+      </if>
+      <if test="idCard != null">
+        #{idCard,jdbcType=VARCHAR},
+      </if>
+      <if test="bankCard != null">
+        #{bankCard,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null">
+        #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="oldAddress != null">
+        #{oldAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="marriage != null">
+        #{marriage,jdbcType=INTEGER},
+      </if>
+      <if test="changeBunk != null">
+        #{changeBunk,jdbcType=INTEGER},
+      </if>
+      <if test="zzsz != null">
+        #{zzsz,jdbcType=INTEGER},
+      </if>
+      <if test="szhk != null">
+        #{szhk,jdbcType=INTEGER},
+      </if>
+      <if test="zzz != null">
+        #{zzz,jdbcType=INTEGER},
+      </if>
+      <if test="jsx != null">
+        #{jsx,jdbcType=INTEGER},
+      </if>
+      <if test="reason != null">
+        #{reason,jdbcType=VARCHAR},
+      </if>
+      <if test="note != null">
+        #{note,jdbcType=VARCHAR},
+      </if>
+      <if test="itemCode != null">
+        #{itemCode,jdbcType=VARCHAR},
+      </if>
+      <if test="buildingCode != null">
+        #{buildingCode,jdbcType=VARCHAR},
+      </if>
+      <if test="floor != null">
+        #{floor,jdbcType=VARCHAR},
+      </if>
+      <if test="suiteCode != null">
+        #{suiteCode,jdbcType=VARCHAR},
+      </if>
+      <if test="roomCode != null">
+        #{roomCode,jdbcType=VARCHAR},
+      </if>
+      <if test="bunkCode != null">
+        #{bunkCode,jdbcType=VARCHAR},
+      </if>
+      <if test="bunkName != null">
+        #{bunkName,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+
+
+  <update id="updateByPrimaryKeySelective" parameterType="model.Dormitory">
+    update dormitory
+    <set>
+      <if test="dormitoryTime != null">
+        dormitory_time = #{dormitoryTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="emname != null">
+        emname = #{emname,jdbcType=VARCHAR},
+      </if>
+      <if test="emid != null">
+        emid = #{emid,jdbcType=VARCHAR},
+      </if>
+      <if test="gender != null">
+        gender = #{gender,jdbcType=VARCHAR},
+      </if>
+      <if test="emdepartment != null">
+        emdepartment = #{emdepartment,jdbcType=VARCHAR},
+      </if>
+      <if test="dormitoryStatus != null">
+        dormitory_status = #{dormitoryStatus,jdbcType=INTEGER},
+      </if>
+      <if test="phone != null">
+        phone = #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="workphone != null">
+        workphone = #{workphone,jdbcType=VARCHAR},
+      </if>
+      <if test="educationBackground != null">
+        education_background = #{educationBackground,jdbcType=VARCHAR},
+      </if>
+      <if test="incumbency != null">
+        incumbency = #{incumbency,jdbcType=DATE},
+      </if>
+      <if test="idCard != null">
+        id_card = #{idCard,jdbcType=VARCHAR},
+      </if>
+      <if test="bankCard != null">
+        bank_card = #{bankCard,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null">
+        address = #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="oldAddress != null">
+        old_address = #{oldAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="marriage != null">
+        marriage = #{marriage,jdbcType=INTEGER},
+      </if>
+      <if test="changeBunk != null">
+        change_bunk = #{changeBunk,jdbcType=INTEGER},
+      </if>
+      <if test="zzsz != null">
+        zzsz = #{zzsz,jdbcType=INTEGER},
+      </if>
+      <if test="szhk != null">
+        szhk = #{szhk,jdbcType=INTEGER},
+      </if>
+      <if test="zzz != null">
+        zzz = #{zzz,jdbcType=INTEGER},
+      </if>
+      <if test="jsx != null">
+        jsx = #{jsx,jdbcType=INTEGER},
+      </if>
+      <if test="reason != null">
+        reason = #{reason,jdbcType=VARCHAR},
+      </if>
+      <if test="note != null">
+        note = #{note,jdbcType=VARCHAR},
+      </if>
+      <if test="itemCode != null">
+        item_code = #{itemCode,jdbcType=VARCHAR},
+      </if>
+      <if test="buildingCode != null">
+        building_code = #{buildingCode,jdbcType=VARCHAR},
+      </if>
+      <if test="floor != null">
+        floor = #{floor,jdbcType=VARCHAR},
+      </if>
+      <if test="suiteCode != null">
+        suite_code = #{suiteCode,jdbcType=VARCHAR},
+      </if>
+      <if test="roomCode != null">
+        room_code = #{roomCode,jdbcType=VARCHAR},
+      </if>
+      <if test="bunkCode != null">
+        bunk_code = #{bunkCode,jdbcType=VARCHAR},
+      </if>
+      <if test="bunkName != null">
+        bunk_name = #{bunkName,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where dormitory_code = #{dormitoryCode,jdbcType=VARCHAR}
+  </update>
+
+
+  <update id="updateByPrimaryKey" parameterType="model.Dormitory">
+    update dormitory
+    set dormitory_time = #{dormitoryTime,jdbcType=TIMESTAMP},
+      emname = #{emname,jdbcType=VARCHAR},
+      emid = #{emid,jdbcType=VARCHAR},
+      gender = #{gender,jdbcType=VARCHAR},
+      emdepartment = #{emdepartment,jdbcType=VARCHAR},
+      dormitory_status = #{dormitoryStatus,jdbcType=INTEGER},
+      phone = #{phone,jdbcType=VARCHAR},
+      workphone = #{workphone,jdbcType=VARCHAR},
+      education_background = #{educationBackground,jdbcType=VARCHAR},
+      incumbency = #{incumbency,jdbcType=DATE},
+      id_card = #{idCard,jdbcType=VARCHAR},
+      bank_card = #{bankCard,jdbcType=VARCHAR},
+      address = #{address,jdbcType=VARCHAR},
+      old_address = #{oldAddress,jdbcType=VARCHAR},
+      marriage = #{marriage,jdbcType=INTEGER},
+      change_bunk = #{changeBunk,jdbcType=INTEGER},
+      zzsz = #{zzsz,jdbcType=INTEGER},
+      szhk = #{szhk,jdbcType=INTEGER},
+      zzz = #{zzz,jdbcType=INTEGER},
+      jsx = #{jsx,jdbcType=INTEGER},
+      reason = #{reason,jdbcType=VARCHAR},
+      note = #{note,jdbcType=VARCHAR},
+      item_code = #{itemCode,jdbcType=VARCHAR},
+      building_code = #{buildingCode,jdbcType=VARCHAR},
+      floor = #{floor,jdbcType=VARCHAR},
+      suite_code = #{suiteCode,jdbcType=VARCHAR},
+      room_code = #{roomCode,jdbcType=VARCHAR},
+      bunk_code = #{bunkCode,jdbcType=VARCHAR},
+      bunk_name = #{bunkName,jdbcType=VARCHAR}
+    where dormitory_code = #{dormitoryCode,jdbcType=VARCHAR}
+  </update>
+</mapper>

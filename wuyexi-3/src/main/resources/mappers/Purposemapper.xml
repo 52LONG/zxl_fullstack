@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="dao.PurposeDao">
+
+    <resultMap id="result" type="model.Purpose">
+        <id property="purposeCode" column="purpose_code"></id>
+        <result property="purposeName" column="purpose_name"></result>
+    </resultMap>
+
+    <sql id="tablename">
+       purpose
+    </sql>
+
+    <sql id="tablecolunm">
+        purpose_code,purpose_name
+    </sql>
+
+    <sql id="prams">
+        #{purposeCode},#{purposeName}
+    </sql>
+
+    <insert id="InsertOne" parameterType="model.Purpose">
+        INSERT INTO <include refid="tablename"></include>
+        (
+            <include refid="tablecolunm"></include>
+        )
+        values (
+           <include refid="prams"></include>
+        )
+    </insert>
+
+    <update id="UpdateOne" parameterType="java.lang.String">
+        UPDATE <include refid="tablename"></include> SET
+        <if test="p3!=null">
+            purpose_name=#{p3}
+        </if>
+        WHERE purpose_code=#{p1}
+    </update>
+
+    <delete id="DelectOne" parameterType="java.lang.String">
+        DELETE FROM <include refid="tablename"></include> WHERE purpose_code=#{purpose} OR  purpose_name=#{purpose}
+    </delete>
+
+    <select id="SelectAll" parameterType="java.lang.String" resultType="model.Purpose" resultMap="result">
+        SELECT * FROM <include refid="tablename"></include>
+    </select>
+
+    <select id="SelectOne" parameterType="java.lang.String" resultType="model.Purpose" resultMap="result">
+        SELECT * FROM <include refid="tablename"></include> WHERE purpose_code=#{purpose} OR purpose_name=#{purpose}
+    </select>
+
+
+</mapper>

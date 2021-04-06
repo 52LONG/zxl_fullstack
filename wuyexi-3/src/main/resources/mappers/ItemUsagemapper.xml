@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="dao.ItemUsageDao">
+
+    <resultMap id="result" type="model.ItemUsage">
+        <id property="itemCode" column="item_code"></id>
+        <result property="purposeCode" column="purpose_code"></result>
+        <result property="pursposeName" column="purpose_name"></result>
+        <result property="note" column="note"></result>
+    </resultMap>
+
+    <sql id="tablename">
+        item_usage
+    </sql>
+
+    <sql id="tablecolunm">
+        item_code,purpose_code,purpose_name,note
+    </sql>
+
+    <sql id="params">
+        #{itemCode},#{purposeCode},#{pursposeName},#{note}
+    </sql>
+
+    <insert id="InsertOne" parameterType="model.ItemUsage">
+        INSERT INTO <include refid="tablename"></include>
+        (
+            <include refid="tablecolunm"></include>
+        )
+        VALUES
+        (
+            <include refid="params"></include>
+        )
+    </insert>
+
+    <update id="UpdateOne">
+        UPDATE  <include refid="tablename"></include> SET
+        purpose_code=#{purposeCode},purpose_name=#{pursposeName},note=#{note}
+        WHERE item_code=#{itemCode}
+    </update>
+
+    <delete id="DeleteOne" parameterType="java.lang.String">
+        DELETE FROM <include refid="tablename"></include> WHERE item_code=#{itemusage}
+    </delete>
+
+    <select id="SelectOne" resultType="model.ItemUsage" resultMap="result" parameterType="java.lang.String">
+        SELECT * FROM <include refid="tablename"></include> WHERE item_code=#{itemusage}
+    </select>
+
+    <select id="SelectAll" resultType="model.ItemUsage" resultMap="result">
+        SELECT * FROM <include refid="tablename"></include>
+    </select>
+
+
+</mapper>

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="dao.ItemUsepartmentDao">
+
+    <resultMap id="result" type="model.ItemUsepartment">
+        <id property="itemCode" column="item_code"></id>
+        <result property="departmentCode" column="department_code"></result>
+        <result property="departmentName" column="department_name"></result>
+        <result property="beginUseTime" column="begin_use_time"></result>
+        <result property="endUseTime" column="end_use_time"></result>
+        <result property="note" column="note"></result>
+    </resultMap>
+
+    <sql id="tablename">
+        item_usepartment
+    </sql>
+
+    <sql id="tablecolunm">
+        item_code,department_code,department_name,begin_use_time,end_use_time,note
+    </sql>
+
+    <sql id="params">
+        #{itemCode},#{departmentCode},#{departmentName},#{beginUseTime},#{endUseTime},#{note}
+    </sql>
+    <insert id="InsertOne" parameterType="model.ItemUsepartment">
+        INSERT INTO <include refid="tablename"></include>
+        (
+            <include refid="tablecolunm"></include>
+        )
+        VALUES
+        (
+            <include refid="params"></include>
+        )
+    </insert>
+    <update id="UpdateOne" parameterType="model.ItemUsepartment">
+        UPDATE <include refid="tablename"></include> SET
+        department_code=#{departmentCode},department_name=#{departmentName},begin_use_time=#{beginUseTime},end_use_time=#{endUseTime},note=#{note}
+        WHERE item_code=#{itemCode}
+    </update>
+
+    <delete id="DeleteOne" parameterType="java.lang.String">
+        DELETE FROM <include refid="tablename"></include> WHERE item_code=#{itemusedepartment}
+    </delete>
+
+    <select id="SelectOne" resultType="model.ItemUsepartment" resultMap="result" parameterType="java.lang.String">
+        SELECT * FROM <include refid="tablename"></include>  WHERE item_code=#{itemusedepartment}
+    </select>
+
+    <select id="SelectAll" resultType="model.ItemUsepartment" resultMap="result">
+        SELECT * FROM <include refid="tablename"></include>
+    </select>
+
+
+</mapper>

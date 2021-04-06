@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="dao.EmployeeDao">
+
+    <resultMap id="result" type="model.Employee">
+        <id property="id" column="id"></id>
+        <result property="name" column="name"></result>
+        <result property="gender" column="gender"></result>
+        <result property="password" column="password"></result>
+        <result property="emid" column="emid"></result>
+        <result property="emdepartment" column="emdepartment"></result>
+        <result property="bankCard" column="bank_card"></result>
+        <result property="address" column="address"></result>
+        <result property="phone" column="phone"></result>
+        <result property="workphone" column="workphone"></result>
+        <result property="ClientCode" column="client_code"></result>
+        <result property="educationBackground" column="education_background"></result>
+        <result property="incumbency" column="incumbency"></result>
+        <result property="idCard" column="id_card"></result>
+    </resultMap>
+
+
+    <sql id="tablename">
+        employee
+    </sql>
+
+    <sql id="tablecolunm">
+        id,name,gender,password,emid,emdepartment,phone,workphone,education_background,
+        incumbency,id_card,bank_card,address,marriage,client_code
+    </sql>
+
+    <sql id="params">
+        #{id},#{name},#{gender},#{password},#{emid},#{emdepartment},#{phone},#{workphone},#{educationBackground},
+        #{incumbency},#{idCard},#{bankCard},#{address},#{marriage},#{ClientCode}
+    </sql>
+
+    <insert id="InsertOne" parameterType="model.Employee">
+        INSERT INTO <include refid="tablename"></include>
+        (
+            <include refid="tablecolunm"></include>
+        )
+        VALUES
+        (
+            <include refid="params"></include>
+        )
+    </insert>
+
+    <update id="UpdateOne" parameterType="model.Employee">
+        UPDATE <include refid="tablename"></include> SET
+        emid=#{emid},emdepartment=#{emdepartment},password=#{password},incumbency=#{incumbency},client_code=#{ClientCode}
+        WHERE id=#{id}
+    </update>
+
+    <delete id="DeleteOne" parameterType="java.lang.String">
+        DELETE FROM <include refid="tablename"></include> WHERE id=#{employee}
+    </delete>
+
+    <select id="login" resultType="model.Employee" parameterType="java.lang.String">
+        SELECT * FROM <include refid="tablename"></include> where id=#{param1} AND password=#{param2}
+    </select>
+
+    <select id="SelectOne" resultType="model.Item" parameterType="java.lang.String" resultMap="result">
+        SELECT * FROM <include refid="tablename"></include> WHERE id=#{employee}
+    </select>
+
+    <select id="SelectAll" resultType="model.Item" resultMap="result">
+        SELECT * FROM <include refid="tablename"></include>
+    </select>
+
+
+
+
+</mapper>

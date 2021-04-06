@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="dao.ChargeRatesDao">
+  <resultMap id="BaseResultMap" type="model.ChargeRates">
+    <id column="charge_code" jdbcType="VARCHAR" property="chargeCode" />
+    <result column="price" jdbcType="FLOAT" property="price" />
+    <result column="charge_unit" jdbcType="VARCHAR" property="chargeUnit" />
+    <result column="charge_way" jdbcType="VARCHAR" property="chargeWay" />
+    <result column="charge_cycle" jdbcType="INTEGER" property="chargeCycle" />
+    <result column="active_time" jdbcType="TIMESTAMP" property="activeTime" />
+    <result column="disabled_time" jdbcType="TIMESTAMP" property="disabledTime" />
+    <result column="incumbency" jdbcType="INTEGER" property="incumbency" />
+    <result column="incumbency_desc" jdbcType="VARCHAR" property="incumbencyDesc" />
+    <result column="incumbency_begin" jdbcType="INTEGER" property="incumbencyBegin" />
+    <result column="incumbency_end" jdbcType="INTEGER" property="incumbencyEnd" />
+    <result column="note" jdbcType="VARCHAR" property="note" />
+  </resultMap>
+
+
+  <sql id="Base_Column_List">
+    charge_code, price, charge_unit, charge_way, charge_cycle, active_time, disabled_time, 
+    incumbency, incumbency_desc, incumbency_begin, incumbency_end, note
+  </sql>
+
+
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from charge_rates
+    where charge_code = #{chargeCode,jdbcType=VARCHAR}
+  </select>
+
+
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from charge_rates
+    where charge_code = #{chargeCode,jdbcType=VARCHAR}
+  </delete>
+
+
+  <insert id="insert"  parameterType="model.ChargeRates" >
+    insert into charge_rates (charge_code,price, charge_unit, charge_way,
+      charge_cycle, active_time, disabled_time, 
+      incumbency, incumbency_desc, incumbency_begin, 
+      incumbency_end, note)
+    values (#{chargeCode,jdbcType=VARCHAR},#{price,jdbcType=FLOAT}, #{chargeUnit,jdbcType=VARCHAR}, #{chargeWay,jdbcType=VARCHAR},
+      #{chargeCycle,jdbcType=INTEGER}, #{activeTime,jdbcType=TIMESTAMP}, #{disabledTime,jdbcType=TIMESTAMP}, 
+      #{incumbency,jdbcType=INTEGER}, #{incumbencyDesc,jdbcType=VARCHAR}, #{incumbencyBegin,jdbcType=INTEGER}, 
+      #{incumbencyEnd,jdbcType=INTEGER}, #{note,jdbcType=VARCHAR})
+  </insert>
+
+  <insert id="insertSelective"  parameterType="model.ChargeRates" >
+    insert into charge_rates
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="chargeCode != null">
+        charge_code,
+      </if>
+      <if test="price != null">
+        price,
+      </if>
+      <if test="chargeUnit != null">
+        charge_unit,
+      </if>
+      <if test="chargeWay != null">
+        charge_way,
+      </if>
+      <if test="chargeCycle != null">
+        charge_cycle,
+      </if>
+      <if test="activeTime != null">
+        active_time,
+      </if>
+      <if test="disabledTime != null">
+        disabled_time,
+      </if>
+      <if test="incumbency != null">
+        incumbency,
+      </if>
+      <if test="incumbencyDesc != null">
+        incumbency_desc,
+      </if>
+      <if test="incumbencyBegin != null">
+        incumbency_begin,
+      </if>
+      <if test="incumbencyEnd != null">
+        incumbency_end,
+      </if>
+      <if test="note != null">
+        note,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="chargeCode != null">
+        #{chargeCode,jdbcType=FLOAT},
+      </if>
+      <if test="price != null">
+        #{price,jdbcType=FLOAT},
+      </if>
+      <if test="chargeUnit != null">
+        #{chargeUnit,jdbcType=VARCHAR},
+      </if>
+      <if test="chargeWay != null">
+        #{chargeWay,jdbcType=VARCHAR},
+      </if>
+      <if test="chargeCycle != null">
+        #{chargeCycle,jdbcType=INTEGER},
+      </if>
+      <if test="activeTime != null">
+        #{activeTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="disabledTime != null">
+        #{disabledTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="incumbency != null">
+        #{incumbency,jdbcType=INTEGER},
+      </if>
+      <if test="incumbencyDesc != null">
+        #{incumbencyDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="incumbencyBegin != null">
+        #{incumbencyBegin,jdbcType=INTEGER},
+      </if>
+      <if test="incumbencyEnd != null">
+        #{incumbencyEnd,jdbcType=INTEGER},
+      </if>
+      <if test="note != null">
+        #{note,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+
+  <update id="updateByPrimaryKeySelective" parameterType="model.ChargeRates">
+    update charge_rates
+    <set>
+      <if test="price != null">
+        price = #{price,jdbcType=FLOAT},
+      </if>
+      <if test="chargeUnit != null">
+        charge_unit = #{chargeUnit,jdbcType=VARCHAR},
+      </if>
+      <if test="chargeWay != null">
+        charge_way = #{chargeWay,jdbcType=VARCHAR},
+      </if>
+      <if test="chargeCycle != null">
+        charge_cycle = #{chargeCycle,jdbcType=INTEGER},
+      </if>
+      <if test="activeTime != null">
+        active_time = #{activeTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="disabledTime != null">
+        disabled_time = #{disabledTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="incumbency != null">
+        incumbency = #{incumbency,jdbcType=INTEGER},
+      </if>
+      <if test="incumbencyDesc != null">
+        incumbency_desc = #{incumbencyDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="incumbencyBegin != null">
+        incumbency_begin = #{incumbencyBegin,jdbcType=INTEGER},
+      </if>
+      <if test="incumbencyEnd != null">
+        incumbency_end = #{incumbencyEnd,jdbcType=INTEGER},
+      </if>
+      <if test="note != null">
+        note = #{note,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where charge_code = #{chargeCode,jdbcType=VARCHAR}
+  </update>
+
+
+  <update id="updateByPrimaryKey" parameterType="model.ChargeRates">
+    update charge_rates
+    set price = #{price,jdbcType=FLOAT},
+      charge_unit = #{chargeUnit,jdbcType=VARCHAR},
+      charge_way = #{chargeWay,jdbcType=VARCHAR},
+      charge_cycle = #{chargeCycle,jdbcType=INTEGER},
+      active_time = #{activeTime,jdbcType=TIMESTAMP},
+      disabled_time = #{disabledTime,jdbcType=TIMESTAMP},
+      incumbency = #{incumbency,jdbcType=INTEGER},
+      incumbency_desc = #{incumbencyDesc,jdbcType=VARCHAR},
+      incumbency_begin = #{incumbencyBegin,jdbcType=INTEGER},
+      incumbency_end = #{incumbencyEnd,jdbcType=INTEGER},
+      note = #{note,jdbcType=VARCHAR}
+    where charge_code = #{chargeCode,jdbcType=VARCHAR}
+  </update>
+
+</mapper>

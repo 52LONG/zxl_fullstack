@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="dao.SuiteUsageDao">
+
+    <resultMap id="result" type="model.SuiteUsage">
+        <id property="suiteCode" column="suite_code"></id>
+        <result property="purposeCode" column="purpose_code"></result>
+        <result property="purposeName" column="purpose_name"></result>
+        <result property="beginUseTime" column="begin_use_time"></result>
+        <result property="endUseTime" column="end_use_time"></result>
+        <result property="nohStatus" column="noh_status"></result>
+        <result property="note" column="note"></result>
+    </resultMap>
+
+    <sql id="tablename">
+        suite_usage
+    </sql>
+
+    <sql id="tablecolunm">
+        suite_code,purpose_code,purpose_name,begin_use_time,end_use_time,noh_status,note
+    </sql>
+
+    <sql id="params">
+        #{suiteCode},#{purposeCode},#{purposeName},#{beginUseTime},#{endUseTime},#{nohStatus},#{note}
+    </sql>
+
+
+
+    <insert id="InsertOne" parameterType="model.SuiteUsage">
+        INSERT INTO <include refid="tablename"></include>
+        (
+            <include refid="tablecolunm"></include>
+        )
+        VALUES
+        (
+            <include refid="params"></include>
+        )
+    </insert>
+
+    <update id="UpdateOne" parameterType="model.SuiteUsage">
+        UPDATE <include refid="tablename"></include> SET
+        purpose_code=#{purposeCode},purpose_name=#{purposeName},begin_use_time=#{beginUseTime},
+        end_use_time=#{endUseTime},noh_status=#{nohStatus},note=#{note}
+        WHERE  suite_code=#{suite}
+    </update>
+
+    <delete id="DeleteOne">
+        DELETE FROM <include refid="tablename"></include> WHERE  suite_code=#{suite}
+    </delete>
+
+    <select id="SelectOne" resultType="model.SuiteUsage" resultMap="result" parameterType="java.lang.String">
+        SELECT * FROM <include refid="tablename"></include> WHERE suite_code=#{suiteusage}
+    </select>
+
+
+
+
+
+</mapper>

@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="dao.BunkUsageDao">
+  <resultMap id="BaseResultMap" type="model.BunkUsage">
+    <id column="bunk_code" jdbcType="VARCHAR" property="bunkCode" />
+    <result column="use_status" jdbcType="INTEGER" property="useStatus" />
+    <result column="use_begin_time" jdbcType="TIMESTAMP" property="useBeginTime" />
+    <result column="use_end_time" jdbcType="TIMESTAMP" property="useEndTime" />
+    <result column="noh_status" jdbcType="INTEGER" property="nohStatus" />
+    <result column="note" jdbcType="VARCHAR" property="note" />
+  </resultMap>
+
+
+  <sql id="Base_Column_List">
+    bunk_code, use_status, use_begin_time, use_end_time, noh_status, note
+  </sql>
+
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from bunk_usage
+    where bunk_code = #{bunkCode,jdbcType=VARCHAR}
+  </select>
+
+
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from bunk_usage
+    where bunk_code = #{bunkCode,jdbcType=VARCHAR}
+  </delete>
+
+
+  <insert id="insert" parameterType="model.BunkUsage" >
+    insert into bunk_usage (bunk_code,use_status, use_begin_time, use_end_time,
+      noh_status, note)
+    values (#{bunkCode,jdbcType=VARCHAR},#{useStatus,jdbcType=INTEGER}, #{useBeginTime,jdbcType=TIMESTAMP}, #{useEndTime,jdbcType=TIMESTAMP},
+      #{nohStatus,jdbcType=INTEGER}, #{note,jdbcType=VARCHAR})
+  </insert>
+
+
+  <insert id="insertSelective"  parameterType="model.BunkUsage">
+    insert into bunk_usage
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="bunkCode != null">
+        bunk_code,
+      </if>
+      <if test="useStatus != null">
+        use_status,
+      </if>
+      <if test="useBeginTime != null">
+        use_begin_time,
+      </if>
+      <if test="useEndTime != null">
+        use_end_time,
+      </if>
+      <if test="nohStatus != null">
+        noh_status,
+      </if>
+      <if test="note != null">
+        note,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="bunkCode != null">
+        #{bunkCode,jdbcType=VARCHAR},
+      </if>
+      <if test="useStatus != null">
+        #{useStatus,jdbcType=INTEGER},
+      </if>
+      <if test="useBeginTime != null">
+        #{useBeginTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="useEndTime != null">
+        #{useEndTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="nohStatus != null">
+        #{nohStatus,jdbcType=INTEGER},
+      </if>
+      <if test="note != null">
+        #{note,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+
+
+  <update id="updateByPrimaryKeySelective" parameterType="model.BunkUsage">
+    update bunk_usage
+    <set>
+      <if test="useStatus != null">
+        use_status = #{useStatus,jdbcType=INTEGER},
+      </if>
+      <if test="useBeginTime != null">
+        use_begin_time = #{useBeginTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="useEndTime != null">
+        use_end_time = #{useEndTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="nohStatus != null">
+        noh_status = #{nohStatus,jdbcType=INTEGER},
+      </if>
+      <if test="note != null">
+        note = #{note,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where bunk_code = #{bunkCode,jdbcType=VARCHAR}
+  </update>
+
+
+  <update id="updateByPrimaryKey" parameterType="model.BunkUsage">
+    update bunk_usage
+    set use_status = #{useStatus,jdbcType=INTEGER},
+      use_begin_time = #{useBeginTime,jdbcType=TIMESTAMP},
+      use_end_time = #{useEndTime,jdbcType=TIMESTAMP},
+      noh_status = #{nohStatus,jdbcType=INTEGER},
+      note = #{note,jdbcType=VARCHAR}
+    where bunk_code = #{bunkCode,jdbcType=VARCHAR}
+  </update>
+</mapper>

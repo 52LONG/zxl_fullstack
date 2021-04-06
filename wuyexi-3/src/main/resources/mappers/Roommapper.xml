@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="dao.RoomDao">
+  <resultMap id="BaseResultMap" type="model.Room">
+    <id column="room_code" jdbcType="VARCHAR" property="roomCode" />
+    <result column="region_code" jdbcType="VARCHAR" property="regionCode" />
+    <result column="item_code" jdbcType="VARCHAR" property="itemCode" />
+    <result column="building_code" jdbcType="VARCHAR" property="buildingCode" />
+    <result column="floor" jdbcType="VARCHAR" property="floor" />
+    <result column="suite_code" jdbcType="VARCHAR" property="suiteCode" />
+    <result column="room_name" jdbcType="VARCHAR" property="roomName" />
+    <result column="available" jdbcType="INTEGER" property="available" />
+    <result column="available_area" jdbcType="FLOAT" property="availableArea" />
+    <result column="rent_area" jdbcType="FLOAT" property="rentArea" />
+    <result column="bnnk_num" jdbcType="INTEGER" property="bnnkNum" />
+    <result column="use_status" jdbcType="INTEGER" property="useStatus" />
+    <result column="purpose_code" jdbcType="VARCHAR" property="purposeCode" />
+    <result column="note" jdbcType="VARCHAR" property="note" />
+  </resultMap>
+
+
+  <sql id="Base_Column_List">
+    room_code, region_code, item_code, building_code, floor, suite_code, room_name,
+    available, available_area, rent_area, bnnk_num, use_status, purpose_code, note
+  </sql>
+
+
+
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from room
+    where room_code = #{roomCode,jdbcType=VARCHAR}
+  </select>
+
+
+    <select id="selectbysuite" resultType="model.Room" resultMap="BaseResultMap">
+      SELECT * FROM room WHERE suite_code=#{suitecode}
+    </select>
+
+  <select id="selectby_suite_building_item_region" resultType="model.Room" resultMap="BaseResultMap">
+    SELECT * FROM room WHERE suite_code=#{p1} AND building_code=#{p2} AND item_code=#{p3} AND region_code=#{p4}
+  </select>
+
+
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from room
+    where room_code = #{roomCode,jdbcType=VARCHAR}
+  </delete>
+
+
+
+  <insert id="insert"  parameterType="model.Room">
+    insert into room (room_code,region_code, item_code, building_code,
+      floor, suite_code, room_name,
+      available, available_area, rent_area, 
+      bnnk_num, use_status, purpose_code, 
+      note)
+    values (#{roomCode,jdbcType=VARCHAR},#{regionCode,jdbcType=VARCHAR}, #{itemCode,jdbcType=VARCHAR}, #{buildingCode,jdbcType=VARCHAR},
+      #{floor,jdbcType=VARCHAR}, #{suiteCode,jdbcType=VARCHAR}, #{roomName,jdbcType=VARCHAR}, 
+      #{available,jdbcType=INTEGER}, #{availableArea,jdbcType=FLOAT}, #{rentArea,jdbcType=FLOAT}, 
+      #{bnnkNum,jdbcType=INTEGER}, #{useStatus,jdbcType=INTEGER}, #{purposeCode,jdbcType=VARCHAR}, 
+      #{note,jdbcType=VARCHAR})
+  </insert>
+
+
+
+  <insert id="insertSelective" keyColumn="room_code" keyProperty="roomCode" parameterType="model.Room" useGeneratedKeys="true">
+    insert into room
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="roomCode != null">
+        room_code,
+      </if>
+      <if test="regionCode != null">
+        region_code,
+      </if>
+      <if test="itemCode != null">
+        item_code,
+      </if>
+      <if test="buildingCode != null">
+        building_code,
+      </if>
+      <if test="floor != null">
+        `floor`,
+      </if>
+      <if test="suiteCode != null">
+        suite_code,
+      </if>
+      <if test="roomName != null">
+        room_name,
+      </if>
+      <if test="available != null">
+        available,
+      </if>
+      <if test="availableArea != null">
+        available_area,
+      </if>
+      <if test="rentArea != null">
+        rent_area,
+      </if>
+      <if test="bnnkNum != null">
+        bnnk_num,
+      </if>
+      <if test="useStatus != null">
+        use_status,
+      </if>
+      <if test="purposeCode != null">
+        purpose_code,
+      </if>
+      <if test="note != null">
+        note,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="roomCode != null">
+        #{roomCode,jdbcType=VARCHAR},
+      </if>
+      <if test="regionCode != null">
+        #{regionCode,jdbcType=VARCHAR},
+      </if>
+      <if test="itemCode != null">
+        #{itemCode,jdbcType=VARCHAR},
+      </if>
+      <if test="buildingCode != null">
+        #{buildingCode,jdbcType=VARCHAR},
+      </if>
+      <if test="floor != null">
+        #{floor,jdbcType=VARCHAR},
+      </if>
+      <if test="suiteCode != null">
+        #{suiteCode,jdbcType=VARCHAR},
+      </if>
+      <if test="roomName != null">
+        #{roomName,jdbcType=VARCHAR},
+      </if>
+      <if test="available != null">
+        #{available,jdbcType=INTEGER},
+      </if>
+      <if test="availableArea != null">
+        #{availableArea,jdbcType=FLOAT},
+      </if>
+      <if test="rentArea != null">
+        #{rentArea,jdbcType=FLOAT},
+      </if>
+      <if test="bnnkNum != null">
+        #{bnnkNum,jdbcType=INTEGER},
+      </if>
+      <if test="useStatus != null">
+        #{useStatus,jdbcType=INTEGER},
+      </if>
+      <if test="purposeCode != null">
+        #{purposeCode,jdbcType=VARCHAR},
+      </if>
+      <if test="note != null">
+        #{note,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+
+
+  <update id="updateByPrimaryKeySelective" parameterType="model.Room">
+    update room
+    <set>
+      <if test="regionCode != null">
+        region_code = #{regionCode,jdbcType=VARCHAR},
+      </if>
+      <if test="itemCode != null">
+        item_code = #{itemCode,jdbcType=VARCHAR},
+      </if>
+      <if test="buildingCode != null">
+        building_code = #{buildingCode,jdbcType=VARCHAR},
+      </if>
+      <if test="floor != null">
+        floor = #{floor,jdbcType=VARCHAR},
+      </if>
+      <if test="suiteCode != null">
+        suite_code = #{suiteCode,jdbcType=VARCHAR},
+      </if>
+      <if test="roomName != null">
+        room_name = #{roomName,jdbcType=VARCHAR},
+      </if>
+      <if test="available != null">
+        available = #{available,jdbcType=INTEGER},
+      </if>
+      <if test="availableArea != null">
+        available_area = #{availableArea,jdbcType=FLOAT},
+      </if>
+      <if test="rentArea != null">
+        rent_area = #{rentArea,jdbcType=FLOAT},
+      </if>
+      <if test="bnnkNum != null">
+        bnnk_num = #{bnnkNum,jdbcType=INTEGER},
+      </if>
+      <if test="useStatus != null">
+        use_status = #{useStatus,jdbcType=INTEGER},
+      </if>
+      <if test="purposeCode != null">
+        purpose_code = #{purposeCode,jdbcType=VARCHAR},
+      </if>
+      <if test="note != null">
+        note = #{note,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where room_code = #{roomCode,jdbcType=VARCHAR}
+  </update>
+
+
+
+  <update id="updateByPrimaryKey" parameterType="model.Room">
+    update room
+    set region_code = #{regionCode,jdbcType=VARCHAR},
+      item_code = #{itemCode,jdbcType=VARCHAR},
+      building_code = #{buildingCode,jdbcType=VARCHAR},
+      floor = #{floor,jdbcType=VARCHAR},
+      suite_code = #{suiteCode,jdbcType=VARCHAR},
+      room_name = #{roomName,jdbcType=VARCHAR},
+      available = #{available,jdbcType=INTEGER},
+      available_area = #{availableArea,jdbcType=FLOAT},
+      rent_area = #{rentArea,jdbcType=FLOAT},
+      bnnk_num = #{bnnkNum,jdbcType=INTEGER},
+      use_status = #{useStatus,jdbcType=INTEGER},
+      purpose_code = #{purposeCode,jdbcType=VARCHAR},
+      note = #{note,jdbcType=VARCHAR}
+    where room_code = #{roomCode,jdbcType=VARCHAR}
+  </update>
+
+
+</mapper>

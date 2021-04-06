@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="dao.SupplierDao">
+
+    <resultMap id="result" type="model.Supplier">
+        <id property="supplierCode" column="supplier_code"></id>
+        <result property="supplierName" column="supplier_name"></result>
+    </resultMap>
+
+    <sql id="tablename">
+        supplier
+    </sql>
+
+    <sql id="tablecolunm">
+        supplier_code,supplier_name
+    </sql>
+
+    <sql id="prams">
+        #{supplierCode},#{supplierName}
+    </sql>
+
+    <insert id="InsertOne" parameterType="model.Supplier">
+        INSERT INTO <include refid="tablename"></include>
+        (<include refid="tablecolunm"></include>)
+        values(
+            <include refid="prams"></include>
+        )
+    </insert>
+
+    <update id="UpdateOne">
+        UPDATE <include refid="tablename"></include> SET
+        <if test="suppliernewcode!=null">
+            supplier_code=#{suppliernewcode}
+        </if>
+        <if test="suppliername!=null">
+            supplier_name=#{suppliername}
+        </if>
+        WHERE supplier_code=#{suppliercode}
+    </update>
+
+    <delete id="DeleteOne" parameterType="java.lang.String">
+        DELETE FROM <include refid="tablename"></include> WHERE supplier_code=#{supplier} OR supplier_name=#{supplier}
+    </delete>
+
+    <select id="SelectOne" resultType="model.Supplier" parameterType="java.lang.String" resultMap="result">
+        SELECT * FROM <include refid="tablename"></include>  WHERE supplier_code=#{supplier} OR supplier_name=#{supplier}
+    </select>
+
+    <select id="SelectAll" resultType="model.Supplier" resultMap="result">
+        SELECT * FROM <include refid="tablename"></include>
+    </select>
+
+
+</mapper>

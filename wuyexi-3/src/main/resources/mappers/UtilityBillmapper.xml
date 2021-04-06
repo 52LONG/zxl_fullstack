@@ -1,0 +1,265 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="dao.UtilityBillDao">
+  <resultMap id="BaseResultMap" type="model.UtilityBill">
+    <id column="suite_code" jdbcType="VARCHAR" property="suiteCode" />
+    <result column="region_code" jdbcType="VARCHAR" property="regionCode" />
+    <result column="region_name" jdbcType="VARCHAR" property="regionName" />
+    <result column="item_code" jdbcType="VARCHAR" property="itemCode" />
+    <result column="item_name" jdbcType="VARCHAR" property="itemName" />
+    <result column="propertymc_code" jdbcType="VARCHAR" property="propertymcCode" />
+    <result column="propertymc_name" jdbcType="VARCHAR" property="propertymcName" />
+    <result column="building_code" jdbcType="VARCHAR" property="buildingCode" />
+    <result column="building_name" jdbcType="VARCHAR" property="buildingName" />
+    <result column="building_floor" jdbcType="VARCHAR" property="buildingFloor" />
+    <result column="suite_name" jdbcType="VARCHAR" property="suiteName" />
+    <result column="lastmonth_water_use" jdbcType="INTEGER" property="lastmonthWaterUse" />
+    <result column="lastmonth_electricity_use" jdbcType="INTEGER" property="lastmonthElectricityUse" />
+    <result column="thismonth_water_use" jdbcType="INTEGER" property="thismonthWaterUse" />
+    <result column="thismonth_electricity_use" jdbcType="INTEGER" property="thismonthElectricityUse" />
+    <result column="water_bill" jdbcType="FLOAT" property="waterBill" />
+    <result column="electricity_bill" jdbcType="FLOAT" property="electricityBill" />
+    <result column="paid_status" jdbcType="INTEGER" property="paidStatus" />
+    <result column="time" jdbcType="TIMESTAMP" property="time" />
+  </resultMap>
+
+
+  <sql id="Base_Column_List">
+    suite_code, region_code, region_name, item_code, item_name, propertymc_code, propertymc_name, 
+    building_code, building_name, building_floor, suite_name, lastmonth_water_use, lastmonth_electricity_use, 
+    thismonth_water_use, thismonth_electricity_use, water_bill, electricity_bill, paid_status, 
+    `time`
+  </sql>
+
+
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from utility_bill
+    where suite_code = #{suiteCode,jdbcType=VARCHAR}
+  </select>
+
+
+
+
+  <insert id="insert" parameterType="model.UtilityBill">
+    insert into utility_bill (suite_code,region_code, region_name, item_code,
+      item_name, propertymc_code, propertymc_name, 
+      building_code, building_name, building_floor, 
+      suite_name, lastmonth_water_use, lastmonth_electricity_use, 
+      thismonth_water_use, thismonth_electricity_use, 
+      water_bill, electricity_bill, paid_status, 
+      `time`)
+    values (#{suiteCode,jdbcType=VARCHAR},#{regionCode,jdbcType=VARCHAR}, #{regionName,jdbcType=VARCHAR}, #{itemCode,jdbcType=VARCHAR},
+      #{itemName,jdbcType=VARCHAR}, #{propertymcCode,jdbcType=VARCHAR}, #{propertymcName,jdbcType=VARCHAR}, 
+      #{buildingCode,jdbcType=VARCHAR}, #{buildingName,jdbcType=VARCHAR}, #{buildingFloor,jdbcType=VARCHAR}, 
+      #{suiteName,jdbcType=VARCHAR}, #{lastmonthWaterUse,jdbcType=INTEGER}, #{lastmonthElectricityUse,jdbcType=INTEGER}, 
+      #{thismonthWaterUse,jdbcType=INTEGER}, #{thismonthElectricityUse,jdbcType=INTEGER}, 
+      #{waterBill,jdbcType=FLOAT}, #{electricityBill,jdbcType=FLOAT}, #{paidStatus,jdbcType=INTEGER}, 
+      #{time,jdbcType=TIMESTAMP})
+  </insert>
+
+
+  <insert id="insertSelective" keyColumn="suite_code" keyProperty="suiteCode" parameterType="model.UtilityBill" useGeneratedKeys="true">
+    insert into utility_bill
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="regionCode != null">
+        region_code,
+      </if>
+      <if test="regionName != null">
+        region_name,
+      </if>
+      <if test="itemCode != null">
+        item_code,
+      </if>
+      <if test="itemName != null">
+        item_name,
+      </if>
+      <if test="propertymcCode != null">
+        propertymc_code,
+      </if>
+      <if test="propertymcName != null">
+        propertymc_name,
+      </if>
+      <if test="buildingCode != null">
+        building_code,
+      </if>
+      <if test="buildingName != null">
+        building_name,
+      </if>
+      <if test="buildingFloor != null">
+        building_floor,
+      </if>
+      <if test="suiteName != null">
+        suite_name,
+      </if>
+      <if test="lastmonthWaterUse != null">
+        lastmonth_water_use,
+      </if>
+      <if test="lastmonthElectricityUse != null">
+        lastmonth_electricity_use,
+      </if>
+      <if test="thismonthWaterUse != null">
+        thismonth_water_use,
+      </if>
+      <if test="thismonthElectricityUse != null">
+        thismonth_electricity_use,
+      </if>
+      <if test="waterBill != null">
+        water_bill,
+      </if>
+      <if test="electricityBill != null">
+        electricity_bill,
+      </if>
+      <if test="paidStatus != null">
+        paid_status,
+      </if>
+      <if test="time != null">
+        time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="regionCode != null">
+        #{regionCode,jdbcType=VARCHAR},
+      </if>
+      <if test="regionName != null">
+        #{regionName,jdbcType=VARCHAR},
+      </if>
+      <if test="itemCode != null">
+        #{itemCode,jdbcType=VARCHAR},
+      </if>
+      <if test="itemName != null">
+        #{itemName,jdbcType=VARCHAR},
+      </if>
+      <if test="propertymcCode != null">
+        #{propertymcCode,jdbcType=VARCHAR},
+      </if>
+      <if test="propertymcName != null">
+        #{propertymcName,jdbcType=VARCHAR},
+      </if>
+      <if test="buildingCode != null">
+        #{buildingCode,jdbcType=VARCHAR},
+      </if>
+      <if test="buildingName != null">
+        #{buildingName,jdbcType=VARCHAR},
+      </if>
+      <if test="buildingFloor != null">
+        #{buildingFloor,jdbcType=VARCHAR},
+      </if>
+      <if test="suiteName != null">
+        #{suiteName,jdbcType=VARCHAR},
+      </if>
+      <if test="lastmonthWaterUse != null">
+        #{lastmonthWaterUse,jdbcType=INTEGER},
+      </if>
+      <if test="lastmonthElectricityUse != null">
+        #{lastmonthElectricityUse,jdbcType=INTEGER},
+      </if>
+      <if test="thismonthWaterUse != null">
+        #{thismonthWaterUse,jdbcType=INTEGER},
+      </if>
+      <if test="thismonthElectricityUse != null">
+        #{thismonthElectricityUse,jdbcType=INTEGER},
+      </if>
+      <if test="waterBill != null">
+        #{waterBill,jdbcType=FLOAT},
+      </if>
+      <if test="electricityBill != null">
+        #{electricityBill,jdbcType=FLOAT},
+      </if>
+      <if test="paidStatus != null">
+        #{paidStatus,jdbcType=INTEGER},
+      </if>
+      <if test="time != null">
+        #{time,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+
+
+  <update id="updateByPrimaryKeySelective" parameterType="model.UtilityBill">
+    update utility_bill
+    <set>
+      <if test="regionCode != null">
+        region_code = #{regionCode,jdbcType=VARCHAR},
+      </if>
+      <if test="regionName != null">
+        region_name = #{regionName,jdbcType=VARCHAR},
+      </if>
+      <if test="itemCode != null">
+        item_code = #{itemCode,jdbcType=VARCHAR},
+      </if>
+      <if test="itemName != null">
+        item_name = #{itemName,jdbcType=VARCHAR},
+      </if>
+      <if test="propertymcCode != null">
+        propertymc_code = #{propertymcCode,jdbcType=VARCHAR},
+      </if>
+      <if test="propertymcName != null">
+        propertymc_name = #{propertymcName,jdbcType=VARCHAR},
+      </if>
+      <if test="buildingCode != null">
+        building_code = #{buildingCode,jdbcType=VARCHAR},
+      </if>
+      <if test="buildingName != null">
+        building_name = #{buildingName,jdbcType=VARCHAR},
+      </if>
+      <if test="buildingFloor != null">
+        building_floor = #{buildingFloor,jdbcType=VARCHAR},
+      </if>
+      <if test="suiteName != null">
+        suite_name = #{suiteName,jdbcType=VARCHAR},
+      </if>
+      <if test="lastmonthWaterUse != null">
+        lastmonth_water_use = #{lastmonthWaterUse,jdbcType=INTEGER},
+      </if>
+      <if test="lastmonthElectricityUse != null">
+        lastmonth_electricity_use = #{lastmonthElectricityUse,jdbcType=INTEGER},
+      </if>
+      <if test="thismonthWaterUse != null">
+        thismonth_water_use = #{thismonthWaterUse,jdbcType=INTEGER},
+      </if>
+      <if test="thismonthElectricityUse != null">
+        thismonth_electricity_use = #{thismonthElectricityUse,jdbcType=INTEGER},
+      </if>
+      <if test="waterBill != null">
+        water_bill = #{waterBill,jdbcType=FLOAT},
+      </if>
+      <if test="electricityBill != null">
+        electricity_bill = #{electricityBill,jdbcType=FLOAT},
+      </if>
+      <if test="paidStatus != null">
+        paid_status = #{paidStatus,jdbcType=INTEGER},
+      </if>
+      <if test="time != null">
+        `time` = #{time,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where suite_code = #{suiteCode,jdbcType=VARCHAR}
+  </update>
+
+
+  <update id="updateByPrimaryKey" parameterType="model.UtilityBill">
+    update utility_bill
+    set region_code = #{regionCode,jdbcType=VARCHAR},
+      region_name = #{regionName,jdbcType=VARCHAR},
+      item_code = #{itemCode,jdbcType=VARCHAR},
+      item_name = #{itemName,jdbcType=VARCHAR},
+      propertymc_code = #{propertymcCode,jdbcType=VARCHAR},
+      propertymc_name = #{propertymcName,jdbcType=VARCHAR},
+      building_code = #{buildingCode,jdbcType=VARCHAR},
+      building_name = #{buildingName,jdbcType=VARCHAR},
+      building_floor = #{buildingFloor,jdbcType=VARCHAR},
+      suite_name = #{suiteName,jdbcType=VARCHAR},
+      lastmonth_water_use = #{lastmonthWaterUse,jdbcType=INTEGER},
+      lastmonth_electricity_use = #{lastmonthElectricityUse,jdbcType=INTEGER},
+      thismonth_water_use = #{thismonthWaterUse,jdbcType=INTEGER},
+      thismonth_electricity_use = #{thismonthElectricityUse,jdbcType=INTEGER},
+      water_bill = #{waterBill,jdbcType=FLOAT},
+      electricity_bill = #{electricityBill,jdbcType=FLOAT},
+      paid_status = #{paidStatus,jdbcType=INTEGER},
+      time = #{time,jdbcType=TIMESTAMP}
+    where suite_code = #{suiteCode,jdbcType=VARCHAR}
+  </update>
+
+</mapper>

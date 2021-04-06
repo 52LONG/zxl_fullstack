@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="dao.SuiteAccessDao">
+
+    <resultMap id="result" type="model.SuiteAccess">
+        <id property="suiteCode" column="suite_code"></id>
+        <result property="regionCode" column="region_code"></result>
+        <result property="itemCode" column="item_code"></result>
+        <result property="buildingCode" column="building_code"></result>
+        <result property="buildingFloor" column="building_floor"></result>
+        <result property="supplierCode" column="supplier_code"></result>
+        <result property="accessBeginTime" column="access_begin_time"></result>
+        <result property="accessEndTime" column="access_end_time"></result>
+        <result property="averagePrice" column="average_price"></result>
+        <result property="accessPrice" column="access_price"></result>
+        <result property="note" column="note"></result>
+    </resultMap>
+
+    <sql id="tablename">
+        suite_access
+    </sql>
+
+    <sql id="tablecolunm">
+        suite_code,region_code,item_code,building_code,building_floor,supplier_code,access_begin_time,
+        access_end_time,average_price,access_price,note
+    </sql>
+
+    <sql id="params">
+        #{suiteCode},#{regionCode},#{itemCode},#{buildingCode},#{buildingFloor},#{supplierCode},
+        #{accessBeginTime},#{accessEndTime}, #{averagePrice},#{accessPrice},#{note}
+    </sql>
+
+
+    <insert id="InsertOne" parameterType="model.SuiteUsage">
+        INSERT INTO <include refid="tablename"></include>
+        (
+        <include refid="tablecolunm"></include>
+        )
+        VALUES
+        (
+        <include refid="params"></include>
+        )
+    </insert>
+
+
+    <update id="UpdateOne" parameterType="model.SuiteAccess">
+        UPDATE <include refid="tablename"></include> SET
+        region_code=#{regionCode},item_code=#{itemCode},building_code=#{buildingCode},building_floor=#{buildingFloor},
+        supplier_code=#{supplierCode},access_begin_time=#{accessBeginTime},
+        access_end_time=#{accessEndTime},average_price=#{averagePrice},access_price=#{accessPrice},note=#{note}
+        WHERE suite_code=#{suite}
+    </update>
+
+    <delete id="DeleteOne" parameterType="java.lang.String">
+        DELETE FROM <include refid="tablename"></include> WHERE suite_code=#{suite}
+    </delete>
+
+    <select id="SelectOne" resultType="model.SuiteAccess" >
+       SELECT * FROM <include refid="tablename"></include> WHERE suite_code=#{suite}
+    </select>
+
+
+
+</mapper>

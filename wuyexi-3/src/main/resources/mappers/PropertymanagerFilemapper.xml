@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="dao.PropertymanagerFileDao">
+
+  <resultMap id="BaseResultMap" type="model.PropertymanagerFile">
+    <id column="id" jdbcType="VARCHAR" property="id" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="propertymc_code" jdbcType="VARCHAR" property="propertymcCode" />
+    <result column="propertymc_name" jdbcType="VARCHAR" property="propertymcName" />
+    <result column="item_code" jdbcType="VARCHAR" property="itemCode" />
+    <result column="item_name" jdbcType="VARCHAR" property="itemName" />
+    <result column="information" jdbcType="VARCHAR" property="information" />
+    <result column="time" jdbcType="TIMESTAMP" property="time" />
+  </resultMap>
+
+  <sql id="Base_Column_List">
+    id, name, propertymc_code, propertymc_name, item_code, item_name, information,
+    `time`
+  </sql>
+
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from propertymanager_file
+    where id = #{id,jdbcType=VARCHAR}
+  </select>
+
+  <select id="selectall" resultType="model.PropertymanagerFile" resultMap="BaseResultMap">
+    SELECT * FROM propertymanager_file
+  </select>
+
+
+  <insert id="insert" parameterType="model.PropertymanagerFile" >
+    insert into propertymanager_file (id,name, propertymc_code, propertymc_name,
+      item_code, item_name, information, time)
+    values (#{id,jdbcType=VARCHAR},#{name,jdbcType=VARCHAR}, #{propertymcCode,jdbcType=VARCHAR}, #{propertymcName,jdbcType=VARCHAR},
+      #{itemCode,jdbcType=VARCHAR}, #{itemName,jdbcType=VARCHAR}, #{information,jdbcType=VARCHAR},
+      #{time,jdbcType=TIMESTAMP})
+  </insert>
+
+
+</mapper>

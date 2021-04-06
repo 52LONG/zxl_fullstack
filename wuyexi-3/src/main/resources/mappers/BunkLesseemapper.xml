@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="dao.BunkLesseeDao">
+  <resultMap id="BaseResultMap" type="model.BunkLessee">
+    <id column="bunk_code" jdbcType="VARCHAR" property="bunkCode" />
+    <result column="client" jdbcType="VARCHAR" property="client" />
+    <result column="use_begin_time" jdbcType="TIMESTAMP" property="useBeginTime" />
+    <result column="use_end_time" jdbcType="TIMESTAMP" property="useEndTime" />
+    <result column="note" jdbcType="VARCHAR" property="note" />
+  </resultMap>
+
+
+  <sql id="Base_Column_List">
+    bunk_code, client, use_begin_time, use_end_time, note
+  </sql>
+
+
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from bunk_lessee
+    where bunk_code = #{bunkCode,jdbcType=VARCHAR}
+  </select>
+
+
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from bunk_lessee
+    where bunk_code = #{bunkCode,jdbcType=VARCHAR}
+  </delete>
+
+
+  <insert id="insert"  parameterType="model.BunkLessee" >
+    insert into bunk_lessee (bunk_code，client, use_begin_time, use_end_time,
+      note)
+    values (#{bunkCode,jdbcType=VARCHAR},#{client,jdbcType=VARCHAR}, #{useBeginTime,jdbcType=TIMESTAMP}, #{useEndTime,jdbcType=TIMESTAMP},
+      #{note,jdbcType=VARCHAR})
+  </insert>
+
+
+  <insert id="insertSelective" keyColumn="bunk_code" keyProperty="bunkCode" parameterType="model.BunkLessee" useGeneratedKeys="true">
+    insert into bunk_lessee
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="bunkCode != null">
+        bunk_code,
+      </if>
+      <if test="client != null">
+        client,
+      </if>
+      <if test="useBeginTime != null">
+        use_begin_time,
+      </if>
+      <if test="useEndTime != null">
+        use_end_time,
+      </if>
+      <if test="note != null">
+        note,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="bunkCode != null">
+        #{bunkCode,jdbcType=VARCHAR},
+      </if>
+      <if test="client != null">
+        #{client,jdbcType=VARCHAR},
+      </if>
+      <if test="useBeginTime != null">
+        #{useBeginTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="useEndTime != null">
+        #{useEndTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="note != null">
+        #{note,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+
+  <update id="updateByPrimaryKeySelective" parameterType="model.BunkLessee">
+    update bunk_lessee
+    <set>
+      <if test="client != null">
+        client = #{client,jdbcType=VARCHAR},
+      </if>
+      <if test="useBeginTime != null">
+        use_begin_time = #{useBeginTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="useEndTime != null">
+        use_end_time = #{useEndTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="note != null">
+        note = #{note,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where bunk_code = #{bunkCode,jdbcType=VARCHAR}
+  </update>
+
+  <update id="updateByPrimaryKey" parameterType="model.BunkLessee">
+    update bunk_lessee
+    set client = #{client,jdbcType=VARCHAR},
+      use_begin_time = #{useBeginTime,jdbcType=TIMESTAMP},
+      use_end_time = #{useEndTime,jdbcType=TIMESTAMP},
+      note = #{note,jdbcType=VARCHAR}
+    where bunk_code = #{bunkCode,jdbcType=VARCHAR}
+  </update>
+
+</mapper>

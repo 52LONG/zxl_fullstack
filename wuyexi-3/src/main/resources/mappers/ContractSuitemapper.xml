@@ -1,0 +1,227 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="dao.ContractSuiteDao">
+  <resultMap id="BaseResultMap" type="model.ContractSuite">
+    <id column="contractno" jdbcType="VARCHAR" property="contractno" />
+    <result column="region_code" jdbcType="VARCHAR" property="regionCode" />
+    <result column="item_code" jdbcType="VARCHAR" property="itemCode" />
+    <result column="building_code" jdbcType="VARCHAR" property="buildingCode" />
+    <result column="building_name" jdbcType="VARCHAR" property="buildingName" />
+    <result column="floor" jdbcType="VARCHAR" property="floor" />
+    <result column="suite_code" jdbcType="VARCHAR" property="suiteCode" />
+    <result column="suite_name" jdbcType="VARCHAR" property="suiteName" />
+    <result column="room_code" jdbcType="VARCHAR" property="roomCode" />
+    <result column="bunk_code" jdbcType="VARCHAR" property="bunkCode" />
+    <result column="use_area" jdbcType="FLOAT" property="useArea" />
+    <result column="average_area" jdbcType="FLOAT" property="averageArea" />
+    <result column="suite_area" jdbcType="FLOAT" property="suiteArea" />
+    <result column="actual_use_area" jdbcType="FLOAT" property="actualUseArea" />
+    <result column="note" jdbcType="VARCHAR" property="note" />
+  </resultMap>
+
+
+  <sql id="Base_Column_List">
+    contractno, region_code, item_code, building_code, building_name, floor, suite_code,
+    suite_name, room_code, bunk_code, use_area, average_area, suite_area, actual_use_area, 
+    note
+  </sql>
+
+
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from contract_suite
+    where contractno = #{contractno,jdbcType=VARCHAR}
+  </select>
+
+
+
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from contract_suite
+    where contractno = #{contractno,jdbcType=VARCHAR}
+  </delete>
+
+
+  <insert id="insert"  parameterType="model.ContractSuite" >
+    insert into contract_suite (contractno,region_code, item_code, building_code,
+      building_name, floor, suite_code,
+      suite_name, room_code, bunk_code, 
+      use_area, average_area, suite_area, 
+      actual_use_area, note)
+    values (#{contractno,jdbcType=VARCHAR},#{regionCode,jdbcType=VARCHAR}, #{itemCode,jdbcType=VARCHAR}, #{buildingCode,jdbcType=VARCHAR},
+      #{buildingName,jdbcType=VARCHAR}, #{floor,jdbcType=VARCHAR}, #{suiteCode,jdbcType=VARCHAR}, 
+      #{suiteName,jdbcType=VARCHAR}, #{roomCode,jdbcType=VARCHAR}, #{bunkCode,jdbcType=VARCHAR}, 
+      #{useArea,jdbcType=FLOAT}, #{averageArea,jdbcType=FLOAT}, #{suiteArea,jdbcType=FLOAT}, 
+      #{actualUseArea,jdbcType=FLOAT}, #{note,jdbcType=VARCHAR})
+  </insert>
+
+
+  <insert id="insertSelective"  parameterType="model.ContractSuite" >
+    insert into contract_suite
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="contractno != null">
+        contractno,
+      </if>
+      <if test="regionCode != null">
+        region_code,
+      </if>
+      <if test="itemCode != null">
+        item_code,
+      </if>
+      <if test="buildingCode != null">
+        building_code,
+      </if>
+      <if test="buildingName != null">
+        building_name,
+      </if>
+      <if test="floor != null">
+        floor,
+      </if>
+      <if test="suiteCode != null">
+        suite_code,
+      </if>
+      <if test="suiteName != null">
+        suite_name,
+      </if>
+      <if test="roomCode != null">
+        room_code,
+      </if>
+      <if test="bunkCode != null">
+        bunk_code,
+      </if>
+      <if test="useArea != null">
+        use_area,
+      </if>
+      <if test="averageArea != null">
+        average_area,
+      </if>
+      <if test="suiteArea != null">
+        suite_area,
+      </if>
+      <if test="actualUseArea != null">
+        actual_use_area,
+      </if>
+      <if test="note != null">
+        note,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="contractno != null">
+        #{contractno,jdbcType=VARCHAR},
+      </if>
+      <if test="regionCode != null">
+        #{regionCode,jdbcType=VARCHAR},
+      </if>
+      <if test="itemCode != null">
+        #{itemCode,jdbcType=VARCHAR},
+      </if>
+      <if test="buildingCode != null">
+        #{buildingCode,jdbcType=VARCHAR},
+      </if>
+      <if test="buildingName != null">
+        #{buildingName,jdbcType=VARCHAR},
+      </if>
+      <if test="floor != null">
+        #{floor,jdbcType=VARCHAR},
+      </if>
+      <if test="suiteCode != null">
+        #{suiteCode,jdbcType=VARCHAR},
+      </if>
+      <if test="suiteName != null">
+        #{suiteName,jdbcType=VARCHAR},
+      </if>
+      <if test="roomCode != null">
+        #{roomCode,jdbcType=VARCHAR},
+      </if>
+      <if test="bunkCode != null">
+        #{bunkCode,jdbcType=VARCHAR},
+      </if>
+      <if test="useArea != null">
+        #{useArea,jdbcType=FLOAT},
+      </if>
+      <if test="averageArea != null">
+        #{averageArea,jdbcType=FLOAT},
+      </if>
+      <if test="suiteArea != null">
+        #{suiteArea,jdbcType=FLOAT},
+      </if>
+      <if test="actualUseArea != null">
+        #{actualUseArea,jdbcType=FLOAT},
+      </if>
+      <if test="note != null">
+        #{note,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+
+
+  <update id="updateByPrimaryKeySelective" parameterType="model.ContractSuite">
+    update contract_suite
+    <set>
+      <if test="regionCode != null">
+        region_code = #{regionCode,jdbcType=VARCHAR},
+      </if>
+      <if test="itemCode != null">
+        item_code = #{itemCode,jdbcType=VARCHAR},
+      </if>
+      <if test="buildingCode != null">
+        building_code = #{buildingCode,jdbcType=VARCHAR},
+      </if>
+      <if test="buildingName != null">
+        building_name = #{buildingName,jdbcType=VARCHAR},
+      </if>
+      <if test="floor != null">
+        floor = #{floor,jdbcType=VARCHAR},
+      </if>
+      <if test="suiteCode != null">
+        suite_code = #{suiteCode,jdbcType=VARCHAR},
+      </if>
+      <if test="suiteName != null">
+        suite_name = #{suiteName,jdbcType=VARCHAR},
+      </if>
+      <if test="roomCode != null">
+        room_code = #{roomCode,jdbcType=VARCHAR},
+      </if>
+      <if test="bunkCode != null">
+        bunk_code = #{bunkCode,jdbcType=VARCHAR},
+      </if>
+      <if test="useArea != null">
+        use_area = #{useArea,jdbcType=FLOAT},
+      </if>
+      <if test="averageArea != null">
+        average_area = #{averageArea,jdbcType=FLOAT},
+      </if>
+      <if test="suiteArea != null">
+        suite_area = #{suiteArea,jdbcType=FLOAT},
+      </if>
+      <if test="actualUseArea != null">
+        actual_use_area = #{actualUseArea,jdbcType=FLOAT},
+      </if>
+      <if test="note != null">
+        note = #{note,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where contractno = #{contractno,jdbcType=VARCHAR}
+  </update>
+
+
+  <update id="updateByPrimaryKey" parameterType="model.ContractSuite">
+    update contract_suite
+    set region_code = #{regionCode,jdbcType=VARCHAR},
+      item_code = #{itemCode,jdbcType=VARCHAR},
+      building_code = #{buildingCode,jdbcType=VARCHAR},
+      building_name = #{buildingName,jdbcType=VARCHAR},
+      floor = #{floor,jdbcType=VARCHAR},
+      suite_code = #{suiteCode,jdbcType=VARCHAR},
+      suite_name = #{suiteName,jdbcType=VARCHAR},
+      room_code = #{roomCode,jdbcType=VARCHAR},
+      bunk_code = #{bunkCode,jdbcType=VARCHAR},
+      use_area = #{useArea,jdbcType=FLOAT},
+      average_area = #{averageArea,jdbcType=FLOAT},
+      suite_area = #{suiteArea,jdbcType=FLOAT},
+      actual_use_area = #{actualUseArea,jdbcType=FLOAT},
+      note = #{note,jdbcType=VARCHAR}
+    where contractno = #{contractno,jdbcType=VARCHAR}
+  </update>
+
+</mapper>

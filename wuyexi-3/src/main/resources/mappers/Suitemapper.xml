@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="dao.SuiteDao">
+    <resultMap id="result" type="model.Suite">
+        <id property="suiteCode" column="suite_code"></id>
+        <result property="note" column="note"></result>
+        <result property="regionCode" column="region_code"></result>
+        <result property="buildingCode" column="building_code"></result>
+        <result property="purposeCode" column="purpose_code"></result>
+        <result property="useArea" column="use_area"></result>
+        <result property="owner" column="owner"></result>
+        <result property="itemCode" column="item_code"></result>
+        <result property="buildingName" column="building_name"></result>
+        <result property="activeStatus" column="active_status"></result>
+        <result property="actualUseArea" column="actual_use_area"></result>
+        <result property="averageArea" column="average_area"></result>
+        <result property="buildingArea" column="building_area"></result>
+        <result property="floor" column="floor"></result>
+        <result property="roomNum" column="room_num"></result>
+        <result property="roomStructure" column="room_structure"></result>
+        <result property="suiteArea" column="suite_area"></result>
+        <result property="suiteLawNo" column="suite_law_no"></result>
+        <result property="suiteName" column="suite_name"></result>
+        <result property="suitePropertyCardno" column="suite_property_cardno"></result>
+        <result property="useStatus" column="use_status"></result>
+    </resultMap>
+
+    <sql id="tablename">
+        suite
+    </sql>
+
+    <sql id="tablecolunm">
+        suite_code,note,region_code,building_code,purpose_code,use_area,owner,item_code,building_name,
+        active_status,actual_use_area,average_area,building_area,floor,room_num,room_structure,
+        suite_area,suite_law_no,suite_name,suite_property_cardno,use_status
+    </sql>
+
+    <sql id="params">
+        #{suiteCode},#{note},#{regionCode},#{buildingCode},#{purposeCode},#{useArea},
+        #{owner},#{itemCode},#{buildingName},#{activeStatus},#{actualUseArea},#{averageArea},#{buildingArea},
+        #{floor},#{roomNum},#{roomStructure},#{suiteArea},#{suiteLawNo},#{suiteName},#{suitePropertyCardno},#{useStatus}
+    </sql>
+
+
+    <insert id="InsertOne" parameterType="model.Suite">
+        INSERT INTO <include refid="tablename"></include>
+        (
+            <include refid="tablecolunm"></include>
+        )
+        VALUES
+        (
+            <include refid="params"></include>
+        )
+    </insert>
+
+
+    <update id="UpdateOne" parameterType="model.Suite">
+        UPDATE <include refid="tablename"></include> SET
+        note=#{note},region_code=#{regionCode},building_code=#{buildingCode},purpose_code=#{purposeCode},
+        use_area=#{useArea},owner=#{owner},item_code=#{itemCode},building_name=#{buildingName},
+         active_status=#{activeStatus},actual_use_area=#{actualUseArea},average_area=#{averageArea},
+         building_area=#{buildingArea},floor=#{floor},room_num=#{roomNum},room_structure=#{roomStructure},
+        suite_area=#{suiteArea},suite_law_no=#{suiteLawNo},suite_name=#{suiteName},suite_property_cardno=#{suitePropertyCardno},use_status=#{useStatus}
+        WHERE suite_code=#{suiteCode}
+    </update>
+
+
+    <delete id="DeleteOne" parameterType="java.lang.String">
+        UPDATE FROM <include refid="tablename"></include> SET
+        active_status=0
+        WHERE suite_code=#{suite}
+    </delete>
+
+
+    <select id="SelectOne" resultType="model.Suite" resultMap="result" parameterType="java.lang.String">
+        SELECT * FROM <include refid="tablename"></include> WHERE suite_code=#{suite}
+    </select>
+
+    <select id="SelectAll" resultType="model.Suite" resultMap="result">
+        SELECT * FROM <include refid="tablename"></include>
+    </select>
+
+    <select id="SelectByBuilding" resultType="model.Suite" resultMap="result">
+        SELECT * FROM <include refid="tablename"></include> WHERE building_code=#{buildingcode}
+    </select>
+
+    <select id="SelectBybuildingitemregion" resultType="model.Suite" resultMap="result">
+        SELECT * FROM <include refid="tablename"></include> WHERE building_code=#{p1} AND item_code=#{p2} AND region_code=#{p3}
+    </select>
+
+
+</mapper>

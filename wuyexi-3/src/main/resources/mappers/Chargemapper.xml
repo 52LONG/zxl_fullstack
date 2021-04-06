@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="dao.ChargeDao">
+  <resultMap id="BaseResultMap" type="model.Charge">
+    <id column="charge_code" jdbcType="VARCHAR" property="chargeCode" />
+    <result column="charge_name" jdbcType="VARCHAR" property="chargeName" />
+    <result column="item_code" jdbcType="VARCHAR" property="itemCode" />
+    <result column="active_status" jdbcType="INTEGER" property="activeStatus" />
+    <result column="note" jdbcType="VARCHAR" property="note" />
+  </resultMap>
+
+
+  <sql id="Base_Column_List">
+    charge_code, charge_name, item_code, active_status, note
+  </sql>
+
+
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from charge
+    where charge_code = #{chargeCode,jdbcType=VARCHAR}
+  </select>
+
+
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from charge
+    where charge_code = #{chargeCode,jdbcType=VARCHAR}
+  </delete>
+
+
+  <insert id="insert" keyColumn="charge_code" keyProperty="chargeCode" parameterType="model.Charge" useGeneratedKeys="true">
+    insert into charge (charge_code,charge_name, item_code, active_status,
+      note)
+    values (#{charge_code,jdbcType=VARCHAR},#{chargeName,jdbcType=VARCHAR}, #{itemCode,jdbcType=VARCHAR}, #{activeStatus,jdbcType=INTEGER},
+      #{note,jdbcType=VARCHAR})
+  </insert>
+
+
+  <insert id="insertSelective" keyColumn="charge_code" keyProperty="chargeCode" parameterType="model.Charge" useGeneratedKeys="true">
+    insert into charge
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="chargeCode != null">
+        charge_code,
+      </if>
+      <if test="chargeName != null">
+        charge_name,
+      </if>
+      <if test="itemCode != null">
+        item_code,
+      </if>
+      <if test="activeStatus != null">
+        active_status,
+      </if>
+      <if test="note != null">
+        note,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="chargeCode != null">
+        #{chargeCode,jdbcType=VARCHAR},
+      </if>
+      <if test="chargeName != null">
+        #{chargeName,jdbcType=VARCHAR},
+      </if>
+      <if test="itemCode != null">
+        #{itemCode,jdbcType=VARCHAR},
+      </if>
+      <if test="activeStatus != null">
+        #{activeStatus,jdbcType=INTEGER},
+      </if>
+      <if test="note != null">
+        #{note,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+
+
+  <update id="updateByPrimaryKeySelective" parameterType="model.Charge">
+    update charge
+    <set>
+      <if test="chargeName != null">
+        charge_name = #{chargeName,jdbcType=VARCHAR},
+      </if>
+      <if test="itemCode != null">
+        item_code = #{itemCode,jdbcType=VARCHAR},
+      </if>
+      <if test="activeStatus != null">
+        active_status = #{activeStatus,jdbcType=INTEGER},
+      </if>
+      <if test="note != null">
+        note = #{note,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where charge_code = #{chargeCode,jdbcType=VARCHAR}
+  </update>
+
+
+  <update id="updateByPrimaryKey" parameterType="model.Charge">
+    update charge
+    set charge_name = #{chargeName,jdbcType=VARCHAR},
+      item_code = #{itemCode,jdbcType=VARCHAR},
+      active_status = #{activeStatus,jdbcType=INTEGER},
+      note = #{note,jdbcType=VARCHAR}
+    where charge_code = #{chargeCode,jdbcType=VARCHAR}
+  </update>
+
+
+</mapper>

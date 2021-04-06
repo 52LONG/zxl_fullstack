@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="dao.DepartmentDao">
+
+    <resultMap id="result" type="model.Department">
+        <id property="departmentCode" column="department_code"></id>
+        <result property="departmentName" column="department_name"></result>
+    </resultMap>
+
+    <sql id="tablename">
+        department
+    </sql>
+
+    <sql id="tablecolunm">
+        department_code,department_name
+    </sql>
+
+    <sql id="params">
+        #{departmentCode},#{departmentName}
+    </sql>
+
+    <insert id="InsertOne" parameterType="model.Department">
+        INSERT INTO <include refid="tablename"></include>
+        (
+            <include refid="tablecolunm"></include>
+        )
+        VALUES
+        (
+            <include refid="params"></include>
+        )
+    </insert>
+
+    <update id="UpdateOne" parameterType="java.lang.String">
+        UPDATE <include refid="tablename"></include> SET
+        department_name=#{departmentName}
+        WHERE  department_code=#{departmentCode}
+    </update>
+
+    <delete id="DeleteOne" parameterType="java.lang.String">
+        DELETE FROM <include refid="tablename"></include> WHERE department_code=#{department}
+    </delete>
+
+    <select id="SelectAll" resultType="model.Department" resultMap="result">
+        SELECT * FROM <include refid="tablename"></include>
+    </select>
+
+    <select id="SelectOne" resultType="model.Department" resultMap="result" parameterType="java.lang.String">
+        SELECT * FROM <include refid="tablename"></include> WHERE department_code=#{department}
+    </select>
+
+
+</mapper>

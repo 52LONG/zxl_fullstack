@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="dao.ArchvistDao">
+
+    <resultMap id="result" type="model.Archvist">
+        <id column="id" property="id"></id>
+        <result column="name" property="name"></result>
+        <result column="password" property="password"></result>
+        <result column="emid" property="emid"></result>
+        <result column="emdartment" property="emdartment"></result>
+    </resultMap>
+
+    <sql id="tablename">
+        archvist
+    </sql>
+
+    <sql id="tablecolunm">
+        id,name,password,emid,emdartment
+    </sql>
+
+    <sql id="prams">
+        #{id},#{name},#{password},#{emid},#{emdartment}
+    </sql>
+
+    <insert id="InsertOne">
+        INSERT INTO <include refid="tablename"></include>
+        (
+            <include refid="tablecolunm"></include>
+        )
+        VALUES
+        (
+            <include refid="prams"></include>
+        )
+    </insert>
+
+    <select id="login" resultType="model.Archvist" parameterType="java.lang.String" resultMap="result">
+        SELECT id,name,emid,emdartment FROM <include refid="tablename"></include> WHERE id=#{param1} and password=#{param2}
+    </select>
+
+    <update id="UpdateOne" parameterType="model.Archvist">
+        UPDATE <include refid="tablename"></include> SET
+        name=#{name},password=#{password},emid=#{emid},emdartment=#{emdartment}
+        WHERE id=#{id}
+    </update>
+
+    <delete id="DeleteOne" parameterType="java.lang.String">
+        DELETE FROM <include refid="tablename"></include> WHERE id=#{archvist}
+    </delete>
+
+    <select id="SelectOne" resultType="model.Archvist" resultMap="result">
+        SELECT id,name,emid,emdartment FROM <include refid="tablename"></include> WHERE id=#{archvist}
+    </select>
+
+    <select id="SelectAll" resultType="model.Archvist" resultMap="result">
+        SELECT id,name,emid,emdartment FROM <include refid="tablename"></include>
+    </select>
+
+
+</mapper>

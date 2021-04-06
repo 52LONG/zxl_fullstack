@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="dao.BunkDao">
+  <resultMap id="BaseResultMap" type="model.Bunk">
+    <id column="bunk_code" jdbcType="VARCHAR" property="bunkCode" />
+    <result column="room_code" jdbcType="VARCHAR" property="roomCode" />
+    <result column="room_name" jdbcType="VARCHAR" property="roomName" />
+    <result column="bunk_name" jdbcType="VARCHAR" property="bunkName" />
+    <result column="available_area" jdbcType="FLOAT" property="availableArea" />
+    <result column="rent_area" jdbcType="FLOAT" property="rentArea" />
+    <result column="use_status" jdbcType="INTEGER" property="useStatus" />
+    <result column="active_status" jdbcType="INTEGER" property="activeStatus" />
+    <result column="note" jdbcType="VARCHAR" property="note" />
+  </resultMap>
+
+
+  <sql id="Base_Column_List">
+    bunk_code, room_code, room_name, bunk_name, available_area, rent_area, use_status, 
+    active_status, note
+  </sql>
+
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from bunk
+    where bunk_code = #{bunkCode,jdbcType=VARCHAR}
+  </select>
+
+    <select id="bunkselectbyroom" resultType="model.Bunk" resultMap="BaseResultMap">
+      SELECT *  FROM bunk WHERE room_code=#{roomcode} AND use_status=0
+    </select>
+
+
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from bunk
+    where bunk_code = #{bunkCode,jdbcType=VARCHAR}
+  </delete>
+
+
+  <insert id="insert" parameterType="model.Bunk">
+    insert into bunk (bunk_code,room_code, room_name, bunk_name,
+      available_area, rent_area, use_status, 
+      active_status, note)
+    values (#{bunkCode,jdbcType=VARCHAR},#{roomCode,jdbcType=VARCHAR}, #{roomName,jdbcType=VARCHAR}, #{bunkName,jdbcType=VARCHAR},
+      #{availableArea,jdbcType=FLOAT}, #{rentArea,jdbcType=FLOAT}, #{useStatus,jdbcType=INTEGER}, 
+      #{activeStatus,jdbcType=INTEGER}, #{note,jdbcType=VARCHAR})
+  </insert>
+
+
+  <insert id="insertSelective" parameterType="model.Bunk" >
+    insert into bunk
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="bunkCode != null">
+        bunk_code,
+      </if>
+      <if test="roomCode != null">
+        room_code,
+      </if>
+      <if test="roomName != null">
+        room_name,
+      </if>
+      <if test="bunkName != null">
+        bunk_name,
+      </if>
+      <if test="availableArea != null">
+        available_area,
+      </if>
+      <if test="rentArea != null">
+        rent_area,
+      </if>
+      <if test="useStatus != null">
+        use_status,
+      </if>
+      <if test="activeStatus != null">
+        active_status,
+      </if>
+      <if test="note != null">
+        note,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="bunkCode != null">
+        #{bunkCode,jdbcType=VARCHAR},
+      </if>
+      <if test="roomCode != null">
+        #{roomCode,jdbcType=VARCHAR},
+      </if>
+      <if test="roomName != null">
+        #{roomName,jdbcType=VARCHAR},
+      </if>
+      <if test="bunkName != null">
+        #{bunkName,jdbcType=VARCHAR},
+      </if>
+      <if test="availableArea != null">
+        #{availableArea,jdbcType=FLOAT},
+      </if>
+      <if test="rentArea != null">
+        #{rentArea,jdbcType=FLOAT},
+      </if>
+      <if test="useStatus != null">
+        #{useStatus,jdbcType=INTEGER},
+      </if>
+      <if test="activeStatus != null">
+        #{activeStatus,jdbcType=INTEGER},
+      </if>
+      <if test="note != null">
+        #{note,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+
+  <update id="updateByPrimaryKeySelective" parameterType="model.Bunk">
+    update bunk
+    <set>
+      <if test="roomCode != null">
+        room_code = #{roomCode,jdbcType=VARCHAR},
+      </if>
+      <if test="roomName != null">
+        room_name = #{roomName,jdbcType=VARCHAR},
+      </if>
+      <if test="bunkName != null">
+        bunk_name = #{bunkName,jdbcType=VARCHAR},
+      </if>
+      <if test="availableArea != null">
+        available_area = #{availableArea,jdbcType=FLOAT},
+      </if>
+      <if test="rentArea != null">
+        rent_area = #{rentArea,jdbcType=FLOAT},
+      </if>
+      <if test="useStatus != null">
+        use_status = #{useStatus,jdbcType=INTEGER},
+      </if>
+      <if test="activeStatus != null">
+        active_status = #{activeStatus,jdbcType=INTEGER},
+      </if>
+      <if test="note != null">
+        note = #{note,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where bunk_code = #{bunkCode,jdbcType=VARCHAR}
+  </update>
+
+
+  <update id="updateByPrimaryKey" parameterType="model.Bunk">
+    update bunk
+    set room_code = #{roomCode,jdbcType=VARCHAR},
+      room_name = #{roomName,jdbcType=VARCHAR},
+      bunk_name = #{bunkName,jdbcType=VARCHAR},
+      available_area = #{availableArea,jdbcType=FLOAT},
+      rent_area = #{rentArea,jdbcType=FLOAT},
+      use_status = #{useStatus,jdbcType=INTEGER},
+      active_status = #{activeStatus,jdbcType=INTEGER},
+      note = #{note,jdbcType=VARCHAR}
+    where bunk_code = #{bunkCode,jdbcType=VARCHAR}
+  </update>
+
+</mapper>

@@ -1,0 +1,94 @@
+html,body {
+    background-image:url("../images/index.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+.zhSystem{
+    margin-right: 150px;
+    margin-left: 150px;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.7);
+    min-height:1700px;
+
+}
+.zh-demo{
+    position:fixed;
+    top: 0;
+    left: 0;
+    width:100%;
+    height:100%;
+    min-width: 1000px;
+    z-index:-10;
+    zoom: 1;
+    background-color: #fff;
+    background: url(../images/zh.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    -webkit-background-size: cover;
+    -o-background-size: cover;
+    background-position: center 0;
+}
+
+/*.zhSystem{*/
+/*    margin-right: 150px;*/
+/*    margin-left: 150px;*/
+/*    height: 100%;*/
+/*    background: rgba(255, 255, 255, 0.5);*/
+/*    min-height: 800px;*/
+/*    !* border:1px solid black; *!*/
+/*}*/
+
+.zh-head
+{
+    width: 100%;
+    height: 50px;
+    min-height: 50px;
+    z-index: -10;
+}
+.zh-head .zh-head__logininfo{
+    width: 100%;
+    height: 50px;
+    margin-right: 20px;
+}
+.zh-head .zh-head__logininfo a{
+    float: right;
+    padding-right: 10px;
+    color:#000 ;
+    text-decoration: none;
+    font-size: 20px;
+    padding-top:10px ;
+}
+.zh-head .zh-head__logininfo a:hover{
+    color: rgb(232, 232, 247);
+}
+.zh-head__logininfo img{
+    float:left;
+    width: 400px;
+    height: 50px;  
+    display: table-cell;      
+}
+
+.nav-item i{
+    margin-left: 8px;
+}
+.zh-message{
+    height: 400px;
+    text-align: center;
+    box-sizing: border-box;
+    border: 1px solid rgb(75, 108, 170);
+    padding-left: 30px; 
+    margin-right: 20px;
+    margin-left:5px ;
+       
+}
+.zh-message a{
+    color: #000;
+     text-align: center;
+    text-decoration: none;
+    line-height: 50px;
+}
+.zh-message  a:hover{
+  background-color: rgb(75, 108, 170);
+}

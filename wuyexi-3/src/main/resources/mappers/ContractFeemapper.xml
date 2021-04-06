@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="dao.ContractFeeDao">
+  <resultMap id="BaseResultMap" type="model.ContractFee">
+    <id column="contractno" jdbcType="VARCHAR" property="contractno" />
+    <result column="suite_code" jdbcType="VARCHAR" property="suiteCode" />
+    <result column="suite_name" jdbcType="VARCHAR" property="suiteName" />
+    <result column="charge_code" jdbcType="VARCHAR" property="chargeCode" />
+    <result column="charge_name" jdbcType="VARCHAR" property="chargeName" />
+    <result column="charge_unit" jdbcType="FLOAT" property="chargeUnit" />
+    <result column="charge_cycle" jdbcType="VARCHAR" property="chargeCycle" />
+    <result column="change_begin_time" jdbcType="TIMESTAMP" property="changeBeginTime" />
+    <result column="change_end_time" jdbcType="TIMESTAMP" property="changeEndTime" />
+    <result column="charge_day" jdbcType="TIMESTAMP" property="chargeDay" />
+    <result column="note" jdbcType="VARCHAR" property="note" />
+  </resultMap>
+
+
+  <sql id="Base_Column_List">
+    contractno, suite_code, suite_name, charge_code, charge_name, charge_unit, charge_cycle, 
+    change_begin_time, change_end_time, charge_day, note
+  </sql>
+
+
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from contract_fee
+    where contractno = #{contractno,jdbcType=VARCHAR}
+  </select>
+
+
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from contract_fee
+    where contractno = #{contractno,jdbcType=VARCHAR}
+  </delete>
+
+
+  <insert id="insert" keyColumn="contractno" keyProperty="contractno" parameterType="model.ContractFee" useGeneratedKeys="true">
+    insert into contract_fee (contractno,suite_code, suite_name, charge_code,
+      charge_name, charge_unit, charge_cycle, 
+      change_begin_time, change_end_time, charge_day, 
+      note)
+    values (#{contractno,jdbcType=VARCHAR},#{suiteCode,jdbcType=VARCHAR}, #{suiteName,jdbcType=VARCHAR}, #{chargeCode,jdbcType=VARCHAR},
+      #{chargeName,jdbcType=VARCHAR}, #{chargeUnit,jdbcType=FLOAT}, #{chargeCycle,jdbcType=VARCHAR}, 
+      #{changeBeginTime,jdbcType=TIMESTAMP}, #{changeEndTime,jdbcType=TIMESTAMP}, #{chargeDay,jdbcType=TIMESTAMP}, 
+      #{note,jdbcType=VARCHAR})
+  </insert>
+
+
+  <insert id="insertSelective" parameterType="model.ContractFee" >
+    insert into contract_fee
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="contractno != null">
+        contractno,
+      </if>
+      <if test="suiteCode != null">
+        suite_code,
+      </if>
+      <if test="suiteName != null">
+        suite_name,
+      </if>
+      <if test="chargeCode != null">
+        charge_code,
+      </if>
+      <if test="chargeName != null">
+        charge_name,
+      </if>
+      <if test="chargeUnit != null">
+        charge_unit,
+      </if>
+      <if test="chargeCycle != null">
+        charge_cycle,
+      </if>
+      <if test="changeBeginTime != null">
+        change_begin_time,
+      </if>
+      <if test="changeEndTime != null">
+        change_end_time,
+      </if>
+      <if test="chargeDay != null">
+        charge_day,
+      </if>
+      <if test="note != null">
+        note,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="contractno != null">
+        #{contractno,jdbcType=VARCHAR},
+      </if>
+      <if test="suiteCode != null">
+        #{suiteCode,jdbcType=VARCHAR},
+      </if>
+      <if test="suiteName != null">
+        #{suiteName,jdbcType=VARCHAR},
+      </if>
+      <if test="chargeCode != null">
+        #{chargeCode,jdbcType=VARCHAR},
+      </if>
+      <if test="chargeName != null">
+        #{chargeName,jdbcType=VARCHAR},
+      </if>
+      <if test="chargeUnit != null">
+        #{chargeUnit,jdbcType=FLOAT},
+      </if>
+      <if test="chargeCycle != null">
+        #{chargeCycle,jdbcType=VARCHAR},
+      </if>
+      <if test="changeBeginTime != null">
+        #{changeBeginTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="changeEndTime != null">
+        #{changeEndTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="chargeDay != null">
+        #{chargeDay,jdbcType=TIMESTAMP},
+      </if>
+      <if test="note != null">
+        #{note,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+
+
+  <update id="updateByPrimaryKeySelective" parameterType="model.ContractFee">
+    update contract_fee
+    <set>
+      <if test="suiteCode != null">
+        suite_code = #{suiteCode,jdbcType=VARCHAR},
+      </if>
+      <if test="suiteName != null">
+        suite_name = #{suiteName,jdbcType=VARCHAR},
+      </if>
+      <if test="chargeCode != null">
+        charge_code = #{chargeCode,jdbcType=VARCHAR},
+      </if>
+      <if test="chargeName != null">
+        charge_name = #{chargeName,jdbcType=VARCHAR},
+      </if>
+      <if test="chargeUnit != null">
+        charge_unit = #{chargeUnit,jdbcType=FLOAT},
+      </if>
+      <if test="chargeCycle != null">
+        charge_cycle = #{chargeCycle,jdbcType=VARCHAR},
+      </if>
+      <if test="changeBeginTime != null">
+        change_begin_time = #{changeBeginTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="changeEndTime != null">
+        change_end_time = #{changeEndTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="chargeDay != null">
+        charge_day = #{chargeDay,jdbcType=TIMESTAMP},
+      </if>
+      <if test="note != null">
+        note = #{note,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where contractno = #{contractno,jdbcType=VARCHAR}
+  </update>
+
+
+  <update id="updateByPrimaryKey" parameterType="model.ContractFee">
+    update contract_fee
+    set suite_code = #{suiteCode,jdbcType=VARCHAR},
+      suite_name = #{suiteName,jdbcType=VARCHAR},
+      charge_code = #{chargeCode,jdbcType=VARCHAR},
+      charge_name = #{chargeName,jdbcType=VARCHAR},
+      charge_unit = #{chargeUnit,jdbcType=FLOAT},
+      charge_cycle = #{chargeCycle,jdbcType=VARCHAR},
+      change_begin_time = #{changeBeginTime,jdbcType=TIMESTAMP},
+      change_end_time = #{changeEndTime,jdbcType=TIMESTAMP},
+      charge_day = #{chargeDay,jdbcType=TIMESTAMP},
+      note = #{note,jdbcType=VARCHAR}
+    where contractno = #{contractno,jdbcType=VARCHAR}
+  </update>
+</mapper>

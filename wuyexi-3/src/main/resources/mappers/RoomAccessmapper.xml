@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="dao.RoomAccessDao">
+  <resultMap id="BaseResultMap" type="model.RoomAccess">
+    <id column="room_code" jdbcType="VARCHAR" property="roomCode" />
+    <result column="region_code" jdbcType="VARCHAR" property="regionCode" />
+    <result column="item_code" jdbcType="VARCHAR" property="itemCode" />
+    <result column="building_code" jdbcType="VARCHAR" property="buildingCode" />
+    <result column="floor" jdbcType="VARCHAR" property="floor" />
+    <result column="suite_code" jdbcType="VARCHAR" property="suiteCode" />
+    <result column="access_price" jdbcType="FLOAT" property="accessPrice" />
+    <result column="access_begin_time" jdbcType="TIMESTAMP" property="accessBeginTime" />
+    <result column="access_end_time" jdbcType="TIMESTAMP" property="accessEndTime" />
+    <result column="average_price" jdbcType="FLOAT" property="averagePrice" />
+    <result column="supplier_code" jdbcType="VARCHAR" property="supplierCode" />
+    <result column="note" jdbcType="VARCHAR" property="note" />
+  </resultMap>
+
+
+  <sql id="Base_Column_List">
+    room_code, region_code, item_code, building_code, floor, suite_code, access_price,
+    access_begin_time, access_end_time, average_price, supplier_code, note
+  </sql>
+
+
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from room_access
+    where room_code = #{roomCode,jdbcType=VARCHAR}
+  </select>
+
+
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from room_access
+    where room_code = #{roomCode,jdbcType=VARCHAR}
+  </delete>
+
+
+  <insert id="insert" parameterType="model.RoomAccess" >
+    insert into room_access (room_code,region_code, item_code, building_code,
+      floor, suite_code, access_price,
+      access_begin_time, access_end_time, average_price, 
+      supplier_code, note)
+    values (#{roomCode,jdbcType=VARCHAR},#{regionCode,jdbcType=VARCHAR}, #{itemCode,jdbcType=VARCHAR}, #{buildingCode,jdbcType=VARCHAR},
+      #{floor,jdbcType=VARCHAR}, #{suiteCode,jdbcType=VARCHAR}, #{accessPrice,jdbcType=FLOAT}, 
+      #{accessBeginTime,jdbcType=TIMESTAMP}, #{accessEndTime,jdbcType=TIMESTAMP}, #{averagePrice,jdbcType=FLOAT}, 
+      #{supplierCode,jdbcType=VARCHAR}, #{note,jdbcType=VARCHAR})
+  </insert>
+
+
+  <insert id="insertSelective" parameterType="model.RoomAccess" >
+    insert into room_access
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="roomCode != null">
+        room_code,
+      </if>
+      <if test="regionCode != null">
+        region_code,
+      </if>
+      <if test="itemCode != null">
+        item_code,
+      </if>
+      <if test="buildingCode != null">
+        building_code,
+      </if>
+      <if test="floor != null">
+        floor,
+      </if>
+      <if test="suiteCode != null">
+        suite_code,
+      </if>
+      <if test="accessPrice != null">
+        access_price,
+      </if>
+      <if test="accessBeginTime != null">
+        access_begin_time,
+      </if>
+      <if test="accessEndTime != null">
+        access_end_time,
+      </if>
+      <if test="averagePrice != null">
+        average_price,
+      </if>
+      <if test="supplierCode != null">
+        supplier_code,
+      </if>
+      <if test="note != null">
+        note,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="roomCode != null">
+        #{roomCode,jdbcType=VARCHAR},
+      </if>
+      <if test="regionCode != null">
+        #{regionCode,jdbcType=VARCHAR},
+      </if>
+      <if test="itemCode != null">
+        #{itemCode,jdbcType=VARCHAR},
+      </if>
+      <if test="buildingCode != null">
+        #{buildingCode,jdbcType=VARCHAR},
+      </if>
+      <if test="floor != null">
+        #{floor,jdbcType=VARCHAR},
+      </if>
+      <if test="suiteCode != null">
+        #{suiteCode,jdbcType=VARCHAR},
+      </if>
+      <if test="accessPrice != null">
+        #{accessPrice,jdbcType=FLOAT},
+      </if>
+      <if test="accessBeginTime != null">
+        #{accessBeginTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="accessEndTime != null">
+        #{accessEndTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="averagePrice != null">
+        #{averagePrice,jdbcType=FLOAT},
+      </if>
+      <if test="supplierCode != null">
+        #{supplierCode,jdbcType=VARCHAR},
+      </if>
+      <if test="note != null">
+        #{note,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+
+
+  <update id="updateByPrimaryKeySelective" parameterType="model.RoomAccess">
+    update room_access
+    <set>
+      <if test="itemCode != null">
+        item_code = #{itemCode,jdbcType=VARCHAR},
+      </if>
+      <if test="buildingCode != null">
+        building_code = #{buildingCode,jdbcType=VARCHAR},
+      </if>
+      <if test="floor != null">
+        floor = #{floor,jdbcType=VARCHAR},
+      </if>
+      <if test="suiteCode != null">
+        suite_code = #{suiteCode,jdbcType=VARCHAR},
+      </if>
+      <if test="accessPrice != null">
+        access_price = #{accessPrice,jdbcType=FLOAT},
+      </if>
+      <if test="accessBeginTime != null">
+        access_begin_time = #{accessBeginTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="accessEndTime != null">
+        access_end_time = #{accessEndTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="averagePrice != null">
+        average_price = #{averagePrice,jdbcType=FLOAT},
+      </if>
+      <if test="supplierCode != null">
+        supplier_code = #{supplierCode,jdbcType=VARCHAR},
+      </if>
+      <if test="note != null">
+        note = #{note,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where room_code = #{roomCode,jdbcType=VARCHAR}
+  </update>
+
+
+  <update id="updateByPrimaryKey" parameterType="model.RoomAccess">
+    update room_access
+    set region_code = #{regionCode,jdbcType=VARCHAR},
+      item_code = #{itemCode,jdbcType=VARCHAR},
+      building_code = #{buildingCode,jdbcType=VARCHAR},
+      floor = #{floor,jdbcType=VARCHAR},
+      suite_code = #{suiteCode,jdbcType=VARCHAR},
+      access_price = #{accessPrice,jdbcType=FLOAT},
+      access_begin_time = #{accessBeginTime,jdbcType=TIMESTAMP},
+      access_end_time = #{accessEndTime,jdbcType=TIMESTAMP},
+      average_price = #{averagePrice,jdbcType=FLOAT},
+      supplier_code = #{supplierCode,jdbcType=VARCHAR},
+      note = #{note,jdbcType=VARCHAR}
+    where room_code = #{roomCode,jdbcType=VARCHAR}
+  </update>
+
+
+</mapper>

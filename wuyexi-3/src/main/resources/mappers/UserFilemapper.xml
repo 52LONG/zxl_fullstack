@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="dao.UserFileDao">
+  <resultMap id="BaseResultMap" type="model.UserFile">
+    <result column="id" jdbcType="VARCHAR" property="id" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="emid" jdbcType="VARCHAR" property="emid" />
+    <result column="emdepartment" jdbcType="VARCHAR" property="emdepartment" />
+    <result column="information" jdbcType="VARCHAR" property="information" />
+    <result column="time" jdbcType="TIMESTAMP" property="time" />
+  </resultMap>
+
+
+  <sql id="tablename">
+    user_file
+  </sql>
+
+  <insert id="insert" parameterType="model.UserFile">
+    insert into user_file (id, name, emid,
+      emdepartment, information, time
+      )
+    values (#{id,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, #{emid,jdbcType=VARCHAR}, 
+      #{emdepartment,jdbcType=VARCHAR}, #{information,jdbcType=VARCHAR}, #{time,jdbcType=TIMESTAMP}
+      )
+  </insert>
+
+  <select id="select" resultMap="BaseResultMap">
+    SELECT * FROM <include refid="tablename"></include>
+  </select>
+
+
+
+</mapper>

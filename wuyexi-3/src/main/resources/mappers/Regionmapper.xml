@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="dao.RegionDao">
+
+    <sql id="tablename">
+        region
+    </sql>
+
+    <sql id="tablecolunm">
+       region_code,region_name
+    </sql>
+
+    <sql id="prams">
+        #{regionCode},#{regionName}
+    </sql>
+
+    <resultMap id="result" type="model.Region">
+        <id column="region_code" property="regionCode"></id>
+        <result column="region_name" property="regionName"></result>
+    </resultMap>
+
+
+
+    <insert id="InsertOne" parameterType="model.Region">
+        INSERT INTO <include refid="tablename"></include>
+        (
+            <include refid="tablecolunm"></include>
+        )
+        VALUES
+        (
+            <include refid="prams"></include>
+        )
+    </insert>
+
+    <update id="UpdateOne" parameterType="java.lang.String">
+        UPDATE <include refid="tablename"></include> SET
+        <if test="regionname!=null">
+            region_name=#{regionname}
+        </if>
+        WHERE region_code=#{regioncode}
+    </update>
+
+    <delete id="DeleteOne" parameterType="java.lang.String">
+        DELETE FROM <include refid="tablename"></include> WHERE region_code=#{region} OR region_name=#{region}
+    </delete>
+
+    <select id="SelectOne" resultType="model.Region" parameterType="java.lang.String" resultMap="result">
+        SELECT <include refid="tablecolunm"></include> FROM <include refid="tablename"></include> WHERE region_code=#{region} OR region_name=#{region}
+    </select>
+
+    <select id="SelectAll" resultType="model.Region" resultMap="result">
+        SELECT <include refid="tablecolunm"></include> FROM <include refid="tablename"></include>
+    </select>
+
+
+
+</mapper>

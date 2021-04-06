@@ -1,0 +1,373 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="dao.BillDao">
+  <resultMap id="BaseResultMap" type="model.Bill">
+    <id column="bill_code" jdbcType="VARCHAR" property="billCode" />
+    <result column="department_code" jdbcType="VARCHAR" property="departmentCode" />
+    <result column="region_code" jdbcType="VARCHAR" property="regionCode" />
+    <result column="propertymc_code" jdbcType="VARCHAR" property="propertymcCode" />
+    <result column="building_code" jdbcType="VARCHAR" property="buildingCode" />
+    <result column="floor" jdbcType="VARCHAR" property="floor" />
+    <result column="suite_code" jdbcType="VARCHAR" property="suiteCode" />
+    <result column="room_code" jdbcType="VARCHAR" property="roomCode" />
+    <result column="bunk_code" jdbcType="VARCHAR" property="bunkCode" />
+    <result column="contractno" jdbcType="VARCHAR" property="contractno" />
+    <result column="client_code" jdbcType="VARCHAR" property="clientCode" />
+    <result column="unit" jdbcType="FLOAT" property="unit" />
+    <result column="num" jdbcType="FLOAT" property="num" />
+    <result column="tax_rate" jdbcType="FLOAT" property="taxRate" />
+    <result column="charge_with_tax" jdbcType="FLOAT" property="chargeWithTax" />
+    <result column="tax_amount" jdbcType="FLOAT" property="taxAmount" />
+    <result column="amount" jdbcType="FLOAT" property="amount" />
+    <result column="charged_amount" jdbcType="FLOAT" property="chargedAmount" />
+    <result column="contract" jdbcType="FLOAT" property="contract" />
+    <result column="bill_begin_time" jdbcType="TIMESTAMP" property="billBeginTime" />
+    <result column="bill_end_time" jdbcType="TIMESTAMP" property="billEndTime" />
+    <result column="big_amount" jdbcType="INTEGER" property="bigAmount" />
+    <result column="ispaid" jdbcType="INTEGER" property="ispaid" />
+    <result column="emid" jdbcType="VARCHAR" property="emid" />
+    <result column="setup_time" jdbcType="TIMESTAMP" property="setupTime" />
+    <result column="paid" jdbcType="INTEGER" property="paid" />
+    <result column="setup_paid" jdbcType="INTEGER" property="setupPaid" />
+    <result column="note" jdbcType="VARCHAR" property="note" />
+  </resultMap>
+
+  <sql id="Base_Column_List">
+    bill_code, department_code, region_code, propertymc_code, building_code, `floor`, 
+    suite_code, room_code, bunk_code, contractno, client_code, unit, num, tax_rate, charge_with_tax, 
+    tax_amount, amount, charged_amount, contract, bill_begin_time, bill_end_time, big_amount, 
+    ispaid, emid, setup_time, paid, setup_paid, note
+  </sql>
+
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from bill
+    where bill_code = #{billCode,jdbcType=VARCHAR}
+  </select>
+
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from bill
+    where bill_code = #{billCode,jdbcType=VARCHAR}
+  </delete>
+
+  <insert id="insert" parameterType="model.Bill">
+    insert into bill (bill_code,department_code, region_code, propertymc_code,
+      building_code, floor, suite_code,
+      room_code, bunk_code, contractno, 
+      client_code, unit, num, 
+      tax_rate, charge_with_tax, tax_amount, 
+      amount, charged_amount, contract, 
+      bill_begin_time, bill_end_time, big_amount, 
+      ispaid, emid, setup_time, 
+      paid, setup_paid, note
+      )
+    values (#{billCode,jdbcType=VARCHAR},#{departmentCode,jdbcType=VARCHAR}, #{regionCode,jdbcType=VARCHAR}, #{propertymcCode,jdbcType=VARCHAR},
+      #{buildingCode,jdbcType=VARCHAR}, #{floor,jdbcType=VARCHAR}, #{suiteCode,jdbcType=VARCHAR}, 
+      #{roomCode,jdbcType=VARCHAR}, #{bunkCode,jdbcType=VARCHAR}, #{contractno,jdbcType=VARCHAR}, 
+      #{clientCode,jdbcType=VARCHAR}, #{unit,jdbcType=FLOAT}, #{num,jdbcType=FLOAT}, 
+      #{taxRate,jdbcType=FLOAT}, #{chargeWithTax,jdbcType=FLOAT}, #{taxAmount,jdbcType=FLOAT}, 
+      #{amount,jdbcType=FLOAT}, #{chargedAmount,jdbcType=FLOAT}, #{contract,jdbcType=FLOAT}, 
+      #{billBeginTime,jdbcType=TIMESTAMP}, #{billEndTime,jdbcType=TIMESTAMP}, #{bigAmount,jdbcType=INTEGER}, 
+      #{ispaid,jdbcType=INTEGER}, #{emid,jdbcType=VARCHAR}, #{setupTime,jdbcType=TIMESTAMP}, 
+      #{paid,jdbcType=INTEGER}, #{setupPaid,jdbcType=INTEGER}, #{note,jdbcType=VARCHAR}
+      )
+  </insert>
+
+  <insert id="insertSelective" parameterType="model.Bill" >
+    insert into bill
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="billCode != null">
+        bill_code,
+      </if>
+      <if test="departmentCode != null">
+        department_code,
+      </if>
+      <if test="regionCode != null">
+        region_code,
+      </if>
+      <if test="propertymcCode != null">
+        propertymc_code,
+      </if>
+      <if test="buildingCode != null">
+        building_code,
+      </if>
+      <if test="floor != null">
+        `floor`,
+      </if>
+      <if test="suiteCode != null">
+        suite_code,
+      </if>
+      <if test="roomCode != null">
+        room_code,
+      </if>
+      <if test="bunkCode != null">
+        bunk_code,
+      </if>
+      <if test="contractno != null">
+        contractno,
+      </if>
+      <if test="clientCode != null">
+        client_code,
+      </if>
+      <if test="unit != null">
+        unit,
+      </if>
+      <if test="num != null">
+        num,
+      </if>
+      <if test="taxRate != null">
+        tax_rate,
+      </if>
+      <if test="chargeWithTax != null">
+        charge_with_tax,
+      </if>
+      <if test="taxAmount != null">
+        tax_amount,
+      </if>
+      <if test="amount != null">
+        amount,
+      </if>
+      <if test="chargedAmount != null">
+        charged_amount,
+      </if>
+      <if test="contract != null">
+        contract,
+      </if>
+      <if test="billBeginTime != null">
+        bill_begin_time,
+      </if>
+      <if test="billEndTime != null">
+        bill_end_time,
+      </if>
+      <if test="bigAmount != null">
+        big_amount,
+      </if>
+      <if test="ispaid != null">
+        ispaid,
+      </if>
+      <if test="emid != null">
+        emid,
+      </if>
+      <if test="setupTime != null">
+        setup_time,
+      </if>
+      <if test="paid != null">
+        paid,
+      </if>
+      <if test="setupPaid != null">
+        setup_paid,
+      </if>
+      <if test="note != null">
+        note,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="billCode != null">
+        #{billCode,jdbcType=VARCHAR},
+      </if>
+      <if test="departmentCode != null">
+        #{departmentCode,jdbcType=VARCHAR},
+      </if>
+      <if test="regionCode != null">
+        #{regionCode,jdbcType=VARCHAR},
+      </if>
+      <if test="propertymcCode != null">
+        #{propertymcCode,jdbcType=VARCHAR},
+      </if>
+      <if test="buildingCode != null">
+        #{buildingCode,jdbcType=VARCHAR},
+      </if>
+      <if test="floor != null">
+        #{floor,jdbcType=VARCHAR},
+      </if>
+      <if test="suiteCode != null">
+        #{suiteCode,jdbcType=VARCHAR},
+      </if>
+      <if test="roomCode != null">
+        #{roomCode,jdbcType=VARCHAR},
+      </if>
+      <if test="bunkCode != null">
+        #{bunkCode,jdbcType=VARCHAR},
+      </if>
+      <if test="contractno != null">
+        #{contractno,jdbcType=VARCHAR},
+      </if>
+      <if test="clientCode != null">
+        #{clientCode,jdbcType=VARCHAR},
+      </if>
+      <if test="unit != null">
+        #{unit,jdbcType=FLOAT},
+      </if>
+      <if test="num != null">
+        #{num,jdbcType=FLOAT},
+      </if>
+      <if test="taxRate != null">
+        #{taxRate,jdbcType=FLOAT},
+      </if>
+      <if test="chargeWithTax != null">
+        #{chargeWithTax,jdbcType=FLOAT},
+      </if>
+      <if test="taxAmount != null">
+        #{taxAmount,jdbcType=FLOAT},
+      </if>
+      <if test="amount != null">
+        #{amount,jdbcType=FLOAT},
+      </if>
+      <if test="chargedAmount != null">
+        #{chargedAmount,jdbcType=FLOAT},
+      </if>
+      <if test="contract != null">
+        #{contract,jdbcType=FLOAT},
+      </if>
+      <if test="billBeginTime != null">
+        #{billBeginTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="billEndTime != null">
+        #{billEndTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="bigAmount != null">
+        #{bigAmount,jdbcType=INTEGER},
+      </if>
+      <if test="ispaid != null">
+        #{ispaid,jdbcType=INTEGER},
+      </if>
+      <if test="emid != null">
+        #{emid,jdbcType=VARCHAR},
+      </if>
+      <if test="setupTime != null">
+        #{setupTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="paid != null">
+        #{paid,jdbcType=INTEGER},
+      </if>
+      <if test="setupPaid != null">
+        #{setupPaid,jdbcType=INTEGER},
+      </if>
+      <if test="note != null">
+        #{note,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+
+  <update id="updateByPrimaryKeySelective" parameterType="model.Bill">
+    update bill
+    <set>
+      <if test="departmentCode != null">
+        department_code = #{departmentCode,jdbcType=VARCHAR},
+      </if>
+      <if test="regionCode != null">
+        region_code = #{regionCode,jdbcType=VARCHAR},
+      </if>
+      <if test="propertymcCode != null">
+        propertymc_code = #{propertymcCode,jdbcType=VARCHAR},
+      </if>
+      <if test="buildingCode != null">
+        building_code = #{buildingCode,jdbcType=VARCHAR},
+      </if>
+      <if test="floor != null">
+        `floor` = #{floor,jdbcType=VARCHAR},
+      </if>
+      <if test="suiteCode != null">
+        suite_code = #{suiteCode,jdbcType=VARCHAR},
+      </if>
+      <if test="roomCode != null">
+        room_code = #{roomCode,jdbcType=VARCHAR},
+      </if>
+      <if test="bunkCode != null">
+        bunk_code = #{bunkCode,jdbcType=VARCHAR},
+      </if>
+      <if test="contractno != null">
+        contractno = #{contractno,jdbcType=VARCHAR},
+      </if>
+      <if test="clientCode != null">
+        client_code = #{clientCode,jdbcType=VARCHAR},
+      </if>
+      <if test="unit != null">
+        unit = #{unit,jdbcType=FLOAT},
+      </if>
+      <if test="num != null">
+        num = #{num,jdbcType=FLOAT},
+      </if>
+      <if test="taxRate != null">
+        tax_rate = #{taxRate,jdbcType=FLOAT},
+      </if>
+      <if test="chargeWithTax != null">
+        charge_with_tax = #{chargeWithTax,jdbcType=FLOAT},
+      </if>
+      <if test="taxAmount != null">
+        tax_amount = #{taxAmount,jdbcType=FLOAT},
+      </if>
+      <if test="amount != null">
+        amount = #{amount,jdbcType=FLOAT},
+      </if>
+      <if test="chargedAmount != null">
+        charged_amount = #{chargedAmount,jdbcType=FLOAT},
+      </if>
+      <if test="contract != null">
+        contract = #{contract,jdbcType=FLOAT},
+      </if>
+      <if test="billBeginTime != null">
+        bill_begin_time = #{billBeginTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="billEndTime != null">
+        bill_end_time = #{billEndTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="bigAmount != null">
+        big_amount = #{bigAmount,jdbcType=INTEGER},
+      </if>
+      <if test="ispaid != null">
+        ispaid = #{ispaid,jdbcType=INTEGER},
+      </if>
+      <if test="emid != null">
+        emid = #{emid,jdbcType=VARCHAR},
+      </if>
+      <if test="setupTime != null">
+        setup_time = #{setupTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="paid != null">
+        paid = #{paid,jdbcType=INTEGER},
+      </if>
+      <if test="setupPaid != null">
+        setup_paid = #{setupPaid,jdbcType=INTEGER},
+      </if>
+      <if test="note != null">
+        note = #{note,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where bill_code = #{billCode,jdbcType=VARCHAR}
+  </update>
+
+  <update id="updateByPrimaryKey" parameterType="model.Bill">
+    update bill
+    set department_code = #{departmentCode,jdbcType=VARCHAR},
+      region_code = #{regionCode,jdbcType=VARCHAR},
+      propertymc_code = #{propertymcCode,jdbcType=VARCHAR},
+      building_code = #{buildingCode,jdbcType=VARCHAR},
+      `floor` = #{floor,jdbcType=VARCHAR},
+      suite_code = #{suiteCode,jdbcType=VARCHAR},
+      room_code = #{roomCode,jdbcType=VARCHAR},
+      bunk_code = #{bunkCode,jdbcType=VARCHAR},
+      contractno = #{contractno,jdbcType=VARCHAR},
+      client_code = #{clientCode,jdbcType=VARCHAR},
+      unit = #{unit,jdbcType=FLOAT},
+      num = #{num,jdbcType=FLOAT},
+      tax_rate = #{taxRate,jdbcType=FLOAT},
+      charge_with_tax = #{chargeWithTax,jdbcType=FLOAT},
+      tax_amount = #{taxAmount,jdbcType=FLOAT},
+      amount = #{amount,jdbcType=FLOAT},
+      charged_amount = #{chargedAmount,jdbcType=FLOAT},
+      contract = #{contract,jdbcType=FLOAT},
+      bill_begin_time = #{billBeginTime,jdbcType=TIMESTAMP},
+      bill_end_time = #{billEndTime,jdbcType=TIMESTAMP},
+      big_amount = #{bigAmount,jdbcType=INTEGER},
+      ispaid = #{ispaid,jdbcType=INTEGER},
+      emid = #{emid,jdbcType=VARCHAR},
+      setup_time = #{setupTime,jdbcType=TIMESTAMP},
+      paid = #{paid,jdbcType=INTEGER},
+      setup_paid = #{setupPaid,jdbcType=INTEGER},
+      note = #{note,jdbcType=VARCHAR}
+    where bill_code = #{billCode,jdbcType=VARCHAR}
+  </update>
+
+</mapper>

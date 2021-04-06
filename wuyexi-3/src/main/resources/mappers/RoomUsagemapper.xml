@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="dao.RoomUsageDao">
+  <resultMap id="BaseResultMap" type="model.RoomUsage">
+    <id column="room_code" jdbcType="VARCHAR" property="roomCode" />
+    <result column="purpose_code" jdbcType="VARCHAR" property="purposeCode" />
+    <result column="purpose_name" jdbcType="VARCHAR" property="purposeName" />
+    <result column="purpose_begin_time" jdbcType="TIMESTAMP" property="purposeBeginTime" />
+    <result column="purpose_end_time" jdbcType="TIMESTAMP" property="purposeEndTime" />
+    <result column="noh_status" jdbcType="INTEGER" property="nohStatus" />
+    <result column="note" jdbcType="VARCHAR" property="note" />
+  </resultMap>
+
+  <sql id="Base_Column_List">
+    room_code, purpose_code, purpose_name, purpose_begin_time, purpose_end_time, noh_status, 
+    note
+  </sql>
+
+
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from room_usage
+    where room_code = #{roomCode,jdbcType=VARCHAR}
+  </select>
+
+
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from room_usage
+    where room_code = #{roomCode,jdbcType=VARCHAR}
+  </delete>
+
+
+  <insert id="insert" parameterType="model.RoomUsage">
+    insert into room_usage (room_code,purpose_code, purpose_name, purpose_begin_time,
+      purpose_end_time, noh_status, note
+      )
+    values (#{roomCode,jdbcType=VARCHAR},#{purposeCode,jdbcType=VARCHAR}, #{purposeName,jdbcType=VARCHAR}, #{purposeBeginTime,jdbcType=TIMESTAMP},
+      #{purposeEndTime,jdbcType=TIMESTAMP}, #{nohStatus,jdbcType=INTEGER}, #{note,jdbcType=VARCHAR}
+      )
+  </insert>
+
+
+
+  <insert id="insertSelective" keyColumn="room_code" keyProperty="roomCode" parameterType="model.RoomUsage" useGeneratedKeys="true">
+    insert into room_usage
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="roomCode != null">
+        room_code,
+      </if>
+      <if test="purposeCode != null">
+        purpose_code,
+      </if>
+      <if test="purposeName != null">
+        purpose_name,
+      </if>
+      <if test="purposeBeginTime != null">
+        purpose_begin_time,
+      </if>
+      <if test="purposeEndTime != null">
+        purpose_end_time,
+      </if>
+      <if test="nohStatus != null">
+        noh_status,
+      </if>
+      <if test="note != null">
+        note,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="roomCode != null">
+        #{roomCode,jdbcType=VARCHAR},
+      </if>
+      <if test="purposeCode != null">
+        #{purposeCode,jdbcType=VARCHAR},
+      </if>
+      <if test="purposeName != null">
+        #{purposeName,jdbcType=VARCHAR},
+      </if>
+      <if test="purposeBeginTime != null">
+        #{purposeBeginTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="purposeEndTime != null">
+        #{purposeEndTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="nohStatus != null">
+        #{nohStatus,jdbcType=INTEGER},
+      </if>
+      <if test="note != null">
+        #{note,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+
+
+  <update id="updateByPrimaryKeySelective" parameterType="model.RoomUsage">
+    update room_usage
+    <set>
+      <if test="purposeCode != null">
+        purpose_code = #{purposeCode,jdbcType=VARCHAR},
+      </if>
+      <if test="purposeName != null">
+        purpose_name = #{purposeName,jdbcType=VARCHAR},
+      </if>
+      <if test="purposeBeginTime != null">
+        purpose_begin_time = #{purposeBeginTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="purposeEndTime != null">
+        purpose_end_time = #{purposeEndTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="nohStatus != null">
+        noh_status = #{nohStatus,jdbcType=INTEGER},
+      </if>
+      <if test="note != null">
+        note = #{note,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where room_code = #{roomCode,jdbcType=VARCHAR}
+  </update>
+
+
+  <update id="updateByPrimaryKey" parameterType="model.RoomUsage">
+    update room_usage
+    set purpose_code = #{purposeCode,jdbcType=VARCHAR},
+      purpose_name = #{purposeName,jdbcType=VARCHAR},
+      purpose_begin_time = #{purposeBeginTime,jdbcType=TIMESTAMP},
+      purpose_end_time = #{purposeEndTime,jdbcType=TIMESTAMP},
+      noh_status = #{nohStatus,jdbcType=INTEGER},
+      note = #{note,jdbcType=VARCHAR}
+    where room_code = #{roomCode,jdbcType=VARCHAR}
+  </update>
+
+
+</mapper>

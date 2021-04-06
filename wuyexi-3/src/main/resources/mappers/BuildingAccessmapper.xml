@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="dao.BuildingAccessDao">
+
+    <resultMap id="result" type="model.BuildingAccess">
+        <id property="buildingCode" column="building_code"></id>
+        <result property="regionCode" column="region_code"></result>
+        <result property="itemCode" column="item_code"></result>
+        <result property="supplierName" column="supplier_name"></result>
+        <result property="accessPrice" column="access_price"></result>
+        <result property="averagePrice" column="average_price"></result>
+        <result property="accessBeginTime" column="access_begin_time"></result>
+        <result property="accessEndTime" column="access_end_time"></result>
+        <result property="note" column="note"></result>
+    </resultMap>
+
+    <sql id="tablename">
+        building_access
+    </sql>
+
+    <sql id="tablecolunm">
+       building_code,region_code,item_code,supplier_name,access_price,average_price,access_begin_time,access_end_time,note
+    </sql>
+
+    <sql id="prams">
+        #{buildingCode},#{regionCode},#{itemCode},#{supplierName},#{accessPrice},#{averagePrice},#{accessBeginTime},#{accessEndTime},#{note}
+    </sql>
+
+
+    <insert id="InsertOne" parameterType="model.BuildingAccess">
+        INSERT INTO <include refid="tablename"></include>
+        (
+            <include refid="tablecolunm"></include>
+        )
+        VALUES
+        (
+            <include refid="prams"></include>
+        )
+    </insert>
+
+    <update id="UpdateOne" parameterType="model.BuildingAccess">
+        UPDATE <include refid="tablename"></include> SET
+        region_code=#{regionCode},item_code=#{itemCode},supplier_name=#{supplierName},access_price=#{accessPrice},average_price=#{averagePrice},access_begin_time=#{accessBeginTime},access_end_time=#{accessEndTime},note=#{note}
+        WHERE building_code=#{buildingaccess}
+    </update>
+
+    <delete id="DeleteOne" parameterType="java.lang.String">
+        DELETE FROM <include refid="tablename"></include> WHERE building_code=#{buildingaccess}
+    </delete>
+
+    <select id="SelectOne" resultType="model.BuildingAccess" resultMap="result" parameterType="java.lang.String">
+        SELECT * FROM <include refid="tablename"></include> WHERE building_code=#{buildingaccess}
+    </select>
+
+    <select id="SelectAll" resultType="model.BuildingAccess" resultMap="result">
+        SELECT * FROM <include refid="tablename"></include>
+    </select>
+
+
+
+</mapper>

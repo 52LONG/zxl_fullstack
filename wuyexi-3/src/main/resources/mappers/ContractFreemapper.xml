@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="dao.ContractFreeDao">
+  <resultMap id="BaseResultMap" type="model.ContractFree">
+    <id column="contractno" jdbcType="VARCHAR" property="contractno" />
+    <result column="suite_code" jdbcType="VARCHAR" property="suiteCode" />
+    <result column="suite_name" jdbcType="VARCHAR" property="suiteName" />
+    <result column="free_begin_time" jdbcType="DATE" property="freeBeginTime" />
+    <result column="free_end_time" jdbcType="DATE" property="freeEndTime" />
+    <result column="days" jdbcType="INTEGER" property="days" />
+    <result column="note" jdbcType="VARCHAR" property="note" />
+  </resultMap>
+
+
+  <sql id="Base_Column_List">
+    contractno, suite_code, suite_name, free_begin_time, free_end_time, `days`, note
+  </sql>
+
+
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from contract_free
+    where contractno = #{contractno,jdbcType=VARCHAR}
+  </select>
+
+
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from contract_free
+    where contractno = #{contractno,jdbcType=VARCHAR}
+  </delete>
+
+
+  <insert id="insert"  parameterType="model.ContractFree" >
+    insert into contract_free (contractno,suite_code, suite_name, free_begin_time,
+      free_end_time, `days`, note
+      )
+    values (#{contractno,jdbcType=VARCHAR},#{suiteCode,jdbcType=VARCHAR}, #{suiteName,jdbcType=VARCHAR}, #{freeBeginTime,jdbcType=DATE},
+      #{freeEndTime,jdbcType=DATE}, #{days,jdbcType=INTEGER}, #{note,jdbcType=VARCHAR}
+      )
+  </insert>
+
+
+  <insert id="insertSelective"  parameterType="model.ContractFree" >
+    insert into contract_free
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="contractno != null">
+        contractno,
+      </if>
+      <if test="suiteCode != null">
+        suite_code,
+      </if>
+      <if test="suiteName != null">
+        suite_name,
+      </if>
+      <if test="freeBeginTime != null">
+        free_begin_time,
+      </if>
+      <if test="freeEndTime != null">
+        free_end_time,
+      </if>
+      <if test="days != null">
+        `days`,
+      </if>
+      <if test="note != null">
+        note,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="suiteCode != null">
+        #{suiteCode,jdbcType=VARCHAR},
+      </if>
+      <if test="suiteName != null">
+        #{suiteName,jdbcType=VARCHAR},
+      </if>
+      <if test="freeBeginTime != null">
+        #{freeBeginTime,jdbcType=DATE},
+      </if>
+      <if test="freeEndTime != null">
+        #{freeEndTime,jdbcType=DATE},
+      </if>
+      <if test="days != null">
+        #{days,jdbcType=INTEGER},
+      </if>
+      <if test="note != null">
+        #{note,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+
+
+  <update id="updateByPrimaryKeySelective" parameterType="model.ContractFree">
+    update contract_free
+    <set>
+      <if test="suiteCode != null">
+        suite_code = #{suiteCode,jdbcType=VARCHAR},
+      </if>
+      <if test="suiteName != null">
+        suite_name = #{suiteName,jdbcType=VARCHAR},
+      </if>
+      <if test="freeBeginTime != null">
+        free_begin_time = #{freeBeginTime,jdbcType=DATE},
+      </if>
+      <if test="freeEndTime != null">
+        free_end_time = #{freeEndTime,jdbcType=DATE},
+      </if>
+      <if test="days != null">
+        `days` = #{days,jdbcType=INTEGER},
+      </if>
+      <if test="note != null">
+        note = #{note,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where contractno = #{contractno,jdbcType=VARCHAR}
+  </update>
+
+
+  <update id="updateByPrimaryKey" parameterType="model.ContractFree">
+    update contract_free
+    set suite_code = #{suiteCode,jdbcType=VARCHAR},
+      suite_name = #{suiteName,jdbcType=VARCHAR},
+      free_begin_time = #{freeBeginTime,jdbcType=DATE},
+      free_end_time = #{freeEndTime,jdbcType=DATE},
+      `days` = #{days,jdbcType=INTEGER},
+      note = #{note,jdbcType=VARCHAR}
+    where contractno = #{contractno,jdbcType=VARCHAR}
+  </update>
+
+
+</mapper>
