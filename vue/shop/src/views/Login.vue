@@ -1,15 +1,15 @@
 <template>
   <div class="login">
     <!-- header -->
-    <s-header :name="type ==='login'?'登录':'注册'"></s-header>
+    <s-header :name="type === 'login' ? '登录' : '注册'"></s-header>
     <img
       class="logo"
       src="//s.yezgea02.com/1604045825972/newbee-mall-vue3-app-logo.png"
       alt=""
     />
     <!-- 登录 -->
-    <div v-if="type === 'login'" class="login login-body" >
-      <van-form>
+    <div v-if="type === 'login'" class="login login-body">
+      <van-form @submit="onSubmit">
         <van-field
           v-model="username"
           name="用户名"
@@ -32,12 +32,12 @@
           placeholder="请输入验证码"
         >
           <template #button>
-            <vue-img-verify />
+            <vue-img-verify  ref="verifyRef" />
           </template>
         </van-field>
 
         <div style="margin: 16px">
-          <div class="link-register" @click="nowType()">立即注册</div>
+          <div class="link-register" @click="toggle('register')">立即注册</div>
           <van-button round block type="primary" native-type="submit">
             登录
           </van-button>
@@ -47,7 +47,7 @@
 
     <!-- 注册 -->
     <div v-else class="login-body register">
-      <van-form>
+      <van-form @submit="onSubmit">
         <van-field
           v-model="username1"
           name="用户名"
@@ -70,12 +70,13 @@
           placeholder="请输入验证码"
         >
           <template #button>
-            <vue-img-verify />
+            <!--  -->
+            <vue-img-verify  ref="verifyRef"/>
           </template>
         </van-field>
 
         <div style="margin: 16px">
-          <div class="link-login " @click="nowType()">已有登录账号</div>
+          <div class="link-register" @click="toggle('login')">已有登录账号</div>
           <van-button round block type="primary" native-type="submit">
             注册
           </van-button>
@@ -84,32 +85,70 @@
     </div>
   </div>
 </template>
+
 <script>
 import sHeader from "@/components/SimpleHeader.vue";
-import vueImgVerify from "@/components/VueImgVerify.vue";
-import { reactive,toRefs } from 'vue';
+import vueImgVerify from "@/components/VueImgVerify";
+import { reactive, toRefs,ref } from "vue";
+import { register,login } from '@/service/user.js'
+import { Toast } from 'vant'
+import md5 from 'js-md5'
+import {useRouter} from 'vue-router'
 export default {
-    setup(){
-        const state = reactive({
-            username:'',
-            password:'',
-            verify:'',
-            // type:'login'
-            type:'login'
+  setup() {
+    const router = useRouter()
+    //取DOM解构
+    const verifyRef = ref(null)
+    const state = reactive({
+      username: "",
+      password: "",
+      username1: "",
+      password1: "",
+      verify: "",
+      type: 'login'
+    });
+
+    const toggle = (v) => {
+      state.type = v
+    }
+
+    // 登录注册
+    const onSubmit = async () => {
+      // console.log( verifyRef.value.imgCode);//通过ref.value 取到组件内setup函数的返回值
+      if(state.verify.toLowerCase()!==verifyRef.value.imgCode.toLowerCase()){
+        Toast.fail('验证码有误！')
+        return
+      }
+      if (state.type == 'login') {
+        const {data} = await login({
+          'loginName': state.username,
+          'passwordMd5':md5(state.password) 
         })
-       const nowType =()=>{
-           if(state.type === 'login'){
-                state.type = 'register'
-           }else{
-               state.type = 'login'
-           }
-           
-       }
-        return {
-            ...toRefs(state) ,
-            nowType
-        }
-    },
+          Toast.success('登录成功');
+          localStorage.setItem('token',data)
+          router.push({path:'/home'})
+
+        
+        // console.log(data);
+      } else {
+        await register({
+          'loginName': state.username1,
+          'password': state.password1
+        }).then(()=>{
+        Toast.success('注册成功');
+        state.type = 'login'
+        })
+       
+      }
+    }
+
+    return {
+      ...toRefs(state),
+      toggle,
+      onSubmit,
+      verifyRef
+    };
+  },
   components: {
     sHeader,
     vueImgVerify,

@@ -11,7 +11,7 @@ export default {
     const verfiy = ref(null); //操作原始数值
     const state = reactive({
       //操作引用类型
-      width: 120,
+      width: 110,
       height: 40,
       pool: "ABCDEFGHIGKLMNOPQRSTUVWXYZ1234567890",
       imgCode: "",
