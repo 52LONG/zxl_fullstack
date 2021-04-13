@@ -1,6 +1,6 @@
 <template>
 <div>
-  <header class="home-header wrap">
+  <header class="home-header wrap" :class="{active:headerScroll}">
     <router-link to="/category">
       <i class="iconfont icon-menu"></i>
     </router-link>
@@ -29,7 +29,11 @@
        </div>
    </div>
    <!--新品上线-->
-   
+    <goodsList :goods="newGoodses" :title="'新品上线'"/>
+    <!--热门商品 -->
+     <goodsList :goods="hotGoodses" :title="'热门商品'"/>
+    <!-- 最新推荐 -->
+     <goodsList :goods="recommendGoodses" :title="'最新推荐'"/>
 </div>
 </template>
 
@@ -38,12 +42,13 @@ import { onMounted, reactive, toRefs } from 'vue';
 import swiper from '@/components/Swiper.vue';
 import { Toast } from 'vant';
 import {getHome} from '@/service/home'
+import goodsList from '@/components/GoodsList'
 export default {
     setup(){
         const state = reactive({
             isLogin:false,
             swiperList: [],
-              categoryList: [
+            categoryList: [
         {
           name: "龙一超市",
           imgUrl: "//s.yezgea02.com/1604041127880/%E8%B6%85%E5%B8%82%402x.png",
@@ -95,9 +100,11 @@ export default {
           imgUrl: "//s.yezgea02.com/1604041127880/%E5%85%A8%E9%83%A8%402x.png",
           categoryId: 100010,
         },
-      ],
-      newGoodses: [],
-      headerScroll: false // 透明判断
+              ],
+            newGoodses: [],
+            hotGoodses:[],
+            recommendGoodses:[],
+            headerScroll: false // 透明判断
     })
         onMounted(async()=>{
          const token = localStorage.getItem('token')
@@ -110,15 +117,27 @@ export default {
              forbidClick:true
          })
          const {data} = await getHome()
-        //  console.log(data);
+         console.log(data);
         state.swiperList = data.carousels
+        state.newGoodses = data.newGoodses
+        state.hotGoodses = data.hotGoodses
+        state.recommendGoodses = data.recommendGoodses
+        })
+        //获取页面滚动
+        window.addEventListener('scroll',()=>{
+          // console.log(123);
+          let scrollTop = window.pageYOffset || 
+          document.documentElement.scrollTop || 
+          document.body.scrollTop;
+          scrollTop > 100 ? (state.headerScroll = true) :(state.headerScroll = false)
         })
         return{
             ...toRefs(state)
         }
     },
     components:{
-         swiper
+         swiper,
+         goodsList,
     }
 };
 </script>
