@@ -1,0 +1,15 @@
+{
+  "name": "graphql",
+  "version": "1.0.0",
+  "description": "graphql 是 restful 的替代品\r 来自于Facebook 良心出品的查询方案 2015年",
+  "main": "index.js",
+  "scripts": {
+    "dev": "json-server --watch --port 3001 db.json"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "json-server": "^0.16.3"
+  }
+}
