@@ -27,6 +27,23 @@
     webpack打包输出的文件，是真的存在于物理地址path中，而webpack-dev-server打包输出的文件，是保存在内存中的，在项目目录中是找不到的。
 
 
+    # 核心打包原理
+    1. 需要读到入口文件里面的内容
+    2. 分析入口文件，递归的去读取模块所依赖的文件内容，最后生成AST(抽象)语法树
+    3. 根据AST抽象语法树，生成浏览器能运行的代码
+
+    # 模块分析
+    - @babel/parser
+    npm i @babel/parser
+    # 收集依赖
+    将使用import 语句引入的文件路径收集起来
+    npm i @babel/traverse
+    # ES6 转成 ES5 (AST)
+    npm i @babel/core  @babel/preset-env
+
+
+
+
 
     
 
