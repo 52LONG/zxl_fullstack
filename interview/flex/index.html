@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>flex</title>
+    <style>
+        .item00 {
+    display: flex;
+    width:300px;
+    height: 100px;
+  }
+  .item {
+    display: flex;
+    width: 500px;
+    height: 100px;
+  }
+  .item0 {
+    width: 50px;
+    flex: none;
+    background-color: red;
+  }
+  .item1 {
+    /* width: 50px; */
+    flex: 1 1 auto;
+    background-color: green;
+  }
+  .item2 {
+    /* width: 100px; */
+    flex: 7 1 auto;
+    background-color: blue;
+  }
+
+</style>
+
+    <style>
+      .circle{
+        width: 50px;
+        height: 50px;
+        border-radius: 25px;
+        background-color: rgb(34, 31, 31);
+      }
+    </style>
+</head>
+<body>
+  <!-- <div class="circle">
+
+  </div> -->
+    <div class="item">
+        <div class="item0">0</div>
+        <div class="item1"><span></span></div>
+        <div class="item2"><span></span></div>
+    </div>
+    <br>
+    <!-- <div class="item00">
+      <div class="item0">0</div>
+      <div class="item1">1</div>
+      <div class="item2">2</div>
+  </div> -->
+</body>
+</html>
