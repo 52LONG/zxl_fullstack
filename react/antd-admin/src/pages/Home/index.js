@@ -1,12 +1,15 @@
 import React from 'react';
-import {Carousel} from 'antd'
-import './index.css'
-const Home = () =>{
-    return(
-        <div className="home-wrap">
-            {/* effect="fade" 淡入淡出的效果  autoplay自动播放*/}
-            <Carousel effect="fade" className="home-swiper" autoplay>
-            <div>
+import { Carousel } from 'antd';
+import './index.less';
+import CardList from '../../components/CardList'
+
+export default class Home extends React.Component {
+
+  render() {
+    return (
+      <div className="home-wrap">
+        <Carousel effect="fade" className="home-swiper" autoplay>
+          <div>
             <img
               src="https://i3.meishichina.com/attachment/mofang/2019/02/28/20190228155134869390510169539.jpg"
               alt=""
@@ -30,8 +33,9 @@ const Home = () =>{
               alt=""
             />
           </div>
-            </Carousel>
-        </div>
-    )
+        </Carousel>
+        <CardList keyword = '春季'/>
+      </div>
+    );
+  }
 }
-export default Home;

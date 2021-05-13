@@ -1,56 +1,63 @@
-import React, { useEffect, useState } from 'react';
-import { Tag,Divider,Card} from 'antd';
-import { NavLink } from 'react-router-dom';
-import axios from 'axios';//使用mock
-import './index.css';
+import React from 'react';
+import { Tag } from 'antd';
+import { NavLink } from "react-router-dom";
+import './index.less'
+import Axios from '../../api'
+import Utils from '../../utils'
+export default class NavRight extends React.Component {
 
-const NavRight=()=>{
-    const [lists,setTagList]=useState([]);
-    const getTagAPIList=()=>{
-        // console.log(data);
-        axios
-            .get('/tags')
-            .then(res=>{
-                // console.log(res.data.tags.result);
-                // setTagList(res.data.tags.result)
-                const data = res.data.tags.result;
-                console.log(data);
-                setTagList(data)
-            })
-            
+  state = {
+    tagList: []
+  }
 
-    }
-    useEffect(()=>{
-        getTagAPIList();
-    },[])
-    const renderMenu = (data) => {
-        return data.map(item => {
-          console.log(data);
-          if (item.list) {
-            return (
-              <Card size="small"  style={{width:370}} bordered={false} title={item.name}
-              key={item.classid}>
-              <div>
-            {renderMenu(item.list)}
-            </div>
-              </Card>
-              
-            )
-          }
-          return <Tag color="magenta" title={item.name} key={item.classid}>
-          <NavLink to={item.classid}>{item.name}</NavLink>
-        </Tag>
-        })
-        
-    
-        
-      }
-      const tag_list = renderMenu(lists);
+  componentDidMount(){
+    this.getTagAPIList()
+  }
+  // 渲染标签列表
+  renderTagList = (data) => {
+    return data.map((item, index) => {
+      return (
+        <li className="tags-content" key={index}>
+          <h4>{item.name}</h4>
+          <div>
+            {Utils.getRandomArrayElements(item.list, 8).map((tag, index) => (
+                <Tag color="magenta" key={index}>{tag.name}</Tag>
+            ))}
+          </div>
+        </li>
+      )
+    })
+  }
+
+  // 从接口获取标签列表数据
+  getTagAPIList = () => {
+    Axios
+      .jsonp({
+        url: 'http://api.jisuapi.com/recipe/class?appkey=a747596775e4f13b'
+      })
+      .then((res) => {
+        if (res.status === 0) {
+          let tagList = this.renderTagList(res.result)
+          this.setState({
+            tagList: tagList
+          })
+        }
+      })
+  }
+
+  render() {
     return (
-        <div>
-          <div><span className="tag_left">热门标签</span><span className="tag_right"><a >更多</a></span></div> 
-         <Card>{tag_list}</Card>
-        </div>   
-    )
+      <div className="aside">
+        <h3 className="title">
+          <span className="hot-tag">热门标签</span>
+          <span className="link-more">
+            <NavLink to="/tags" >更多</NavLink>
+          </span>
+        </h3>
+        <ul className="tags">
+          {this.state.tagList}
+        </ul>
+      </div>
+    );
+  }
 }
-export default NavRight
