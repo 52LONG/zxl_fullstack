@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        
+    var z = 10;
+    function foo() {
+        console.log(z,this);
+    }
+
+    (function (funArg) {
+        var z= 30;
+        funArg(); // 10
+    })(foo)
+
+
+
+    </script>
+    <script>
+        var x = 20;
+        var foo = {};
+
+// 初始化
+(function (object) {
+
+  var x = 10;
+
+  object.getX = function() {
+    return x;
+  };
+
+})(foo);
+
+alert(foo.getX());
+    </script>
+</body>
+</html>

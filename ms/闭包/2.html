@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+    var name = "The Window";
+　　var object = {
+　　　　name : "My Object",
+
+　　　　getNameFunc : function(){
+            console.log(this);//this 指向 object
+　　　　　　var that = this; //隐私绑定  
+　　　　　　return function(){
+                    console.log(that);// object
+                    console.log(this); // window
+　　　　　　　　return that.name;// => object.name  
+　　　　　　};
+
+　　　　}
+
+　　};
+
+　console.log(object.getNameFunc()());
+    </script>
+</body>
+</html>

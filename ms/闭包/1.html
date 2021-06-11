@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+//         　var name = "The Window";
+// 　　var object = {
+// 　　　　name : "My Object",
+// 　　　　getNameFunc : function(){
+// 　　　　　　return function(){
+//         console.log(this.name);
+// 　　　　　　　　return this.name; //这个this是有上下文的限制的
+// 　　　　　　};
+// 　　　　}
+// 　　};
+// var tmp = object.getNameFunc()(); //此时没有执行this.name
+// // var names = tmp();//这个时候才执行，这时候的this上下文为全局
+// console.log(tmp); 
+  </script>
+
+<script>
+//     getNameFunc: function() {//假设函数名为Ａ
+// return function()/*假设函数名为Ｂ*/ { return this.name; };
+// }
+// 在函数里面构建函数的时候，闭包产生。
+// 在函数Ｂ内调用函数Ａ的this.name,由于函数Ａ没有name属性，所以就去找全局变量name，找到了，所以返回“The Window”，要是没有找到，则返回“undefined”。
+　var name = "The Window";
+
+　　var object = {
+　　　　name : "My Object",
+        //闭包：闭包就是访问另一个函数作用域变量的函数  简单定义在一个函数内部的函数
+　　　　getNameFunc : function(){
+　　　　　　return function(){
+            console.log(this);//this 指向全局 window 
+　　　　　　　　return this.name;  //因为上一级getNameFunc()函数没有name 属性 ,所以就去找全局的name属性
+　　　　　　};
+
+　　　　}
+
+　　};
+console.log( object.getNameFunc()());
+
+  </script>
+</body>
+</html>
