@@ -3,8 +3,6 @@ import { message } from "antd";
 
 export default class Axios {
   static jsonp(options) {
-    // let baseApi = 'http://api.jisuapi.com/recipe/search'
-
     return new Promise((resolve, reject) => {
       JsonP(
         options.url,

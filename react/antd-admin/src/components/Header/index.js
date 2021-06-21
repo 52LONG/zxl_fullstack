@@ -88,6 +88,9 @@ class Header extends React.Component {
     );
   }
 }
+// 用connect()连接UI组件Header和Search，connect方法接受两个参数： mapStateToProps和mapDispatchToProps。
+// mapStateToProps会订阅store，state更新时会自动执行，Search组件可以通过this.props.keyword来拿到当前的state，
+// mapDispatchToProps作为对象，里面的每个键值被当做Action Creator
 
 export default connect(
   state => ({keyword: state}),

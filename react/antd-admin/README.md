@@ -30,7 +30,7 @@
 ## 页面结构
 
 
-```
+```js
 |-react-kitchen 项目名
     |-node_modules  依赖包
     |-public
@@ -72,7 +72,7 @@
 作为一个单页面项目，第一步当然是搭建页面路由了，因为是一个菜谱项目，所以路由还是比较多的，这里我把路由的结构都放在config文件下，在NavLeft导航组件下用map函数去将菜单渲染出来，这样既避免了自己一个一个去写重复的代码，也方便后面添加新的导航。
 
 实现代码:
-```
+```js
 import React from 'react';
 import { Menu} from 'antd';
 import { NavLink } from 'react-router-dom'
@@ -121,7 +121,7 @@ export default class NavLeft extends React.Component {
 
 先从接口中获取数据列表
 
-```
+```js
 getMenuAPIList = (keyword) => {
     const num = 12
     Axios
@@ -147,7 +147,7 @@ getMenuAPIList = (keyword) => {
 
 这里我用的是第二种方式
 
-```
+```js
 // 渲染卡片列表
 renderCardList = (data) => {
     return data.map((item) => {
